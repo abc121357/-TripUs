@@ -55,7 +55,7 @@
 			
 	
 	</insert>
-	<!--
+
 	<update id="addHitCount" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
 	
 	UPDATE
@@ -67,10 +67,43 @@
 	AND		
 			RBID=#{rbid}
 	AND
-			DELETEYN='Y'
+			RBDELETEYN='Y'
 			
 	
 	</update>
-	 -->
-	
+
+	<update id="updateResBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	UPDATE
+			TURBBOARD
+	SET
+			RBTITLE=#{rbtitle},
+			RBCONTENT=#{rbcontent},
+			RBIMAGE=#{rbimage},
+			RBTAG=#{tag}
+			RBUPDATEDATE=SYSDATE,
+			RBRECORDUPDATEDATE=SYSDATE
+	WHERE
+			1=1
+	AND
+			RBNO=#{rbno}
+	AND
+			RBDELETEYN='Y'
+
+	</update>
+
+	<update id="deleteResBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	UPDATE
+			TURBBOARD
+	SET
+			RBDELETEYN='N',
+			RBUPDATEDATE=SYSDATE,
+			RBRECORDUPDATEDATE=SYSDATE
+	WHERE
+			1=1
+	AND
+			RBNO=#{rbno}
+	AND
+			RBDELETEYN='Y'
+	</update>
+
 </mapper>

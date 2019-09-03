@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tu.restaurantboard.dao.RestaurantBoardCommMapper;
-import com.tu.restaurantboard.vo.TurbboardVO;
 import com.tu.restaurantboard.vo.TurccommVO;
 
 @Service

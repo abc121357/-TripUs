@@ -31,7 +31,7 @@ public class RestaurantBoardController {
 		
 		
 		System.out.println("listrestaurantBoard 진입");
-		List<TurbboardVO> list=restaurantBoardService.listresBoardList(param);
+		List<TurbboardVO> list=restaurantBoardService.listResBoardList(param);
 		System.out.println("list내용 콘솔출력 /");
 		
 		for(int i=0; i<list.size(); i++){
@@ -51,9 +51,26 @@ public class RestaurantBoardController {
 		System.out.println("resBoardList 처리 끝");
 		
 		return mav;
-		
-		
+
+
+
+
 	}
+
+
+	@RequestMapping("/resBoard")
+	public ModelAndView writeBoard(@ModelAttribute MemberVO param){
+		System.out.println("wirteBoard 진입");
+		MemberVO mVo=new MemberVO();
+		mVo.setMno("M201909030001");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("MemberNo",param);
+		mav.setViewName(CONTEXT_PATH+"/resBoard");
+		System.out.print("mav : "+mav.getViewName());
+		return mav;
+	}
+
+
 	//후기 게시판의 게시글 테이블 입력
 	@RequestMapping("/insertResBoard")
 	public ModelAndView insertBoard(TurbboardVO param){
@@ -69,7 +86,7 @@ public class RestaurantBoardController {
 	System.out.println("글 작성자id : " + param.getRbid());
 	System.out.println("글 이미지링크 : " + param.getRbimage());
 	System.out.println("글 태그 : " + param.getRbtag());
-	int result =restaurantBoardService.insertresBoard(param);
+	int result =restaurantBoardService.insertResBoard(param);
 	String resultStr = "등록 완료!!";
 		if(result==0)
 			resultStr="등록 실패..";
@@ -80,32 +97,47 @@ public class RestaurantBoardController {
 		return mav;
 		
 	}
-	
-	@RequestMapping("/resBoard")
-	public ModelAndView writeBoard(@ModelAttribute MemberVO param){
-		System.out.println("wirteBoard 진입");
-		MemberVO mVo=new MemberVO();
-		mVo.setMno("M201909030001");
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("MemberNo",param);
-		mav.setViewName(CONTEXT_PATH+"/resBoard");
-		System.out.print("mav : "+mav.getViewName());
-		return mav;
-	}
+
 	
 	//후기 게시판의 게시글 테이블 수정
-	/*
+	
 	@RequestMapping("/updateResBoard")
 	public ModelAndView updateBoard(TurbboardVO param){
 		
 		int result=0;
 		
-		result=;
+		result=restaurantBoardService.updateResBoard(param);
 		ModelAndView mav=new ModelAndView();
-		
-		mav.
-		
+		String resultstr="성공";
+		if(result==0){
+			resultstr="실패..";
+		}
+		mav.addObject("result",resultstr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+
+		return mav;
 	}
-	*/
+
+	@RequestMapping("/deleteResBoard")
+	public ModelAndView deleteBoard(TurbboardVO param){
+
+		int result=0;
+
+		result=restaurantBoardService.deleteResBoard(param);
+
+		ModelAndView mav=new ModelAndView();
+
+
+		String resultstr="성공";
+		if(result==0){
+			resultstr="실패..";
+		}
+		mav.addObject("result",resultstr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+		
+		return mav;
+
+	}
+
 }
 

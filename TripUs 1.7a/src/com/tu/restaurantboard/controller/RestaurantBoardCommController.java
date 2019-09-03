@@ -43,6 +43,25 @@ public class RestaurantBoardCommController {
 		return mav;
 		
 	}
+
+	@RequestMapping("/insertBoardComm")
+	public ModelAndView insertResBoardComm(@ModelAttribute TurccommVO param){
+
+		int result=0;
+
+
+		result=restaurantBoardCommService.insertResBoardComm(param);
+		ModelAndView mav=new ModelAndView();
+		String resultstr="성공";
+		if(result==0){
+			resultstr="실패";
+		}
+		mav.addObject("result",resultstr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+
+
+		return mav;
+	}
 	
 	
 	
