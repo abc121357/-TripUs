@@ -2,6 +2,7 @@ package com.tu.restaurantboard.controller;
 
 import java.util.List;
 
+import com.tu.mem.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -80,5 +81,31 @@ public class RestaurantBoardController {
 		
 	}
 	
+	@RequestMapping("/testBoard")
+	public ModelAndView writeBoard(TurbboardVO param){
+		MemberVO mVo=new MemberVO();
+		mVo.setMno("M201909030001");
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("MemberNo",mVo);
+		mav.setViewName(CONTEXT_PATH+"/testBoard");
+		
+		return mav;
+	}
+	
+	//후기 게시판의 게시글 테이블 수정
+	/*
+	@RequestMapping("/updateResBoard")
+	public ModelAndView updateBoard(TurbboardVO param){
+		
+		int result=0;
+		
+		result=;
+		ModelAndView mav=new ModelAndView();
+		
+		mav.
+		
+	}
+	*/
 }
 

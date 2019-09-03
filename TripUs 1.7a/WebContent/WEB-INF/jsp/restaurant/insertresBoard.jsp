@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -11,11 +11,11 @@
 		<title>tripUs</title>
 	</head>
 	<body>
-		ют╥б╣х ╟т╫цфг╟А╟Зют╢о╢ы.
+		Л·┘К═╔К░° Й╡▄Л▀°М▄░Й╡╟ЙЁ╪Л·┘К▀┬К▀╓.
 		
 		<table>
 		<c:if test="${empty restaurantlist}">
-		<td colspan="5" align="center">╣╔юлем╟║ ╬Ь╫ю╢о╢ы.</td>
+		<td colspan="5" align="center">К█╟Л²╢М└╟Й╟─ Л≈├Л┼╣К▀┬К▀╓.</td>
 		</c:if>
 		<c:forEach items="${restaurantlist}" var="res" varStatus="i">
 			<tr>
