@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +7,6 @@
 <title>tripUs</title>
 </head>
 <body>
-���� �ı� �Խñ��� �ۼ��� �������Դϴ�.
+맛집 후기 게시글을 작성할 페이지입니다.
 </body>
 </html>

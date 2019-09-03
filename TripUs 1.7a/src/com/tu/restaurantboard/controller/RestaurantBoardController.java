@@ -81,15 +81,15 @@ public class RestaurantBoardController {
 		
 	}
 	
-	@RequestMapping("/testBoard")
-	public ModelAndView writeBoard(TurbboardVO param){
+	@RequestMapping("/resBoard")
+	public ModelAndView writeBoard(@ModelAttribute MemberVO param){
+		System.out.println("wirteBoard 진입");
 		MemberVO mVo=new MemberVO();
 		mVo.setMno("M201909030001");
 		ModelAndView mav=new ModelAndView();
-		
-		mav.addObject("MemberNo",mVo);
-		mav.setViewName(CONTEXT_PATH+"/testBoard");
-		
+		mav.addObject("MemberNo",param);
+		mav.setViewName(CONTEXT_PATH+"/resBoard");
+		System.out.print("mav : "+mav.getViewName());
 		return mav;
 	}
 	
