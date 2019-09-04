@@ -1,6 +1,8 @@
 package com.tu.myfavorite.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +17,10 @@ public class MyfavoriteServiceImpl implements MyfavoriteService{
 	@Autowired
 	private MyfavoriteMapper myfavoriteMapper;
 	
-	public MyFavoriteVO selectMyFavorite(String mygrade){
+	public List<MyFavoriteVO> selectMyFavorite(MyFavoriteVO param){
 		
 		
-		return myfavoriteMapper.selectMyFavorite(mygrade);
+		return myfavoriteMapper.selectMyFavorite(param);
 		
 	}
 	

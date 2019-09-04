@@ -13,7 +13,7 @@ public class RestaurantMapperImpl extends SqlSessionDaoSupport implements Restau
 	private final String PACKAGE_PATH = "mybatis.query.RestaurantDAO";
 	
 	@Override
-	public List<TurtcommVO> listResComment(TurtcommVO param){
+	public List<TurtcommVO> listResComm(TurtcommVO param){
 		
 		return getSqlSession().selectList(PACKAGE_PATH+"listResComm");
 	}

@@ -9,98 +9,110 @@ package com.tu.myfavorite.vo;
 
 public class MyFavoriteVO {
 
-	private String MYNO; // size : 14
-	private String MYTITLE; // size : 60
-	private String MYID; // size : 500
-	private String MYGRADE; // size : 1
-	private String MYLOCATION; // size : 100
-	private String MYLINK; // size : 300
-	private String MYINSERTDATE; // size: date
-	private String MNO; // size : 13
-	private String MYRECORDINSERTDATE; // size : date
-	private String MYRECORDUPDATEDATE; // size : date
-	
-	
-	
+	private String myno; // size : 14
+	private String mytitle; // size : 60
+	private String myid; // size : 500
+	private String mygrade; // size : 1
+	private String mylocation; // size : 100
+	private String mylink; // size : 300
+	private String myinsertdate; // size: date
+	private String mno; // size : 13
+	private String myrecordinsertdate; // size : date
+	private String myrecordupdatedate; // size : date
+
 	public MyFavoriteVO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-	public MyFavoriteVO(String mYNO, String mYTITLE, String mYID, String mYGRADE, String mYLOCATION, String mYLINK,
-			String mYINSERTDATE, String mNO, String mYRECORDINSERTDATE, String mYRECORDUPDATEDATE) {
-		super();
-		MYNO = mYNO;
-		MYTITLE = mYTITLE;
-		MYID = mYID;
-		MYGRADE = mYGRADE;
-		MYLOCATION = mYLOCATION;
-		MYLINK = mYLINK;
-		MYINSERTDATE = mYINSERTDATE;
-		MNO = mNO;
-		MYRECORDINSERTDATE = mYRECORDINSERTDATE;
-		MYRECORDUPDATEDATE = mYRECORDUPDATEDATE;
+
+	public MyFavoriteVO(String myno, String mytitle, String myid, String mygrade, String mylocation, String mylink, String myinsertdate, String mno, String myrecordinsertdate, String myrecordupdatedate) {
+		this.myno = myno;
+		this.mytitle = mytitle;
+		this.myid = myid;
+		this.mygrade = mygrade;
+		this.mylocation = mylocation;
+		this.mylink = mylink;
+		this.myinsertdate = myinsertdate;
+		this.mno = mno;
+		this.myrecordinsertdate = myrecordinsertdate;
+		this.myrecordupdatedate = myrecordupdatedate;
 	}
-	public String getMYNO() {
-		return MYNO;
+
+	public String getMyno() {
+		return myno;
 	}
-	public void setMYNO(String mYNO) {
-		MYNO = mYNO;
+
+	public void setMyno(String myno) {
+		this.myno = myno;
 	}
-	public String getMYTITLE() {
-		return MYTITLE;
+
+	public String getMytitle() {
+		return mytitle;
 	}
-	public void setMYTITLE(String mYTITLE) {
-		MYTITLE = mYTITLE;
+
+	public void setMytitle(String mytitle) {
+		this.mytitle = mytitle;
 	}
-	public String getMYID() {
-		return MYID;
+
+	public String getMyid() {
+		return myid;
 	}
-	public void setMYID(String mYID) {
-		MYID = mYID;
+
+	public void setMyid(String myid) {
+		this.myid = myid;
 	}
-	public String getMYGRADE() {
-		return MYGRADE;
+
+	public String getMygrade() {
+		return mygrade;
 	}
-	public void setMYGRADE(String mYGRADE) {
-		MYGRADE = mYGRADE;
+
+	public void setMygrade(String mygrade) {
+		this.mygrade = mygrade;
 	}
-	public String getMYLOCATION() {
-		return MYLOCATION;
+
+	public String getMylocation() {
+		return mylocation;
 	}
-	public void setMYLOCATION(String mYLOCATION) {
-		MYLOCATION = mYLOCATION;
+
+	public void setMylocation(String mylocation) {
+		this.mylocation = mylocation;
 	}
-	public String getMYLINK() {
-		return MYLINK;
+
+	public String getMylink() {
+		return mylink;
 	}
-	public void setMYLINK(String mYLINK) {
-		MYLINK = mYLINK;
+
+	public void setMylink(String mylink) {
+		this.mylink = mylink;
 	}
-	public String getMYINSERTDATE() {
-		return MYINSERTDATE;
+
+	public String getMyinsertdate() {
+		return myinsertdate;
 	}
-	public void setMYINSERTDATE(String mYINSERTDATE) {
-		MYINSERTDATE = mYINSERTDATE;
+
+	public void setMyinsertdate(String myinsertdate) {
+		this.myinsertdate = myinsertdate;
 	}
-	public String getMNO() {
-		return MNO;
+
+	public String getMno() {
+		return mno;
 	}
-	public void setMNO(String mNO) {
-		MNO = mNO;
+
+	public void setMno(String mno) {
+		this.mno = mno;
 	}
-	public String getMYRECORDINSERTDATE() {
-		return MYRECORDINSERTDATE;
+
+	public String getMyrecordinsertdate() {
+		return myrecordinsertdate;
 	}
-	public void setMYRECORDINSERTDATE(String mYRECORDINSERTDATE) {
-		MYRECORDINSERTDATE = mYRECORDINSERTDATE;
+
+	public void setMyrecordinsertdate(String myrecordinsertdate) {
+		this.myrecordinsertdate = myrecordinsertdate;
 	}
-	public String getMYRECORDUPDATEDATE() {
-		return MYRECORDUPDATEDATE;
+
+	public String getMyrecordupdatedate() {
+		return myrecordupdatedate;
 	}
-	public void setMYRECORDUPDATEDATE(String mYRECORDUPDATEDATE) {
-		MYRECORDUPDATEDATE = mYRECORDUPDATEDATE;
+
+	public void setMyrecordupdatedate(String myrecordupdatedate) {
+		this.myrecordupdatedate = myrecordupdatedate;
 	}
-	
-	
-	
 }

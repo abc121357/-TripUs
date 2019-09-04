@@ -17,12 +17,16 @@
 	
 	}
 	
-	table>tr{
+	tr{
 	border: 1px solid red;
 	}
 	
-	table>tr>td{
+	td{
 	border: 1px solid red;
+	}
+	
+	td.data{
+	border: 1px solid blue;
 	}
 	
 	</style>
@@ -36,11 +40,11 @@
 		</c:if>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
 			<tr>
-				<td align="center">${fav.myno}</td>
-				<td align="center">${fav.mytitle}</td>
-				<td align="center">${fav.myid}</td>
-				<td align="center">${fav.mylocation}</td>
-				<td align="center">${fav.mylink}</td>
+				<td>번호 : </td><td class="data" align="center">${fav.myno}</td>
+				<td>제목 : </td><td class="data"align="center">${fav.mytitle}</td>
+				<td>내아이디 : </td><td class="data" align="center">${fav.myid}</td>
+				<td>위치 : </td><td class="data" align="center">${fav.mylocation}</td>
+				<td>링크 : </td><td class="data" align="center">${fav.mylink}</td>
 		</tr>
 		</c:forEach>
 		</table>

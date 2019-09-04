@@ -2,6 +2,9 @@ package com.tu.myfavorite.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,15 +27,20 @@ public class MyFavoriteController {
 	
 	
 	@RequestMapping("/myfavorite")
-	public ModelAndView selectmyfavorite(@ModelAttribute String mygrade){
+	public ModelAndView selectmyfavorite(@ModelAttribute MyFavoriteVO param,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String mid = (String)session.getAttribute("mid");
+		
 		System.out.println("selectmyFavorite 진입");
-		mygrade="1";
+		String mygrade="1";
+		param.setMyno("MY201908270001");
+		param.setMygrade(mygrade);
 		ModelAndView mav= new ModelAndView();
-		mav.addObject("myFavorite",myfavoriteService.selectMyFavorite(mygrade));
+		mav.addObject("myFavorite",myfavoriteService.selectMyFavorite(param));
 		mav.setViewName(CONTEXT_PATH+"/myfavorite");
-		System.out.println(equals(myfavoriteService.selectMyFavorite(mygrade)));
 		System.out.println("selectmyFavorite 끝");
 		return mav;
+
 	}
 	
 	@RequestMapping("/insertMyFavorite")

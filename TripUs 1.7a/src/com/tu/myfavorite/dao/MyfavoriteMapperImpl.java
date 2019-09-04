@@ -16,9 +16,9 @@ public class MyfavoriteMapperImpl extends SqlSessionDaoSupport implements Myfavo
 	private final String PACKAGE_PATH = "mybatis.query.myfavoriteDAO";
 	
 	@Override
-	public MyFavoriteVO selectMyFavorite(String mygrade){
+	public List<MyFavoriteVO> selectMyFavorite(MyFavoriteVO param){
 		
-		return (MyFavoriteVO)getSqlSession().selectOne(PACKAGE_PATH + "selectmyfavorite");
+		return getSqlSession().selectList(PACKAGE_PATH + "selectMyFavorite");
 	}
 	
 	public int insertMyFavorite(MyFavoriteVO param){

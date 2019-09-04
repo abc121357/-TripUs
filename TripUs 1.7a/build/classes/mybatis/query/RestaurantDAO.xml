@@ -18,7 +18,7 @@
 		<result property="rbimage" column="RBIMAGE"/>
 	</resultMap>
 	
-	<select id="listrescomment" parameterType="com.tu.restaurant.vo.TurtcommVO" resultMap="turtcommVO">
+	<select id="listResComm" parameterType="com.tu.restaurant.vo.TurtcommVO" resultMap="turtcommVO">
 	/* Mapper - listRestaurant */
 		SELECT
 				RTNICK,
@@ -30,8 +30,46 @@
 		
 		
 	</select>
-	
-	<insert id="insertrescomment" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	<!-- 봄,여름,가을,겨울 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
+
+	<select id="selectSeasonBestHit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
+	SELECT
+		  RBTITLE,
+	      RBHIT,
+	      RBIMAGE,
+	      RBTAG
+	FROM
+	      TURBBOARD
+	WHERE
+	      1=1
+	AND
+	      REGEXP_LIKE(RBTAG,'봄|여름|가을|겨울')
+	AND
+	    <![CDATA[  (RBINSERTDATE-SYSDATE)<30 ]]>
+	ORDER BY RBHIT DESC
+	</select>
+	<!-- 서울시,경기도,강원도,충청북도,충청남도 ,전라북도 ,전라남도 ,경상북도,경상남도 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
+	<!--
+	<select id="selectseasonbesthit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
+	SELECT
+	      RBHIT,
+	      RBIMAGE,
+	      RBTAG
+	FROM
+	      TURBBOARD
+	WHERE
+	      1=1
+	AND
+	      REGEXP_LIKE(RBTAG,'서울|경기|강원|충북|충남|전북|전남|경북|경남')
+	AND
+	      (RBINSERTDATE-SYSDATE)<30;
+    ORDER BY RBHIT DESC
+
+	</select>
+	 -->
+
+	<insert id="insertResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
 
 	INSERT INTO
 				TURTCOMM
@@ -50,61 +88,25 @@
 
 
 	</insert>
-	
-	<!-- 봄,여름,가을,겨울 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
-	
-	<select id="selectseasonbesthit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
-	SELECT
-		  RBTITLE,
-	      RBHIT,
-	      RBIMAGE,
-	      RBTAG
-	FROM
-	      TURBBOARD
+
+	<update id="updateResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	UPDATE
+			TURTCOMM
+	SET
+			TURTCOMMENT
+
+	</update>
+
+	<delete id="deleteResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	UPDATE
+			TURTCOMM
+	SET
+			RTDELETEYN='N'
 	WHERE
-	      1=1
-	AND
-	      REGEXP_LIKE(RBTAG,'봄|여름|가을|겨울')
-	AND
-	    <![CDATA[  (RBINSERTDATE-SYSDATE)<30 ]]>
-	ORDER BY RBHIT DESC			
-	</select>
-	 <!-- 서울시,경기도,강원도,충청북도,충청남도 ,전라북도 ,전라남도 ,경상북도,경상남도 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
-	<!-- 
-	<select id="selectseasonbesthit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
-	SELECT
-	      RBHIT,
-	      RBIMAGE,
-	      RBTAG
-	FROM
-	      TURBBOARD
-	WHERE
-	      1=1
-	AND
-	      REGEXP_LIKE(RBTAG,'서울|경기|강원|충북|충남|전북|전남|경북|경남')
-	AND
-	      (RBINSERTDATE-SYSDATE)<30;
-    ORDER BY RBHIT DESC		
-			
-	</select>
-	 -->
-	<!--
-	<insert id="insertrescomment" parameterType="com.tu.restaurant.vo.TurtcommVO">
-	
-	INSERT INTO TURTCOMM
-					VALUES(
-						  #{rtno},
-						  #{rtid},
-						  #{rtnick},
-						  #{rtprofile},
-						  #{rtcontent},
-						  SYSDATE,
-						  SYSDATE,
-						  'Y',
-						  SYSDATE,
-						  SYSDATE)
-						 
-	
-	</insert>
-	-->
+			RTNO=#{rtno}
+
+	</delete>
+
 </mapper>

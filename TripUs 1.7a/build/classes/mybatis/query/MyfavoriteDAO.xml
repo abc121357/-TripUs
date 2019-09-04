@@ -4,24 +4,35 @@
 <mapper namespace="com.tu.myfavorite.dao.MyfavoriteMapper">
 	
 	<resultMap type="com.tu.myfavorite.vo.MyFavoriteVO" id="myfavoriteVO">
+		<result property="myno" column="MYNO"/>
+		<result property="mygrade" column="MYGRADE"/>
 		<result property="mylocation" column="MYLOCATION"/>
 		<result property="mytitle" column="MYTITLE"/>
 		<result property="mylink" column="MYLINK"/>
 		<result property="myid" column="MYID"/>
+		<result property="myinsertdate" column="MYINSERTDATE"/>
+		
 	</resultMap>
 	
+
+	<select id="listMyFavorite" parameterType="com.tu.myfavorite.vo.MyFavoriteVO" resultMap="myfavoriteVO">
+
+
+	</select>
 	
-	
-	<select id="selectMyFavorite" parameterType="java.lang.String" resultMap="myfavoriteVO">
+	<select id="selectMyFavorite" parameterType="com.tu.myfavorite.vo.MyFavoriteVO" resultMap="myfavoriteVO">
 		<!-- Mapper - selectDepartment -->
-			SELECT MYLOCATION
+			SELECT
+					 MYLOCATION
 					,MYTITLE
 					,MYLINK
-			FROM TUMYFAV
+					,MYINSERTDATE
+			FROM
+					TUMYFAV
 			WHERE
-					MYID =#{myid}
+					MYNO =#{myno}
 			AND
-
+					MYGRADE=#{mygrade}
 			ORDER BY MYNO
 	</select>
 	

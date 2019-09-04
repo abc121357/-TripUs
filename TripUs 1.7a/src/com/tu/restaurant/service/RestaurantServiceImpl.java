@@ -27,10 +27,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private RestaurantMapper restaurantMapper;
 	
 	@Override
-	public List<TurtcommVO> listResComment(TurtcommVO param){
+	public List<TurtcommVO> listResComm(TurtcommVO param){
 		
 		List<TurtcommVO> list= new ArrayList<TurtcommVO>();
-		list=restaurantMapper.listResComment(param);
+		list=restaurantMapper.listResComm(param);
 		return list;
 	}
 

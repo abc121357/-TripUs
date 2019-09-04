@@ -28,7 +28,8 @@ public class RestaurantController {
 	public ModelAndView listrestaurant(@ModelAttribute TurtcommVO param){
 		
 		System.out.println("listrestaurant 진입");
-		List<TurtcommVO> aList=restaurantService.listResComment(param);
+		System.out.println("param : "+equals(param));
+		List<TurtcommVO> aList=restaurantService.listResComm(param);
 		System.out.println("list내용 콘솔출력 /");
 		for(int i=0; i<aList.size(); i++){
 			TurtcommVO tVo=(TurtcommVO)aList.get(i);
