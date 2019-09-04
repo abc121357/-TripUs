@@ -27,24 +27,33 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private RestaurantMapper restaurantMapper;
 	
 	@Override
-	public List<TurtcommVO> listrescomment(TurtcommVO param){
+	public List<TurtcommVO> listResComment(TurtcommVO param){
 		
 		List<TurtcommVO> list= new ArrayList<TurtcommVO>();
-		list=restaurantMapper.listrescomment(param);
+		list=restaurantMapper.listResComment(param);
 		return list;
 	}
 
 
-	public List<TurbboardVO> selectseasonbesthit(){
+	public List<TurbboardVO> selectSeasonBestHit(){
 		List<TurbboardVO> list=new ArrayList<TurbboardVO>();
-		list=restaurantMapper.selectseasonbesthit();
+		list=restaurantMapper.selectSeasonBestHit();
 		
 		return list;
 	}
 	
-	public int insertrescomment(TurtcommVO param){
+	public int insertResComm(TurtcommVO param){
 		
-		
-		return restaurantMapper.insertrescomment(param);
+		return restaurantMapper.insertResComm(param);
+	}
+
+	@Override
+	public int updateResComm(TurtcommVO param) {
+		return restaurantMapper.updateResComm(param);
+	}
+
+	@Override
+	public int deleteResComm(TurtcommVO param) {
+		return restaurantMapper.deleteResComm(param);
 	}
 }

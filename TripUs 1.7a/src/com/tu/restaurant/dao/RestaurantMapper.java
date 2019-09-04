@@ -7,8 +7,9 @@ import com.tu.restaurantboard.vo.TurbboardVO;
 
 public interface RestaurantMapper {
 
-	public List<TurtcommVO> listrescomment(TurtcommVO param);
-	public List<TurbboardVO> selectseasonbesthit();
-	public int insertrescomment(TurtcommVO param);
-	
+	public List<TurtcommVO> listResComment(TurtcommVO param);
+	public List<TurbboardVO> selectSeasonBestHit();
+	public int insertResComm(TurtcommVO param);
+	public int updateResComm(TurtcommVO param);
+	public int deleteResComm(TurtcommVO param);
 }

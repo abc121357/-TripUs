@@ -44,7 +44,7 @@ public class RestaurantBoardCommController {
 		
 	}
 
-	@RequestMapping("/insertBoardComm")
+	@RequestMapping("/insertResBoardComm")
 	public ModelAndView insertResBoardComm(@ModelAttribute TurccommVO param){
 
 		int result=0;
@@ -62,7 +62,46 @@ public class RestaurantBoardCommController {
 
 		return mav;
 	}
-	
+
+	@RequestMapping("/updateResBoardComm")
+	public ModelAndView updateResBoardComm(@ModelAttribute TurccommVO param){
+
+		int result=0;
+
+		result = restaurantBoardCommService.updateResBoardComm(param);
+
+		String resultstr="성공";
+		if(result==0){
+			resultstr="실패";
+		}
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result",resultstr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+
+		return mav;
+
+	}
+
+	@RequestMapping("/deleteResBoardComm")
+	public ModelAndView deleteResBoardComm(@ModelAttribute TurccommVO param){
+
+		int result=0;
+
+		result = restaurantBoardCommService.deleteResBoardComm(param);
+
+		String resultstr="성공";
+		if(result==0){
+			resultstr="실패";
+		}
+
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",resultstr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+
+		return mav;
+
+	}
 	
 	
 }

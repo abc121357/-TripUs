@@ -13,19 +13,28 @@ public class RestaurantMapperImpl extends SqlSessionDaoSupport implements Restau
 	private final String PACKAGE_PATH = "mybatis.query.RestaurantDAO";
 	
 	@Override
-	public List<TurtcommVO> listrescomment(TurtcommVO param){
+	public List<TurtcommVO> listResComment(TurtcommVO param){
 		
-		return getSqlSession().selectList(PACKAGE_PATH+"listrescomment");
+		return getSqlSession().selectList(PACKAGE_PATH+"listResComm");
 	}
 	
-	public List<TurbboardVO> selectseasonbesthit(){
+	public List<TurbboardVO> selectSeasonBestHit(){
 		
-		return getSqlSession().selectList(PACKAGE_PATH+"selectseasonbesthit");
+		return getSqlSession().selectList(PACKAGE_PATH+"selectSeasonBestHit");
 	}
 
-	public int insertrescomment(TurtcommVO param){
+	public int insertResComm(TurtcommVO param){
 
-		return (int)getSqlSession().insert(PACKAGE_PATH+"insertrescomment");
+		return (int)getSqlSession().insert(PACKAGE_PATH+"insertResComm");
 	}
-	
+
+	@Override
+	public int updateResComm(TurtcommVO param) {
+		return (int)getSqlSession().update(PACKAGE_PATH+"updateResComm");
+	}
+
+	@Override
+	public int deleteResComm(TurtcommVO param) {
+		return getSqlSession().delete(PACKAGE_PATH+"deleteResComm");
+	}
 }

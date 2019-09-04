@@ -28,7 +28,7 @@ public class RestaurantController {
 	public ModelAndView listrestaurant(@ModelAttribute TurtcommVO param){
 		
 		System.out.println("listrestaurant 진입");
-		List<TurtcommVO> aList=restaurantService.listrescomment(param);
+		List<TurtcommVO> aList=restaurantService.listResComment(param);
 		System.out.println("list내용 콘솔출력 /");
 		for(int i=0; i<aList.size(); i++){
 			TurtcommVO tVo=(TurtcommVO)aList.get(i);
@@ -40,7 +40,7 @@ public class RestaurantController {
 			
 		}
 		
-		List<TurbboardVO> hList=restaurantService.selectseasonbesthit();
+		List<TurbboardVO> hList=restaurantService.selectSeasonBestHit();
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("restaurantlist",aList);
 		mav.addObject("hitlist",hList);
@@ -51,20 +51,20 @@ public class RestaurantController {
 		return mav;
 	}
 	
-	@RequestMapping("/insertrescomment")
+	@RequestMapping("/insertResComm")
 	public ModelAndView insertResComm(@ModelAttribute TurtcommVO param){
 		
-		System.out.println("");
+		System.out.println("insertResComm진입");
 		
 		int result=0;
-		result=restaurantService.insertrescomment(param);
+		result=restaurantService.insertResComm(param);
 		
 		ModelAndView mav = new ModelAndView();
 		
 		
-		String resultStr="완료";
+		String resultStr="상세정보 입력 완료";
 		if(result==0){
-			resultStr="실패..";
+			resultStr="상세정보 입력 실패..";
 		}
 		mav.addObject("result", resultStr);
 		mav.setViewName(CONTEXT_PATH+"/result");
@@ -73,7 +73,52 @@ public class RestaurantController {
 		return mav;
 		
 	}
-	
+
+	@RequestMapping("/updateResComm")
+	public ModelAndView updateResComm(@ModelAttribute TurtcommVO param){
+
+		System.out.println("updateResComm 진입");
+
+		int result=0;
+		result=restaurantService.updateResComm(param);
+
+		ModelAndView mav = new ModelAndView();
+
+		String resultStr="상세정보 댓글 수정 완료";
+
+		if(result==0){
+			resultStr="상세정보 댓글 수정 실패..";
+		}
+		mav.addObject("result",resultStr);
+		mav.setViewName(CONTEXT_PATH+"/result");
+
+		return mav;
+
+
+	}
+
+	@RequestMapping("/deleteResComm")
+	public ModelAndView deleteResComm(@ModelAttribute TurtcommVO param){
+
+		System.out.println("deleteResComm 진입");
+
+		int result=0;
+		result=restaurantService.deleteResComm(param);
+
+		ModelAndView mav = new ModelAndView();
+
+		String resultStr="상세정보 삭제 완료";
+		if(result==0){
+			resultStr="상세정보 삭제 실패..";
+		}
+		mav.addObject("result",resultStr);
+		mav.setViewName(CONTEXT_PATH+"/deleterescomm");
+
+		return mav;
+
+
+	}
+
 	
 	
 }

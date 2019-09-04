@@ -55,9 +55,12 @@
 			MNICK=#{MNICK},
 			MHP=#{MHP},
 			MPW=#{MPW}
-
+			MUPDATEDATE=SYSDATE,
+			MRECORDUPDATEDATE=SYSDATE
 	WHERE
 			MNO=#{MNO}
+	AND
+			MDELETEYN='Y'
 
 	</update>
 	

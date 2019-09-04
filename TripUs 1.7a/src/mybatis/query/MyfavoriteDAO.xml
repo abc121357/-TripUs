@@ -8,6 +8,7 @@
 		<result property="mytitle" column="MYTITLE"/>
 		<result property="mylink" column="MYLINK"/>
 		<result property="myid" column="MYID"/>
+		<result property="myinsertdate" column="MYINSERTDATE"/>
 	</resultMap>
 	
 	
@@ -17,6 +18,7 @@
 			SELECT MYLOCATION
 					,MYTITLE
 					,MYLINK
+					,MYINSERTDATE
 			FROM TUMYFAV
 			WHERE
 					MYID =#{myid}

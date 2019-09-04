@@ -20,11 +20,23 @@ public class RestaurantBoardCommServiceImpl implements RestaurantBoardCommServic
 	public List<TurccommVO>listResBoardComm(TurccommVO param){
 		
 		List<TurccommVO> list=new ArrayList<TurccommVO>();
-		list=restaurantBoardCommMapper.listresBoardComm(param);
+		list=restaurantBoardCommMapper.listResBoardComm(param);
 		
 		return list;
 	}
-	
-	
-	
+
+	@Override
+	public int insertResBoardComm(TurccommVO param) {
+		return restaurantBoardCommMapper.insertResBoardComm(param);
+	}
+
+	@Override
+	public int updateResBoardComm(TurccommVO param) {
+		return restaurantBoardCommMapper.updateResBoardComm(param);
+	}
+
+	@Override
+	public int deleteResBoardComm(TurccommVO param) {
+		return restaurantBoardCommMapper.deleteResBoardComm(param);
+	}
 }

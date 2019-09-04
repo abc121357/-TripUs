@@ -11,9 +11,23 @@ public class RestaurantBoardCommMapperImpl extends SqlSessionDaoSupport implemen
 	private final String PACKAGE_PATH="mybatis.query.RestaurantBoardCommDAO.";
 	
 	@Override
-	public List<TurccommVO> listresBoardComm(TurccommVO param){
+	public List<TurccommVO> listResBoardComm(TurccommVO param){
 		
-		return getSqlSession().selectList(PACKAGE_PATH+"listresBoardcomm");
+		return getSqlSession().selectList(PACKAGE_PATH+"listResBoardcomm");
 	}
-	
+
+	@Override
+	public int insertResBoardComm(TurccommVO param) {
+		return getSqlSession().insert(PACKAGE_PATH+"insertResBoardComm");
+	}
+
+	@Override
+	public int updateResBoardComm(TurccommVO param) {
+		return getSqlSession().update(PACKAGE_PATH+"updateResBoardComm");
+	}
+
+	@Override
+	public int deleteResBoardComm(TurccommVO param) {
+		return getSqlSession().update(PACKAGE_PATH+"deleteResBoardComm");
+	}
 }
