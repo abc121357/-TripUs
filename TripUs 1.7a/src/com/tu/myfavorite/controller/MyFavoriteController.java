@@ -16,7 +16,7 @@ import com.tu.myfavorite.service.MyfavoriteService;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 
 @Controller
-@RequestMapping(value="/myfavorite")
+@RequestMapping(value="/mypage")
 public class MyFavoriteController {
 
 	private final String CONTEXT_PATH="mypage";
@@ -32,13 +32,22 @@ public class MyFavoriteController {
 		String mid = (String)session.getAttribute("mid");
 		
 		System.out.println("selectmyFavorite 진입");
-		String mygrade="1";
-		param.setMyno("MY201908270001");
-		param.setMygrade(mygrade);
 		ModelAndView mav= new ModelAndView();
+		String mygrade="0";
+		if(Integer.parseInt(mygrade)==0){
+		param.setMno("M201908270001");
+		mav.addObject("myFavorite",myfavoriteService.listMyFavorite(param));
+		mav.setViewName(CONTEXT_PATH+"/myfavorite");		
+			
+		}
+		else{
+		param.setMno("M201908270001");
+		param.setMygrade(mygrade);
 		mav.addObject("myFavorite",myfavoriteService.selectMyFavorite(param));
 		mav.setViewName(CONTEXT_PATH+"/myfavorite");
+		}
 		System.out.println("selectmyFavorite 끝");
+		
 		return mav;
 
 	}
@@ -48,6 +57,17 @@ public class MyFavoriteController {
 		System.out.println("insertmyFavorite 진입");
 		
 		int result=0;
+		param.setMyno(); //이건 채번으로 만든다.
+		param.setMno(); // 이건 memberVO no값을 가져온다.
+		param.setMyid(); //이것도 memberVO id값을 가져온다.
+		param.setMylocation(); //이건 즐겨찾기에 추가할때 테이블에서 가져온다.
+		param.setMylink(); //이것도 즐겨찾기에 추가할때 테이블에서 가져온다.
+		#{myno},
+						#{mytitle},
+						#{myid},
+						#{mylocation},
+						#{mylink},
+						#{mno},
 		result=myfavoriteService.insertMyFavorite(param);
 	
 		ModelAndView mav = new ModelAndView();
@@ -65,6 +85,7 @@ public class MyFavoriteController {
 		
 		System.out.println("deleteMyFavorite시작");
 		int result=0;
+		param.setMyno("MY201908270001");
 		result=myfavoriteService.deleteMyFavorite(param);
 		
 		

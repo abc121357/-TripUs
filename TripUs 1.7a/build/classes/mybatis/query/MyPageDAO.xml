@@ -38,7 +38,7 @@
 		WHERE
 				1=1
 		AND
-				MNO=#{MNO}
+				MNO=#{mno}
 
 
 		
@@ -51,14 +51,14 @@
 	UPDATE
 			TUMEM
 	SET
-			MPROFILE=#{MPROFILE},
-			MNICK=#{MNICK},
-			MHP=#{MHP},
-			MPW=#{MPW}
+			MPROFILE=#{mprofile},
+			MNICK=#{mnick},
+			MHP=#{mhp},
+			MPW=#{mpw}
 			MUPDATEDATE=SYSDATE,
 			MRECORDUPDATEDATE=SYSDATE
 	WHERE
-			MNO=#{MNO}
+			MNO=#{mno}
 	AND
 			MDELETEYN='Y'
 

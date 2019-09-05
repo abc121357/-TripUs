@@ -15,10 +15,10 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping(value="/myPage")
+@RequestMapping(value="/mypage")
 public class MyPageController {
 
-	private final String CONTEXT_PATH="restaurant";
+	private final String CONTEXT_PATH="mypage";
 
 
 	@Autowired
@@ -27,12 +27,34 @@ public class MyPageController {
 	@RequestMapping("/myPage")
 	public ModelAndView memberInfo(@ModelAttribute MemberVO param){
 
-		List<MemberVO> list =myPageService.memberInfo(param);
+		System.out.println("memberInfo시작");
+
+		param.setMno("M201908270001");
+
 		ModelAndView mav = new ModelAndView();
-
+		
+		System.out.println(param.getMno());
+		if(param.getMno()!=null){
+		List<MemberVO> list =myPageService.memberInfo(param);
+		
 		mav.addObject("mList",list);
-		mav.setViewName(CONTEXT_PATH+"/mypage");
-
+		
+		}
+		
+		mav.setViewName(CONTEXT_PATH+"/myPage");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/infoupdate")
+	public ModelAndView memberInfoUpdate(){
+		
+		ModelAndView mav=new ModelAndView();
+		
+		//mav.addObject();
+		
+		mav.setViewName(CONTEXT_PATH+"/infoupdate");
+		
 		return mav;
 	}
 	
@@ -41,8 +63,7 @@ public class MyPageController {
 		
 		int result=0;
 		result=myPageService.memberInfoUpdate(param);
-		
-		
+
 		ModelAndView mav = new ModelAndView();
 		
 		String resultStr="완료";

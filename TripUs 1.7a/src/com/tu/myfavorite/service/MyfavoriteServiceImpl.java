@@ -16,7 +16,11 @@ public class MyfavoriteServiceImpl implements MyfavoriteService{
 
 	@Autowired
 	private MyfavoriteMapper myfavoriteMapper;
-	
+
+	public List<MyFavoriteVO>listMyFavorite(MyFavoriteVO param){
+		return myfavoriteMapper.listMyFavorite(param);
+	}
+
 	public List<MyFavoriteVO> selectMyFavorite(MyFavoriteVO param){
 		
 		

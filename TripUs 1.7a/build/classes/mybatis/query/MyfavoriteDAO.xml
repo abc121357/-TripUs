@@ -17,6 +17,17 @@
 
 	<select id="listMyFavorite" parameterType="com.tu.myfavorite.vo.MyFavoriteVO" resultMap="myfavoriteVO">
 
+	SELECT
+					 MYLOCATION
+					,MYTITLE
+					,MYLINK
+					,MYINSERTDATE
+			FROM
+					TUMYFAV
+			WHERE
+					MNO =#{mno}
+			ORDER BY MYNO
+
 
 	</select>
 	
@@ -30,7 +41,7 @@
 			FROM
 					TUMYFAV
 			WHERE
-					MYNO =#{myno}
+					MNO =#{mno}
 			AND
 					MYGRADE=#{mygrade}
 			ORDER BY MYNO
@@ -44,7 +55,7 @@
 						#{myno},
 						#{mytitle},
 						#{myid},
-						#{mygrade},
+						'1',
 						#{mylocation},
 						#{mylink},
 						SYSDATE,
