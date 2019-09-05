@@ -49,7 +49,7 @@ public class MyPageController {
 		
 		return mav;
 	}
-	
+	//경로로 이동
 	@RequestMapping("/infoupdate")
 	public ModelAndView memberInfoUpdate(){
 		
@@ -66,6 +66,13 @@ public class MyPageController {
 	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param){
 		
 		int result=0;
+
+		param.setMprofile("profile.jpg");
+		param.setMnick("테스트계정1");
+		param.setMhp("01022221111");
+		param.setMpw("testpass01");
+		param.setMno("M201908270001");
+
 		result=myPageService.memberInfoUpdate(param);
 
 		ModelAndView mav = new ModelAndView();

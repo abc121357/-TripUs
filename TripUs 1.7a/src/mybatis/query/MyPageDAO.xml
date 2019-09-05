@@ -54,7 +54,7 @@
 			MPROFILE=#{mprofile},
 			MNICK=#{mnick},
 			MHP=#{mhp},
-			MPW=#{mpw}
+			MPW=#{mpw},
 			MUPDATEDATE=SYSDATE,
 			MRECORDUPDATEDATE=SYSDATE
 	WHERE
