@@ -1,7 +1,5 @@
 package com.tu.myfavorite.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tu.myfavorite.service.MyfavoriteService;
+import com.tu.myfavorite.service.MyFavoriteService;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 
+/**
+ 클래스명 : MyFavoriteController
+ 날 짜 : 2019-09-05
+ 작성자명 : LHJ
+ */
 @Controller
 @RequestMapping(value="/mypage")
 public class MyFavoriteController {
@@ -23,7 +25,7 @@ public class MyFavoriteController {
 	
 	//의존관계지정
 	@Autowired
-	private MyfavoriteService myfavoriteService;
+	private MyFavoriteService myfavoriteService;
 	
 	
 	@RequestMapping("/myfavorite")
@@ -57,17 +59,11 @@ public class MyFavoriteController {
 		System.out.println("insertmyFavorite 진입");
 		
 		int result=0;
-		param.setMyno(); //이건 채번으로 만든다.
-		param.setMno(); // 이건 memberVO no값을 가져온다.
-		param.setMyid(); //이것도 memberVO id값을 가져온다.
-		param.setMylocation(); //이건 즐겨찾기에 추가할때 테이블에서 가져온다.
-		param.setMylink(); //이것도 즐겨찾기에 추가할때 테이블에서 가져온다.
-		#{myno},
-						#{mytitle},
-						#{myid},
-						#{mylocation},
-						#{mylink},
-						#{mno},
+		param.setMyno("MY20190905"); //이건 채번으로 만든다.
+		param.setMno("M20190826"); // 이건 memberVO no값을 가져온다.
+		param.setMyid("test01"); //이것도 memberVO id값을 가져온다.
+		param.setMylocation("경기도 안산시"); //이건 즐겨찾기에 추가할때 테이블에서 가져온다.
+		param.setMylink("c://www.com"); //이것도 즐겨찾기에 추가할때 테이블에서 가져온다.
 		result=myfavoriteService.insertMyFavorite(param);
 	
 		ModelAndView mav = new ModelAndView();

@@ -4,10 +4,9 @@ import com.tu.mem.vo.MemberVO;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MypageMapperImpl extends SqlSessionDaoSupport implements MypageMapper {
+public class MyPageMapperImpl extends SqlSessionDaoSupport implements MyPageMapper {
 
 
     private final String CONTEXT_PATH="mybatis.query.MyPageDAO";

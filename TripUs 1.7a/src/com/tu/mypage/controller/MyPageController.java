@@ -13,7 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-
+/**
+ 클래스명 : MyPageController
+ 날 짜 : 2019-09-05
+ 작성자명 : LHJ
+ */
 @Controller
 @RequestMapping(value="/mypage")
 public class MyPageController {

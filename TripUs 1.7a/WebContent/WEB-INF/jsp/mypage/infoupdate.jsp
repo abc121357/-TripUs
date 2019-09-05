@@ -5,12 +5,23 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>tripUs</title>
+	
+	<script type="text/javascript">
+	
+	function updateinfo(){
+		
+		submit.submit();
+		
+	}
+	
+	</script>
+	
 	</head>
 	<body>
 	마이페이지-정보수정입니다.
 	
 	<p align="center"> 정보수정 </p>
-	<form>
+	<form id="updateinfo" method="post" action="/mypage/memberInfoUpdate.do">
 	
 	<div align="center">
 	별명 : <input type="text" id="mnick" name="mnick"/>
@@ -26,7 +37,9 @@
 	
 	<div align="center">
 	비밀번호 확인 : <input type="password" id="checkmpw" name="checkmpw"/>
+	<input type="submit" id="submit" name="submit" onclick="updateinfo()" value="입력"/>
 	</div>
+	
 	
 	</form>
 	

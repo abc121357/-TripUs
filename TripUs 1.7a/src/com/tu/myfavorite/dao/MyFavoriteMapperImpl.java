@@ -9,11 +9,15 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 
 
-
-public class MyfavoriteMapperImpl extends SqlSessionDaoSupport implements MyfavoriteMapper{
+/**
+ Ŭ������ : MyFavoriteMapperImpl
+ �� ¥ : 2019-09-05
+ �ۼ��ڸ� : LHJ
+ */
+public class MyFavoriteMapperImpl extends SqlSessionDaoSupport implements MyFavoriteMapper {
 
 	
-	private final String PACKAGE_PATH = "mybatis.query.myfavoriteDAO";
+	private final String PACKAGE_PATH = "mybatis.query.MyFavoriteDAO";
 
 	@Override
 	public List<MyFavoriteVO> listMyFavorite(MyFavoriteVO param) {
