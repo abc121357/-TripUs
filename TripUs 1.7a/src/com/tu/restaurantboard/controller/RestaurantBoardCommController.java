@@ -52,11 +52,11 @@ public class RestaurantBoardCommController {
 
 		result=restaurantBoardCommService.insertResBoardComm(param);
 		ModelAndView mav=new ModelAndView();
-		String resultstr="성공";
+		String resultstr="게시글 댓글 입력 성공";
 		if(result==0){
-			resultstr="실패";
+			resultstr="게시글 댓글 입력 실패";
 		}
-		mav.addObject("result",resultstr);
+		mav.addObject("resultcomm",resultstr);
 		mav.setViewName(CONTEXT_PATH+"/result");
 
 
@@ -70,13 +70,13 @@ public class RestaurantBoardCommController {
 
 		result = restaurantBoardCommService.updateResBoardComm(param);
 
-		String resultstr="성공";
+		String resultstr="게시글 댓글 수정 성공";
 		if(result==0){
-			resultstr="실패";
+			resultstr="게시글 댓글 수정 실패";
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("result",resultstr);
+		mav.addObject("resultcomm",resultstr);
 		mav.setViewName(CONTEXT_PATH+"/result");
 
 		return mav;
@@ -90,13 +90,13 @@ public class RestaurantBoardCommController {
 
 		result = restaurantBoardCommService.deleteResBoardComm(param);
 
-		String resultstr="성공";
+		String resultstr="게시글 댓글 삭제 성공";
 		if(result==0){
-			resultstr="실패";
+			resultstr="게시글 댓글 삭제 실패";
 		}
 
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("result",resultstr);
+		mav.addObject("resultcomm",resultstr);
 		mav.setViewName(CONTEXT_PATH+"/result");
 
 		return mav;

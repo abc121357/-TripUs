@@ -9,10 +9,10 @@ import com.tu.restaurantboard.vo.TurccommVO;
 public class RestaurantBoardCommMapperImpl extends SqlSessionDaoSupport implements RestaurantBoardCommMapper{
 
 	private final String PACKAGE_PATH="mybatis.query.RestaurantBoardCommDAO.";
-	
+
 	@Override
 	public List<TurccommVO> listResBoardComm(TurccommVO param){
-		
+
 		return getSqlSession().selectList(PACKAGE_PATH+"listResBoardcomm");
 	}
 

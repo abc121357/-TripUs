@@ -63,12 +63,12 @@ public class RestaurantController {
 		ModelAndView mav = new ModelAndView();
 		
 		
-		String resultStr="상세정보 입력 완료";
+		String resultStr="상세정보 댓글 입력 완료";
 		if(result==0){
-			resultStr="상세정보 입력 실패..";
+			resultStr="상세정보 댓글 입력 실패..";
 		}
 		mav.addObject("result", resultStr);
-		mav.setViewName(CONTEXT_PATH+"/result");
+		mav.setViewName(CONTEXT_PATH+"/resultcomm");
 		
 		
 		return mav;
@@ -90,7 +90,7 @@ public class RestaurantController {
 		if(result==0){
 			resultStr="상세정보 댓글 수정 실패..";
 		}
-		mav.addObject("result",resultStr);
+		mav.addObject("resultcomm",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/result");
 
 		return mav;
@@ -108,11 +108,11 @@ public class RestaurantController {
 
 		ModelAndView mav = new ModelAndView();
 
-		String resultStr="상세정보 삭제 완료";
+		String resultStr="상세정보 댓글 삭제 완료";
 		if(result==0){
-			resultStr="상세정보 삭제 실패..";
+			resultStr="상세정보 댓글 삭제 실패..";
 		}
-		mav.addObject("result",resultStr);
+		mav.addObject("resultcomm",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/deleterescomm");
 
 		return mav;

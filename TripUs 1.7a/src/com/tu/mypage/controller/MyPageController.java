@@ -77,9 +77,9 @@ public class MyPageController {
 
 		ModelAndView mav = new ModelAndView();
 		
-		String resultStr="완료";
+		String resultStr="내 정보 수정 완료";
 		if(result==0)
-			resultStr="실패";
+			resultStr="내 정보 수정 실패";
 		
 		mav.addObject("result",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/result");

@@ -67,9 +67,9 @@ public class MyFavoriteController {
 		result=myfavoriteService.insertMyFavorite(param);
 	
 		ModelAndView mav = new ModelAndView();
-		String resultStr="등록 성공";
+		String resultStr="즐겨찾기 등록 성공";
 		if(result==0)
-		resultStr="등록 실패..";
+		resultStr="즐겨찾기 등록 실패..";
 		mav.addObject("result",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/result");
 		
@@ -86,10 +86,10 @@ public class MyFavoriteController {
 		
 		
 		ModelAndView mav=new ModelAndView();
-		String resultStr="등록성공";
+		String resultStr="즐겨찾기 삭제 성공";
 		
 		if(result==0){
-			resultStr="등록 실패..";
+			resultStr="즐겨찾기 삭제 실패..";
 		}
 		
 		mav.addObject("result",resultStr);

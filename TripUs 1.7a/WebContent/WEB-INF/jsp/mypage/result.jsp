@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-alert(${result});
+alert("${result}");
 history.go(-1);
 </script>
 
 </head>
 <body>
 
-<a>${result}</a>
 
 
 

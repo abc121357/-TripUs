@@ -87,9 +87,9 @@ public class RestaurantBoardController {
 	System.out.println("글 이미지링크 : " + param.getRbimage());
 	System.out.println("글 태그 : " + param.getRbtag());
 	int result =restaurantBoardService.insertResBoard(param);
-	String resultStr = "등록 완료!!";
+	String resultStr = "게시글 등록 완료!!";
 		if(result==0)
-			resultStr="등록 실패..";
+			resultStr="게시글 등록 실패..";
 			
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("result",resultStr);
@@ -108,9 +108,9 @@ public class RestaurantBoardController {
 		
 		result=restaurantBoardService.updateResBoard(param);
 		ModelAndView mav=new ModelAndView();
-		String resultstr="성공";
+		String resultstr="게시글 등록 성공";
 		if(result==0){
-			resultstr="실패..";
+			resultstr="게시글 등록 실패..";
 		}
 		mav.addObject("result",resultstr);
 		mav.setViewName(CONTEXT_PATH+"/result");
@@ -128,9 +128,9 @@ public class RestaurantBoardController {
 		ModelAndView mav=new ModelAndView();
 
 
-		String resultstr="성공";
+		String resultstr="게시글 등록 성공";
 		if(result==0){
-			resultstr="실패..";
+			resultstr="게시글 등록 실패..";
 		}
 		mav.addObject("result",resultstr);
 		mav.setViewName(CONTEXT_PATH+"/result");
