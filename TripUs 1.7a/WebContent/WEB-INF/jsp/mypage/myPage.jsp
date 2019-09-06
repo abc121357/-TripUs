@@ -37,7 +37,8 @@
 	마이페이지 메인입니다.
 	
 	유저 정보
-		<table>
+	<div id="mypageinfo" style="width: 600px; height: 400px;">
+		<table align="center">
 		<c:forEach items="${mList}" var="mem" varStatus="i">
 				<tr>
 					<td>닉네임 : </td><td class="data" align="center">${mem.mnick}</td>
@@ -46,19 +47,34 @@
 			</tr>
 			</c:forEach>
 		</table>
-	<div class="boxgroup">
+		
+		<table>
+		<tr>
+		<td>
 	<div class="box">
 		<a href="/mypage/infoupdate.do">가입정보 수정</a>
+	</div>
+	</td>
+	<td>
+	<div class="box">
 		<a href="/mypage/myfavorite.do">즐겨찾기 목록</a>
 	</div>
-	</div>
+	</td>
+	</tr>
+	<tr>
+	<td>
 	<div class="box">
 		<a href="/xxx.do">Q&A</a>
 	</div>
+	</td>
+	<td>
 	<div class="box">
 		<a href="/xxx.do">회원탈퇴</a>
 	</div>
-	
+	</td>
+	</tr>
+	</table>
+	</div>
 	
 	</body>
 </html>

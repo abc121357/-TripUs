@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,24 +17,36 @@
 	
 	table{
 	
-	border: 1px solid red;
+	border: 2px solid red;
 	
 	}
 	
 	tr{
-	border: 1px solid red;
+	border: 2px solid red;
 	}
 	
 	td{
-	border: 1px solid red;
+	border: 2px solid red;
 	}
 	
 	td.data{
-	border: 1px solid blue;
+	border: 2px solid blue;
 	}
 	
 	</style>
-	
+
+	<script type="javascript">
+
+	function mydelete(){
+
+
+
+		document.mydeleteform.submit();
+
+	}
+
+	</script>
+
 	</head>
 	<body>
 	마이페이지 - 즐겨찾기 입니다.
@@ -48,22 +61,37 @@
 		</form>
 		</div>
 	</div>
-	<p>즐겨찾기는 최대 10개까지 등록가능합니다.</p>
-	<table>
+	<p align="center">즐겨찾기는 최대 10개까지 등록가능합니다.</p>
+	<hr>
+	<table align="center">
+		<tr>
 		<c:if test="${empty myFavorite}">
-		</c:if>
 		<td colspan="5" align="center">저장한 즐겨찾기가 없습니다.</td>
+		</c:if>
+		</tr>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
 			<tr>
-				<td>제목 : </td><td class="data"align="center">${fav.mytitle}</td>
+				<td>제목 : </td><td class="data" align="center">${fav.mytitle}</td>
 				<td>위치 : </td><td class="data" align="center">${fav.mylocation}</td>
 				<td>링크 : </td><td class="data" align="center">${fav.mylink}</td>
+				<input type="hidden" id="myno" name="myno" value="${fav.myno}"/>
 				<td><a href="/mypage/deleteMyFavorite.do">삭제</a></td>
-		</tr>
+			</tr>
 		</c:forEach>
 		</table>
+	<hr>
 	
-	
+	<c:forEach items="${myFavorite}" var="fav" varStatus="i">
+			
+				<div style="width: 600px; height: 100px; margin:0px 0px 0px 30px" align="center">
+				<p align="left"> 제목 : ${fav.mytitle}</p>
+				<p>위치 : ${fav.mylocation}</p>
+				<p>링크 : ${fav.mylink}</p>
+				<p><a href="/mypage/deleteMyFavorite.do">삭제</a></p>
+				<hr>
+				</div>
+			
+		</c:forEach>
 	
 	</body>
 </html>

@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tu.myfavorite.dao.MyFavoriteDAO;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 /**
- Ε¬·΅½ΊΈν : MyFavoriteServiceImpl
- ³― Β¥ : 2019-09-05
- ΐΫΌΊΐΪΈν : LHJ
+ ν΄λμ¤λª… : MyFavoriteServiceImpl
+ λ‚  μ§ : 2019-09-05
+ μ‘μ„±μλª… : LHJ
  */
 @Service
 @Transactional
@@ -42,6 +42,6 @@ public class MyFavoriteServiceImpl implements MyFavoriteService {
 	public int deleteMyFavorite(MyFavoriteVO param){
 		
 		return myfavoriteDAO.deleteMyFavorite(param);
-		
 	}
+	
 }

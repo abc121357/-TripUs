@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.tu.myfavorite.vo.MyFavoriteVO;
 /**
- Ε¬·΅½ΊΈν : MyFavoriteService
- ³― Β¥ : 2019-09-05
- ΐΫΌΊΐΪΈν : LHJ
+ ν΄λμ¤λª… : MyFavoriteService
+ λ‚  μ§ : 2019-09-05
+ μ‘μ„±μλª… : LHJ
  */
 public interface MyFavoriteService {
 
