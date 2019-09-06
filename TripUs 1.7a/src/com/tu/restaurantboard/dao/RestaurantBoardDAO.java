@@ -5,7 +5,7 @@ import java.util.List;
 import com.tu.restaurantboard.vo.TurbboardVO;
 import com.tu.restaurantboard.vo.TurccommVO;
 
-public interface RestaurantBoardMapper {
+public interface RestaurantBoardDAO {
 
 	public List<TurbboardVO> listResBoard(TurbboardVO param);
 	public int insertresBoard(TurbboardVO param);

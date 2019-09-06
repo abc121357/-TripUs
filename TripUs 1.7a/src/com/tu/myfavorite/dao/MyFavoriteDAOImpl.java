@@ -10,14 +10,14 @@ import com.tu.myfavorite.vo.MyFavoriteVO;
 
 
 /**
- Ŭ������ : MyFavoriteMapperImpl
+ Ŭ������ : MyFavoriteDAOImpl
  �� ¥ : 2019-09-05
  �ۼ��ڸ� : LHJ
  */
-public class MyFavoriteMapperImpl extends SqlSessionDaoSupport implements MyFavoriteMapper {
+public class MyFavoriteDAOImpl extends SqlSessionDaoSupport implements MyFavoriteDAO {
 
 	
-	private final String PACKAGE_PATH = "mybatis.query.MyFavoriteDAO";
+	private final String PACKAGE_PATH = "mybatis.query.MyFavoriteMapper";
 
 	@Override
 	public List<MyFavoriteVO> listMyFavorite(MyFavoriteVO param) {

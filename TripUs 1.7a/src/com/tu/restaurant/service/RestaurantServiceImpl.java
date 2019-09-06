@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tu.restaurant.dao.RestaurantMapper;
+import com.tu.restaurant.dao.RestaurantDAO;
 import com.tu.restaurant.vo.TurtcommVO;
 import com.tu.restaurantboard.vo.TurbboardVO;
 
@@ -24,36 +24,36 @@ import com.tu.restaurantboard.vo.TurbboardVO;
 public class RestaurantServiceImpl implements RestaurantService {
 
 	@Autowired
-	private RestaurantMapper restaurantMapper;
+	private RestaurantDAO restaurantDAO;
 	
 	@Override
 	public List<TurtcommVO> listResComm(TurtcommVO param){
 		
 		List<TurtcommVO> list= new ArrayList<TurtcommVO>();
-		list=restaurantMapper.listResComm(param);
+		list= restaurantDAO.listResComm(param);
 		return list;
 	}
 
 
 	public List<TurbboardVO> selectSeasonBestHit(){
 		List<TurbboardVO> list=new ArrayList<TurbboardVO>();
-		list=restaurantMapper.selectSeasonBestHit();
+		list= restaurantDAO.selectSeasonBestHit();
 		
 		return list;
 	}
 	
 	public int insertResComm(TurtcommVO param){
 		
-		return restaurantMapper.insertResComm(param);
+		return restaurantDAO.insertResComm(param);
 	}
 
 	@Override
 	public int updateResComm(TurtcommVO param) {
-		return restaurantMapper.updateResComm(param);
+		return restaurantDAO.updateResComm(param);
 	}
 
 	@Override
 	public int deleteResComm(TurtcommVO param) {
-		return restaurantMapper.deleteResComm(param);
+		return restaurantDAO.deleteResComm(param);
 	}
 }

@@ -5,11 +5,10 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import com.tu.restaurantboard.vo.TurbboardVO;
-import com.tu.restaurantboard.vo.TurccommVO;
 
-public class RestaurantBoardMapperImpl extends SqlSessionDaoSupport implements RestaurantBoardMapper {
+public class RestaurantBoardDAOImpl extends SqlSessionDaoSupport implements RestaurantBoardDAO {
 
-	private final String PACKAGE_PATH = "mybatis.query.RestaurantBoardDAO.";
+	private final String PACKAGE_PATH = "mybatis.query.RestaurantBoardMapper.";
 	
 	@Override
 	public List<TurbboardVO> listResBoard(TurbboardVO param){

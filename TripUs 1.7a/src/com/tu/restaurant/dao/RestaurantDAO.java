@@ -5,7 +5,7 @@ import java.util.List;
 import com.tu.restaurant.vo.TurtcommVO;
 import com.tu.restaurantboard.vo.TurbboardVO;
 
-public interface RestaurantMapper {
+public interface RestaurantDAO {
 
 	public List<TurtcommVO> listResComm(TurtcommVO param);
 	public List<TurbboardVO> selectSeasonBestHit();

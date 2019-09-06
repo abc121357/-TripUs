@@ -67,14 +67,16 @@ public class MyPageController {
 		
 		int result=0;
 
-		param.setMprofile("profile.jpg");
-		param.setMnick("테스트계정1");
-		param.setMhp("01022221111");
-		param.setMpw("testpass01");
+		//Mno는 세션 값 등으로 가져온 Mno를 넣는 것으로 함
 		param.setMno("M201908270001");
-
+		System.out.println("nick : "+ param.getMnick());
+		System.out.println("mpw : "+ param.getMpw());
+		System.out.println("profile : "+ param.getMprofile());
+		System.out.println("hp : "+ param.getMhp());
+		
+		
 		result=myPageService.memberInfoUpdate(param);
-
+		
 		ModelAndView mav = new ModelAndView();
 		
 		String resultStr="내 정보 수정 완료";

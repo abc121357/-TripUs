@@ -1,7 +1,7 @@
 package com.tu.mypage.service;
 
 import com.tu.mem.vo.MemberVO;
-import com.tu.mypage.dao.MyPageMapper;
+import com.tu.mypage.dao.MyPageDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,20 +15,20 @@ import java.util.List;
 public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
-    private MyPageMapper mypageMapper;
+    private MyPageDAO mypageDAO;
 
     @Override
     public List<MemberVO> memberInfo(MemberVO param) {
 
         List<MemberVO> mInfo=new ArrayList<MemberVO>();
-        mInfo=mypageMapper.memberInfo(param);
+        mInfo= mypageDAO.memberInfo(param);
 
         return mInfo;
     }
     
     public int memberInfoUpdate(MemberVO param){
     	
-    	return mypageMapper.memberInfoUpdate(param);
+    	return mypageDAO.memberInfoUpdate(param);
     }
 
     

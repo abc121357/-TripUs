@@ -6,7 +6,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import com.tu.restaurantboard.vo.TurccommVO;
 
-public class RestaurantBoardCommMapperImpl extends SqlSessionDaoSupport implements RestaurantBoardCommMapper{
+public class RestaurantBoardCommDAOImpl extends SqlSessionDaoSupport implements RestaurantBoardCommDAO {
 
 	private final String PACKAGE_PATH="mybatis.query.RestaurantBoardCommDAO.";
 

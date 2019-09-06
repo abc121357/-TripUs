@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tu.myfavorite.dao.MyFavoriteMapper;
+import com.tu.myfavorite.dao.MyFavoriteDAO;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 /**
  클래스명 : MyFavoriteServiceImpl
@@ -19,29 +19,29 @@ import com.tu.myfavorite.vo.MyFavoriteVO;
 public class MyFavoriteServiceImpl implements MyFavoriteService {
 
 	@Autowired
-	private MyFavoriteMapper myfavoriteMapper;
+	private MyFavoriteDAO myfavoriteDAO;
 
 	public List<MyFavoriteVO>listMyFavorite(MyFavoriteVO param){
-		return myfavoriteMapper.listMyFavorite(param);
+		return myfavoriteDAO.listMyFavorite(param);
 	}
 
 	public List<MyFavoriteVO> selectMyFavorite(MyFavoriteVO param){
 		
 		
-		return myfavoriteMapper.selectMyFavorite(param);
+		return myfavoriteDAO.selectMyFavorite(param);
 		
 	}
 	
 	public int insertMyFavorite(MyFavoriteVO param){
 		
 		
-		return myfavoriteMapper.insertMyFavorite(param);
+		return myfavoriteDAO.insertMyFavorite(param);
 		
 	}
 	
 	public int deleteMyFavorite(MyFavoriteVO param){
 		
-		return myfavoriteMapper.deleteMyFavorite(param);
+		return myfavoriteDAO.deleteMyFavorite(param);
 		
 	}
 }

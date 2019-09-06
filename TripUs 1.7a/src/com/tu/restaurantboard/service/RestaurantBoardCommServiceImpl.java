@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tu.restaurantboard.dao.RestaurantBoardCommMapper;
+import com.tu.restaurantboard.dao.RestaurantBoardCommDAO;
 import com.tu.restaurantboard.vo.TurccommVO;
 
 @Service
@@ -15,28 +15,28 @@ import com.tu.restaurantboard.vo.TurccommVO;
 public class RestaurantBoardCommServiceImpl implements RestaurantBoardCommService {
 
 	@Autowired
-	private RestaurantBoardCommMapper restaurantBoardCommMapper;
+	private RestaurantBoardCommDAO restaurantBoardCommDAO;
 	
 	public List<TurccommVO>listResBoardComm(TurccommVO param){
 		
 		List<TurccommVO> list=new ArrayList<TurccommVO>();
-		list=restaurantBoardCommMapper.listResBoardComm(param);
+		list=restaurantBoardCommDAO.listResBoardComm(param);
 		
 		return list;
 	}
 
 	@Override
 	public int insertResBoardComm(TurccommVO param) {
-		return restaurantBoardCommMapper.insertResBoardComm(param);
+		return restaurantBoardCommDAO.insertResBoardComm(param);
 	}
 
 	@Override
 	public int updateResBoardComm(TurccommVO param) {
-		return restaurantBoardCommMapper.updateResBoardComm(param);
+		return restaurantBoardCommDAO.updateResBoardComm(param);
 	}
 
 	@Override
 	public int deleteResBoardComm(TurccommVO param) {
-		return restaurantBoardCommMapper.deleteResBoardComm(param);
+		return restaurantBoardCommDAO.deleteResBoardComm(param);
 	}
 }

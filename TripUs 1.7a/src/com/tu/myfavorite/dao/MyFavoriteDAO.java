@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.tu.myfavorite.vo.MyFavoriteVO;
 /**
- 클래스명 : MyFavoriteMapper
+ 클래스명 : MyFavoriteDAO
  날 짜 : 2019-09-05
  작성자명 : LHJ
  */
-public interface MyFavoriteMapper {
+public interface MyFavoriteDAO {
 	public List<MyFavoriteVO> listMyFavorite(MyFavoriteVO param);
 	public List<MyFavoriteVO> selectMyFavorite(MyFavoriteVO param);
 	public int insertMyFavorite(MyFavoriteVO param);

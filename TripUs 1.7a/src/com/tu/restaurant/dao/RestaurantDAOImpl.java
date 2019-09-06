@@ -8,9 +8,9 @@ import com.tu.restaurant.vo.TurtcommVO;
 import com.tu.restaurantboard.vo.TurbboardVO;
 
 
-public class RestaurantMapperImpl extends SqlSessionDaoSupport implements RestaurantMapper{
+public class RestaurantDAOImpl extends SqlSessionDaoSupport implements RestaurantDAO {
 
-	private final String PACKAGE_PATH = "mybatis.query.RestaurantDAO";
+	private final String PACKAGE_PATH = "mybatis.query.RestaurantMapper";
 	
 	@Override
 	public List<TurtcommVO> listResComm(TurtcommVO param){

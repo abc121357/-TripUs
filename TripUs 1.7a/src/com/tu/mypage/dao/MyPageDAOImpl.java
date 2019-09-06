@@ -6,10 +6,10 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import java.util.List;
 
-public class MyPageMapperImpl extends SqlSessionDaoSupport implements MyPageMapper {
+public class MyPageDAOImpl extends SqlSessionDaoSupport implements MyPageDAO {
 
 
-    private final String CONTEXT_PATH="mybatis.query.MyPageDAO";
+    private final String CONTEXT_PATH="mybatis.query.MyPageMapper";
 
     @Override
     public List<MemberVO> memberInfo(MemberVO param) {
