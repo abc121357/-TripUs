@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tu.myfavorite.dao.MyFavoriteDAO;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 /**
- Å¬·¡½º¸í : MyFavoriteServiceImpl
- ³¯ Â¥ : 2019-09-05
- ÀÛ¼ºÀÚ¸í : LHJ
+ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : MyFavoriteServiceImpl
+ ï¿½ï¿½ Â¥ : 2019-09-05
+ ï¿½Û¼ï¿½ï¿½Ú¸ï¿½ : LHJ
  */
 @Service
 @Transactional

@@ -11,11 +11,11 @@
 	
 	function info(){
 		
-		var profile=$("#mprofile").val();
+		var mprofile=$("#mprofile").val();
 		var mpw=$("#mpw").val();
 		var mhp=$("#mhp").val();
 		var mnick=$("#mnick").val();
-		alert("mprofile : " + profile);
+		alert("mprofile : " + mprofile);
 		alert("mpw : " + mpw);
 		alert("mhp : " + mhp);
 		alert("mnick : " + mnick);
@@ -29,7 +29,7 @@
 			dataType : "text",
 			success:function(data){
 				console.log("data : " + data);
-				if(data=="ture"){
+				if(data=="true"){
 					alert("로그인 성공. 메인페이지로 이동");
 					document.updateinfo.action="/mypage/myPage.do";
 					document.updateinfo.submit();
