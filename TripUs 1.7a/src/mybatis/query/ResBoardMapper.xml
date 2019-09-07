@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tu.toboard.dao.ToBoardMapper">
-	<resultMap type="com.tu.toboard.vo.ToBoardVO" id="ToBoardVO">
+<mapper namespace="com.tu.resboard.dao.ResBoardDAO">
+	<resultMap type="com.tu.resboard.vo.ResBoardVO" id="resBoardVO">
 		<result property="viewname" column="VIEWNAME"/>
 		<result property="viewno" column="VIEWNO"/>
 		<result property="contentid" column="CONTENTID"/>
@@ -10,16 +10,16 @@
 	 
 	
 	
-	<select id="selectContentID" parameterType="com.tu.toboard.vo.ToBoardVO" resultMap="ToBoardVO">
+	<select id="selectContentID" parameterType="com.tu.resboard.vo.ResBoardVO" resultMap="resBoardVO">
 		/* Mapper - selectContentID */
 			SELECT CONTENTID
-			FROM TOURLIST
+			FROM RESLIST
 			WHERE VIEWNO=#{viewno} 
 	</select>
-	<select id="toBoardList" parameterType="com.tu.toboard.vo.ToBoardVO" resultMap="ToBoardVO">
+	<select id="resBoardList" parameterType="com.tu.resboard.vo.ResBoardVO" resultMap="resBoardVO">
 		/* Mapper - coBoardList */
 			SELECT CONTENTID,VIEWNAME,VIEWNO
-			FROM TOURLIST
+			FROM RESLIST
 			
 	</select>
 	

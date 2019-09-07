@@ -67,7 +67,7 @@
 		      <br>
 		      <br>
 	      
-		      <table id="courseList">
+		      <table id="resList">
 		      	<thead>
 		        	<tr>
 		            	<th> NO </th>
@@ -76,12 +76,12 @@
 		         	</tr>
 		      	</thead>
 		      	<tbody> 
-		     	<c:forEach var="toList" items="${toBoardList}">
+		     	<c:forEach var="resList" items="${resBoardList}">
 		      		
 	               		<tr>
-	               			<td>${toList.viewno} 
+	               			<td>${resList.viewno} 
 	               			</td>
-	               			<td id="toBoardForm" onclick="detail('${toList.viewno}')">${toList.viewname} 
+	               			<td id="toBoardForm" onclick="detail('${resList.viewno}')">${resList.viewname} 
 	               			</td></tr>
 		        </c:forEach>
 		      	</tbody>   

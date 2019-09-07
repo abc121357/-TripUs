@@ -53,7 +53,7 @@ public class PublicData2 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		System.out.println("PublicData2.do 진입");
 		
-		parameter = parameter + "&" + "contentTypeId=12";
+		parameter = parameter + "&" + "contentTypeId=39";
 		parameter = parameter + "&" + "contentId="+contentID;
 		parameter = parameter + "&" + "MobileOS=ETC";
 		parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";

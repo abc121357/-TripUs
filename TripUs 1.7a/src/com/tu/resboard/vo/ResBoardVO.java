@@ -1,6 +1,6 @@
-package com.tu.toboard.vo;
+package com.tu.resboard.vo;
 
-public class ToBoardVO {
+public class ResBoardVO {
 	String viewname;
 	String contentid;
 	String viewno;
@@ -23,11 +23,11 @@ public class ToBoardVO {
 		this.viewno = viewno;
 	}
 	
-	public ToBoardVO() {
+	public ResBoardVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ToBoardVO(String viewname, String contentid, String viewno) {
+	public ResBoardVO(String viewname, String contentid, String viewno) {
 		super();
 		this.viewname = viewname;
 		this.contentid = contentid;

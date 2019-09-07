@@ -1,4 +1,4 @@
-package com.tu.toboard.service;
+package com.tu.resboard.service;
 
 /**
 클래스명 : CoBoardServiceImpl
@@ -14,29 +14,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tu.toboard.vo.ToBoardVO;
-import com.tu.toboard.dao.ToBoardMapper;
+import com.tu.resboard.dao.ResBoardDAO;
+import com.tu.resboard.vo.ResBoardVO;
 
 
 @Service 
 @Transactional
-public class ToBoardServiceImpl implements ToBoardService {
+public class ResBoardServiceImpl implements ResBoardService {
 	@Autowired
-	private ToBoardMapper toBoardMapper;
+	private ResBoardDAO resBoardMapper;
 	
 	@Override
-	public List<ToBoardVO> selectContentID(ToBoardVO tvo){
+	public List<ResBoardVO> selectContentID(ResBoardVO tvo){
 		System.out.println("ServiceImpl의 selectContentID함수 진입");
-		List<ToBoardVO> list = new ArrayList<ToBoardVO>();
-		list = toBoardMapper.selectContentID(tvo);
+		List<ResBoardVO> list = new ArrayList<ResBoardVO>();
+		list = resBoardMapper.selectContentID(tvo);
 		
 		return list; 
 	}
 	@Override
-	public List<ToBoardVO> toBoardList(ToBoardVO tvo){
+	public List<ResBoardVO> resBoardList(ResBoardVO tvo){
 		System.out.println("ServiceImpl의 toBoardList함수 진입");
-		List<ToBoardVO> list = new ArrayList<ToBoardVO>();
-		list = toBoardMapper.toBoardList(tvo);
+		List<ResBoardVO> list = new ArrayList<ResBoardVO>();
+		list = resBoardMapper.resBoardList(tvo);
 		
 		return list;
 	}
