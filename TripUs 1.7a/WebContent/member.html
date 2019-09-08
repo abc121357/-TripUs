@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- 디바이스에 최적화된 크기로 출력됨 -->
+		<meta name="viweport" content="width=device-width, iitail-scale=1">
+		<title>회원가입</title>
+		
+		<style type="text/css">
+			.mem{ text-align: center;}
+		</style>
+		<!-- 
+			javaScript 정규식
+			1. 숫자만
+			var regex= /[^0-9]/g;
+			2. 한글만
+			var regex= /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
+			3. 이메일
+			var regex=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/;
+			4. 전화번호
+			var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+			5. 비밀번호
+			- 아래와 같은 방법으로 규칙을 정한다음에 포함여부에 따라 처리해주면 됩니다.
+			var num = pw.search(/[0-9]/g);
+			var eng = pw.search(/[a-z]/ig);
+			var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+			if( (eng >= 0) &&  (num >= 0 || spe >= 0)){
+				// 정상
+			} else {
+				// 오류
+			}
+			
+		 -->
+		<script type="text/javascript">
+			
+			function confrimFun(){
+				alert(" validationFun 함수 진입");
+				//이름
+				//if (document.member.name.value.length == 0){
+				if (document.member.name.value == ''){
+					alert("이름을 입력하세요");
+					document.getElementById("name").focus();
+					return false;
+				}else {
+					var exp = /^[a-zA-Z]+$/;
+					if (!exp.test(document.member.name.value)) {
+						alert("이름 오류 - 영문자로 입력");
+						document.getElementById("name").focus();
+						return false;
+					}
+					
+					document.getElementById("addr").focus();
+				}
+				
+				//주소
+				if (document.member.addr.value.length == 0){
+					alert("주소를 입력하세요");
+					document.getElementById("addr").focus();
+					return false;
+				}else {
+					document.getElementById("birth").focus();
+				}
+	
+				//생일
+				if (document.member.birth.value.length == 0){
+					alert("생일을 입력하세요");
+					document.getElementById("birth").focus();
+					return false;
+				}else {
+					var exp = /^\d{4}\/\d{2}\/\d{2}$/;
+					if (!exp.test(document.member.birth.value)) {
+						alert("생일 오류 - 0000/00/00 형식");
+						document.getElementById("birth").focus();
+						return false;
+					}
+					
+					document.getElementById("id").focus();
+				}
+				
+				//아이디
+				if (document.member.id.value.length == 0){
+					alert("아이디를 입력하세요");
+					document.getElementById("id").focus();
+					return false;
+				}else {
+					var length = document.member.id.value.length;
+					if (length < 6 || length > 8) {
+						alert("아이디 오류 - 6자 8자 이하");
+						document.getElementById("id").focus();
+						return false;
+					}
+					
+					document.getElementById("pw").focus();
+				}
+				
+				//비밀번호
+				if (document.member.pw.value.length == 0){
+					alert("비밀번호를 입력하세요");
+					document.getElementById("pw").focus();
+					return false;
+				}else {
+					var length = document.member.pw.value.length;
+					if (length < 6 || length > 12) {
+						alert("비밀번호 오류 - 6자 이상 12자 이하");
+						document.getElementById("pw").focus();
+						return false;
+					}
+					
+					document.getElementById("gender").focus();
+				}
+				
+				//성별
+				if(document.member.gender.value != "sel") {
+					alert(document.member.gender.value);
+				} else {
+					alert("성별을 입력하세요");
+					document.getElementById("gender").focus();
+					return false;
+				}
+				
+				//이메일
+				if (document.member.email.value.length == 0){
+					alert("이메일을 입력하세요");
+					document.getElementById("email").focus();
+					return false;
+				}else {
+					var exp = /^[a-zA-Z0-9_-]+\@[a-zA-Z]+\.[a-zA-Z]+$/;
+					if (!exp.test(document.member.email.value)) {
+						alert("이메일 오류");
+						document.getElementById("email").focus();
+						return false;
+					}
+					
+					document.getElementById("phone").focus();
+				}
+				
+				//휴대폰
+				if (document.member.phone.value.length == 0){
+					alert("핸드폰 번호를 입력하세요");
+					document.getElementById("phone").focus();
+					return false;
+				}else {
+					var exp = /^\d{3}\-\d{4}\-\d{4}$/;
+					if (!exp.test(document.member.phone.value)) {
+						alert("핸드폰 번호 오류 - 000-0000-0000 형식");
+						document.getElementById("phone").focus();
+						return false;
+					}
+					
+				}
+				
+				alert("유효성 검사 완료");
+				
+				window.document.member.action = "#/testWeb/jsp/member.jsp";
+				window.document.member.submit();
+				
+			}
+			
+			function idCheck(){
+				alert(" idCheck 함수 진입");
+				//var idVal = document.getElementById("id").value
+				window.open("/testWeb/html/idCheckPop.html", "", "width=400,height=300");
+				//window.document.member.action = "/testWeb/jsp/member.jsp";
+				//window.document.member.submit();
+				
+			}
+			
+			function pwCheck(){
+				alert(" pwCheck 함수 진입");
+				var pw = document.getElementById("pw");
+				var pw_r = document.getElementById("pw_r");
+				
+				if(pw.value == pw_r.value) {
+					alert("비밀번호가 같습니다.");
+					
+					document.getElementById("gender").focus();
+					
+					return true;
+				} else {
+					alert("비밀번호가 다릅니다.");
+					pw.value = "";
+					pw_r.value = "";
+					pw.focus();
+					
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<h1> 회원가입</h1>
+			<form name="member" method="POST" >
+				<table border=1>
+					<tr>
+						<td class="mem"> 이름 : </td> 
+						<td>
+							<input type="text" id="name" name="name" /><br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 주소 : </td> 
+						<td>
+							 <input type="text" id="addr" name="addr" /><br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 생일 : </td> 
+						<td>
+							<input type="text" id="birth" name="birth" /><br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 아이디(6 ~ 8 문자) :  </td> 
+						<td>
+							<input type="text" id="id" name="id" />
+							<input type="button" value="아이디중복확인" onclick="idCheck()" /><br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 비밀번호 :  </td> 
+						<td>
+							<input type="text" id="pw" name="pw" /><br/>
+							<input type="text" id="pw_r" name="pw_r" />
+							<input type="button" value="비밀번호확인" onclick="pwCheck()"/><br/>
+							
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 성별 : </td>
+						<td>
+							<select id="gender" name="gender">
+								<option value="sel">
+									--- 성별 ---
+								</option>
+								<option value="male">
+									남성
+								</option>
+								<option value="female">
+									여성
+								</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 이메일 : </td> 
+						<td>
+							<input type="text" id="email" name="email" /><br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mem"> 휴대폰 : </td> 
+						<td>
+							<input type="text" id="phone" name="phone" /><br/>
+						</td>
+					</tr>
+					<tr>						
+						<td colspan=2 align="center">
+							<input type="button" value="확인" onclick="confrimFun()">
+							<input type="reset" value="다시">
+						</td>
+					</tr>					
+				</table>
+				
+			</form>
+		</center>
+	</body>
+</html>

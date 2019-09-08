@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  클래스명 : MyPageController
  날 짜 : 2019-09-05
@@ -63,7 +66,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/memberInfoUpdate")
-	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param){
+	public String memberInfoUpdate(@ModelAttribute MemberVO param,HttpServletRequest request){
 		
 		int result=0;
 
@@ -74,6 +77,8 @@ public class MyPageController {
 		System.out.println("profile : "+ param.getMprofile());
 		System.out.println("hp : "+ param.getMhp());
 		
+		HttpSession session = request.getSession();
+		
 		
 		result=myPageService.memberInfoUpdate(param);
 		
@@ -82,11 +87,17 @@ public class MyPageController {
 		String resultStr="내 정보 수정 완료";
 		if(result==0)
 			resultStr="내 정보 수정 실패";
-		
+		System.out.println("resultStr : " + resultStr);
 		mav.addObject("result",resultStr);
-		mav.setViewName(CONTEXT_PATH+"/result");
+		mav.setViewName(CONTEXT_PATH+"/myPage");
+		
+		session.setAttribute("mnick", param.getMnick());
+		session.setAttribute("mprofile", param.getMprofile());
+		session.setAttribute("mhp",param.getMhp());
+		session.setAttribute("mpw",param.getMpw());
+		
 						
-		return mav;
+		return resultStr;
 		
 	}
 }

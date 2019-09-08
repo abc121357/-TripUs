@@ -26,9 +26,9 @@
 		}
 		.box{
 		border: 1px solid blue;
-		width: 300px;
-		height: 300px;
-		}
+		width: 200px;
+		height: 200px;
+				}
 	
 	</style>
 	
@@ -47,10 +47,12 @@
 			</c:forEach>
 		</table>
 	<div class="boxgroup">
-	<div class="box">
+	<div class="box" >
 		<a href="/mypage/infoupdate.do">가입정보 수정</a>
-		<a href="/mypage/myfavorite.do">즐겨찾기 목록</a>
 	</div>
+	<div class="box">
+		<a href="/mypage/myfavorite.do">즐겨찾기 목록</a>
+	
 	</div>
 	<div class="box">
 		<a href="/xxx.do">Q&A</a>
@@ -58,7 +60,7 @@
 	<div class="box">
 		<a href="/xxx.do">회원탈퇴</a>
 	</div>
-	
+	</div>
 	
 	</body>
 </html>
