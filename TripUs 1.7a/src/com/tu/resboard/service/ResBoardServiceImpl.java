@@ -1,9 +1,9 @@
 package com.tu.resboard.service;
 
 /**
-클래스명 : CoBoardServiceImpl
+클래스명 : ResBoardServiceImpl
 날 짜 : 2019-09-03
-작성자명 : 김 해 원
+작성자명 : LHJ
 */
 
 

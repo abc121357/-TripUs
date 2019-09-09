@@ -29,8 +29,8 @@ index입니다.
 <br><a href="restaurant/resBoard.do"> 맛집후기게시글작성으로 이동</a>
 <br><a href="login/memberLogin.do"> 멤버로그인으로이동</a>
 <br><a href="mypage/myPage.do">마이페이지로 이동</a>
-<br><a href="myfavorite/myfavorite.do">즐겨찾기로 이동</a>
-<br><a href="myfavorite/insertmyfavorite.do">즐겨찾기추가로 이동</a>
+<br><a href="mypage/myfavorite.do">즐겨찾기로 이동</a>
+<br><a href="mypage/insertmyfavorite.do">즐겨찾기추가로 이동</a>
 <br><a href="restaurant/resMain.do">맛집정보메인으로 이동</a>
 
 

@@ -41,8 +41,8 @@ public class MyPageController {
 		if(param.getMno()!=null){
 		List<MemberVO> list =myPageService.memberInfo(param);
 		
-		mav.addObject("mList",list);
-		
+		mav.addObject("mInfo",list);
+		mav.addObject("mprofile", list.get(0).getMprofile());
 		}
 		
 		mav.setViewName(CONTEXT_PATH+"/myPage");

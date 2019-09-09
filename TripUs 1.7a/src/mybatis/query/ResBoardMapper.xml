@@ -17,7 +17,7 @@
 			WHERE VIEWNO=#{viewno} 
 	</select>
 	<select id="resBoardList" parameterType="com.tu.resboard.vo.ResBoardVO" resultMap="resBoardVO">
-		/* Mapper - coBoardList */
+		/* Mapper - resBoardList */
 			SELECT CONTENTID,VIEWNAME,VIEWNO
 			FROM RESLIST
 			
