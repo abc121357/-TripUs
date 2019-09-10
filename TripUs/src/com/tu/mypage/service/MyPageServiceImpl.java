@@ -31,5 +31,8 @@ public class MyPageServiceImpl implements MyPageService{
     	return mypageDAO.memberInfoUpdate(param);
     }
 
-    
+    @Override
+    public int infoNickCheck(MemberVO param) {
+       return mypageDAO.infoNickCheck(param);
+    }
 }

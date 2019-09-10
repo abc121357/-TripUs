@@ -20,4 +20,9 @@ public class MyPageDAOImpl extends SqlSessionDaoSupport implements MyPageDAO {
     public int memberInfoUpdate(MemberVO param) {
         return getSqlSession().update(CONTEXT_PATH+"memberInfoUpdate");
     }
+
+    @Override
+    public int infoNickCheck(MemberVO param) {
+        return Integer.parseInt(getSqlSession().selectOne(CONTEXT_PATH+"infoNickCheck").toString());
+    }
 }

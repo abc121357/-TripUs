@@ -5,13 +5,18 @@ import com.tu.mypage.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tu.mem.vo.MemberVO;
 
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  클래스명 : MyPageController
@@ -61,12 +66,37 @@ public class MyPageController {
 		
 		return mav;
 	}
+	//닉네임 중복확인
+	@RequestMapping("/infoNickCheck")
+	@ResponseBody
+	public ModelAndView InfoNickCheck(@ModelAttribute MemberVO param){
+		
+		ModelAndView mav=new ModelAndView();
+		
+		int result=myPageService.infoNickCheck(param);
+		System.out.println("result : "+result);
+		String resultStr="별명중복";
+		if(result==0){
+			resultStr="별명중복아님";
+		}
+		
+		mav.addObject("resultStr",resultStr);
+		mav.setViewName(CONTEXT_PATH+"/infoupdate");
+		
+		System.out.println("resultStr : "+resultStr);
+		
+		return mav;
+		
+	}
+	
+	
 	
 	@RequestMapping("/memberInfoUpdate")
-	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param){
+	@ResponseBody
+	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param,HttpServletRequest request){
 		
 		int result=0;
-
+		
 		//Mno는 세션 값 등으로 가져온 Mno를 넣는 것으로 함
 		param.setMno("M201908270001");
 		System.out.println("nick : "+ param.getMnick());
@@ -74,17 +104,25 @@ public class MyPageController {
 		System.out.println("profile : "+ param.getMprofile());
 		System.out.println("hp : "+ param.getMhp());
 		
+		HttpSession session = request.getSession();
+		
 		
 		result=myPageService.memberInfoUpdate(param);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String resultStr="내 정보 수정 완료";
+		String resultStr="정보수정완료";
 		if(result==0)
-			resultStr="내 정보 수정 실패";
-		
+			resultStr="내정보수정실패";
+		System.out.println("resultStr : " + resultStr);
 		mav.addObject("result",resultStr);
-		mav.setViewName(CONTEXT_PATH+"/result");
+		mav.setViewName(CONTEXT_PATH+"/infoupdate");
+		
+		session.setAttribute("mnick", param.getMnick());
+		session.setAttribute("mprofile", param.getMprofile());
+		session.setAttribute("mhp",param.getMhp());
+		session.setAttribute("mpw",param.getMpw());
+		
 						
 		return mav;
 		
