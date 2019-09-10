@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.restaurantboard.dao.RestaurantBoardDAO">
+	<resultMap type="com.tu.restaurantboard.vo.TurbboardVO" id="turbboardVO">
+		<result property="rbno" column ="RBNO"/>
+		<result property="rbtitle" column = "RBTITLE"/>
+		<result property="rbcontent" column="RBCONTENT"/>
+		<result property="rbid" column="RBID"/>
+		<result property="rbhit" column="RBHIT"/>
+		<result property="rbimage" column="RBIMAGE"/>
+		<result property="rbtag" column="RBTAG"/>
+		<result property="rblike" column="RBLIKE"/>
+		<result property="rbupdatedate" column="RBUPDATEDATE"/>
+		<result property="rbdeleteyn" column="RBDELETEYN"/>
+		<result property="rbrecordinsertdate" column="RBRECORDINSERTDATE"/>
+		<result property="rbrecordupdatedate" column="RBRECORDUPDATEDATE"/>
+		<result property="rbinsertdate" column="RBINSERTDATE"/>
+	</resultMap>
+	<!-- 게시물 목록 보기 -->
+	<select id="listresBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
+	/* Mapper - listrestaurantBoard */
+		SELECT
+				RBNO,
+				RBTITLE,
+				RBCONTENT,
+				RBINSERTDATE
+		FROM
+				TURBBOARD
+		
+		
+	</select>
+	<!-- 
+	<select id="bestseason"
+	-->
+	
+	<!-- 게시글 입력 -->
+	
+	<insert id="insertresBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	INSERT INTO
+				TURBBOARD
+				VALUES(
+						#{rbno},
+						#{rbtitle},
+						#{rbcontent},
+						#{rbid},
+						0,
+						#{rbimage},
+						#{rbtag},
+						0,
+						SYSDATE,
+						SYSDATE,
+						'Y',
+						SYSDATE,
+						SYSDATE)
+			
+	
+	</insert>
+
+	<update id="addHitCount" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	
+	UPDATE
+			TURBBOARD
+	SET
+			RBHIT=RBHIT+1
+			RBUPDATEDATE=SYSDATE,
+			RBRECORDUPDATEDATE=SYSDATE
+	WHERE
+			1=1
+	AND		
+			RBID=#{rbid}
+	AND
+			RBDELETEYN='Y'
+
+	
+	</update>
+
+	<update id="updateResBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	UPDATE
+			TURBBOARD
+	SET
+			RBTITLE=#{rbtitle},
+			RBCONTENT=#{rbcontent},
+			RBIMAGE=#{rbimage},
+			RBTAG=#{tag}
+			RBUPDATEDATE=SYSDATE,
+			RBRECORDUPDATEDATE=SYSDATE
+	WHERE
+			1=1
+	AND
+			RBNO=#{rbno}
+	AND
+			RBDELETEYN='Y'
+
+	</update>
+
+	<update id="deleteResBoard" parameterType="com.tu.restaurantboard.vo.TurbboardVO">
+	UPDATE
+			TURBBOARD
+	SET
+			RBDELETEYN='N',
+			RBUPDATEDATE=SYSDATE,
+			RBRECORDUPDATEDATE=SYSDATE
+	WHERE
+			1=1
+	AND
+			RBNO=#{rbno}
+	AND
+			RBDELETEYN='Y'
+	</update>
+
+</mapper>

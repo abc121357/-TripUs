@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.restaurant.dao.RestaurantDAO">
+	<resultMap type="com.tu.restaurant.vo.TurtcommVO" id="turtcommVO">
+		<result property="rtnick" column ="RTNICK"/>
+		<result property="rtprofile" column = "RTPROFILE"/>
+		<result property="rtcontent" column="RTCONTENT"/>
+		<result property="rtinsertdate" column="RTINSERTDATE"/>
+	</resultMap>
+	
+	<select id="listrescomment" parameterType="com.tu.restaurant.vo.TurtcommVO" resultMap="turtcommVO">
+	/* Mapper - listRestaurant */
+		SELECT
+				RTNICK,
+				RTPROFILE,
+				RTCONTENT,
+				RTINSERTDATE
+		FROM
+				TURTCOMM
+		
+		
+	</select>
+	<!--
+	<insert id="insertrescomment" parameterType="com.tu.restaurant.vo.TurtcommVO">
+	
+	INSERT INTO TURTCOMM
+					VALUES(
+						  #{rtno},
+						  #{rtid},
+						  #{rtnick},
+						  #{rtprofile},
+						  #{rtcontent},
+						  SYSDATE,
+						  SYSDATE,
+						  'Y',
+						  SYSDATE,
+						  SYSDATE)
+						 
+	
+	</insert>
+	-->
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tu.restaurantboard.dao.RestaurantBoardCommDAO">
+    <resultMap id="turccommVO" type="com.tu.restaurantboard.vo.TurccommVO">
+
+        <result property="rcno" column="RCNO"/>
+        <result property="rbno" column="RBNO"/>
+        <result property="rcid" column="RCID"/>
+        <result property="rcnick" column="RCNICK"/>
+        <result property="rcprofile" column="RCPROFILE"/>
+        <result property="rccontent" column="RCCONTENT"/>
+        <result property="rcinsertdate" column="RCINSERTDATE"/>
+        <result property="rcupdatedate" column="RCUPDATEDATE"/>
+        <result property="rcdeleteyn" column="RCDELETEYN"/>
+        <result property="rcrecordinsertdate" column="RCRECORDINSERTDATE"/>
+        <result property="rcrecordupdatedate" column="RCRECORDUPDATEDATE"/>
+    </resultMap>
+    
+    <select id="listResBoardComm" parameterType="com.tu.restaurantboard.vo.TurccommVO" resultMap="turccommVO">
+    /* 게시글의 댓글을 찾는 명령문 */
+
+    SELECT
+                TURC.RCNICK,
+                TURC.RCPROFILE,
+                TURC.RCCONTENT,
+                TURC.RCINSERTDATE
+    FROM
+                TURCCOMM TURC,TURBBOARD TURB
+    WHERE
+                1=1
+    AND
+                TURC.RBNO=TURB.RBNO
+    AND
+                TURC.RBNO=#{rbno}
+    AND
+                RCDELETEYN='Y'
+    AND
+                TURB.RBDELETEYN='Y'
+
+    </select>
+
+    <insert id="insertResBoardComm" parameterType="com.tu.restaurantboard.vo.TurccommVO">
+
+    INSERT INTO
+            TURCCOMM
+    VALUES(
+            #{rcno},
+            #{rbno},
+            #{rcid},
+            #{rcnick},
+            #{rcprofile},
+            #{rccontent},
+            SYSDATE,
+            SYSDATE,
+            'Y',
+            SYSDATE,
+            SYSDATE
+                    )
+
+
+
+    </insert>
+
+    <update id="updateResBoardComm" parameterType="com.tu.restaurantboard.vo.TurccommVO">
+    UPDATE
+         TURCCOMM
+    SET
+         RCCONTENT=#{rcontent},
+         RCUPDATEDATE=SYSDATE,
+         RCRECORDUPDATEDATE=SYSDATE
+    WHERE
+         1=1
+    AND
+         RCNO=#{rcno}
+
+
+
+
+    </update>
+
+    <update id="deleteResBoardComm" parameterType="com.tu.restaurantboard.vo.TurccommVO">
+    UPDATE
+            TURBBOARD
+    SET
+            RBDELETEYN='N'
+            RCUPDATEDATE=SYSDATE,
+            RCRECORDUPDATEDATE=SYSDATE
+
+    WHERE
+            RBNO=#{rbno}
+
+
+    </update>
+
+    
+</mapper>
