@@ -1,3 +1,9 @@
+<%--
+파일명 : myfavorite.jsp
+설명 : 즐겨찾기 목록보기
+작성일 : 2019.9.1
+작성자 : LHJ
+ --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>

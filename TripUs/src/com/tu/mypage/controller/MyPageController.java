@@ -56,11 +56,20 @@ public class MyPageController {
 	}
 	//경로로 이동
 	@RequestMapping("/infoupdate")
-	public ModelAndView memberInfoUpdate(){
+	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param){
 		
 		ModelAndView mav=new ModelAndView();
 		
-		//mav.addObject();
+		param.setMno("M201908270001");
+		
+		
+		System.out.println(param.getMno());
+		if(param.getMno()!=null){
+		List<MemberVO> list =myPageService.memberInfo(param);
+		
+		mav.addObject("mInfo",list);
+		mav.addObject("mprofile", list.get(0).getMprofile());
+		}
 		
 		mav.setViewName(CONTEXT_PATH+"/infoupdate");
 		

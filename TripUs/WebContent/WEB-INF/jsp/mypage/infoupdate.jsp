@@ -1,3 +1,10 @@
+<%--
+파일명 : infoupdate.jsp
+설명 : 내 정보수정
+작성일 : 2019.9.1
+작성자 : LHJ
+ --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -175,64 +182,40 @@
 
 	</head>
 	<body>
-	<form name="updateinfo" method="POST" action="/mypage/myPage.do">
-	<table align="center">
-	<tr>
-	<td colspan="2">
-	<p align="center" style="font-style: oblique;"> 정보수정 </p>
-	</td>
-	</tr>
-	<tr>
-		<td>
-			이미지 :
-		</td>
-		<td>
-			<input type="text" id="mprofile" name="mprofile"  value="${memberVO.mprofile}"/>
-		</td>
-	</tr>
-	<tr>
-		
-		<td>
-			별명 :
-		</td>
-		<td>
-		<input type="text" id="mnick" name="mnick" value="${memberVO.mnick}"/>
-		<input type="button" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			휴대전화 :
-		</td>
-		<td class="member">
-			<input type="text" id="mhp" name="mhp" value="${memberVO.mhp}"/>
-		</td>
-	</tr>
-		<tr>
-		<td>
-			변경할 비밀번호 :
-		</td>
-		<td>
-			<input type="password" id="mpw" name="mpw" value="${memberVO.mpw}"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		비밀번호 확인 :
-		</td>
-		<td>
-			<input type="password" id="checkmpw" name="checkmpw" value=""/>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="right">
-			<input type="button" id="mupdate" name="mupdate" onclick="updateInfo()" value="입력"/>
-		</td>
-	</tr>
+	
+		<div class="container">	
 
-	
-	</table>
-	</form>
-	
+		<form class="form-horizontal" name="updateinfo" method="POST" action="/mypage/myPage.do">
+		
+		<p align="center" style="font-style: oblique;"> 정보수정 </p>
+			<div id="infoform" align="center">
+				<div id="img">
+				<div><label class="control-label">이미지 : </label>
+				 
+				<img class="img-fluid rounded mb-4 mb-lg-0" src="${mprofile}" width="200px" height="200px" alt="">
+				 </div>
+				 <br>
+				 <input class="btn btn-info btn-sm" style="width: 80px; height: 30px" type="button" id="mprofile" name="mprofile"  value="사진 변경"/>
+				</div>
+				<br>
+				<label class="col-sm-5 control-label">별명 : </label>
+				<input type="text" class="col-sm-1 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
+				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
+				<br>
+				<label class="col-sm-5 control-label">휴대전화 : </label>
+					<input type="text" class="col-sm-1 form-control" id="mhp" name="mhp" style="width:300px" value="${memberVO.mhp}"/>
+				<br>
+				<label class="col-sm-5 control-label">변경할 비밀번호 : </label>
+				<input type="password" class="col-sm-1 form-control" id="mpw" name="mpw" style="width:300px" value="${memberVO.mpw}"/>
+			
+				<div>
+				<label class="col-sm-5 control-label">비밀번호 확인 : </label>
+					<input type="password" class="col-sm-1 form-control" id="checkmpw" name="checkmpw" style="width:300px" value=""/> <br>
+					<input type="button" class="btn btn-info btn-sm" style="width: 60px; height: 30px" id="mupdate" name="mupdate" onclick="updateInfo()" value="수정"/>
+				</div>
+			
+			</div>	
+			</form>
+		</div>
 	</body>
 </html>

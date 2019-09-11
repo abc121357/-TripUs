@@ -47,7 +47,7 @@ public class PublicData2 extends HttpServlet {
 		String contentID=request.getParameter("contentID");
 		
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
-		String serviceKey = "My6b1IelbnyXdTYDdv2cbquuqSw%2F1naI%2BWZWg1VKRF%2FmcKhW0akQ7SF1Rm4gDdbPYb1Td5O5FUYIpNOALhF%2Bvw%3D%3D";
+		String serviceKey = "XcYnvXiczkLLceGeiZC%2FS25vRTz20RORZFfahcwPXWDAwCCkf9aPPDxbShnDX6apwNOjl4gBEw7hdF9A1g8XcA%3D%3D";
 		String parameter = "";
 		//serviceKey = URLEncoder.encode(serviceKey,"utf-8");
 		PrintWriter out = response.getWriter();

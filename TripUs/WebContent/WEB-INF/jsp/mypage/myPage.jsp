@@ -1,3 +1,10 @@
+<%--
+파일명 : myPage.jsp
+설명 : 자신의 정보등을 관리할 수 있는 페이지
+작성일 : 2019.9.1
+작성자 : LHJ
+ --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

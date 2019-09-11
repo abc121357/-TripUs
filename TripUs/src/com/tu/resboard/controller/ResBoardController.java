@@ -51,13 +51,13 @@ public class ResBoardController {
 	
 	
 	//1.정보 리스트 화면으로 이동
-	@RequestMapping(value="/resMain")
+	@RequestMapping(value="/resSub")
 	public ModelAndView goTourMainPage(@ModelAttribute ResBoardVO tvo){
 		System.out.println("controller의 goCourseMainPage진입");
 		List<ResBoardVO> list = resBoardService.resBoardList(tvo);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(CONTEXT_PATH+"/resMain");
+		mav.setViewName(CONTEXT_PATH+"/resSub");
 		mav.addObject("resBoardList",list);
 		
 		return mav;

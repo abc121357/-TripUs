@@ -18,7 +18,7 @@
 <br><a href="restaurant/restaurant.do"> 맛집메인으로 이동</a>
 <br><a href="mypage/myPage.do">마이페이지로 이동</a>
 <br><a href="mypage/myfavorite.do">즐겨찾기로 이동</a>
-<br><a href="restaurant/resMain.do">맛집정보메인으로 이동</a>
+<br><a href="restaurant/resSub.do">맛집정보메인으로 이동</a>
 
 
 </body>
