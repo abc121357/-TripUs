@@ -185,9 +185,9 @@
 	
 		<div class="container">	
 
-		<form class="form-horizontal" name="updateinfo" method="POST" action="/mypage/myPage.do">
+		<form name="updateinfo" method="POST" action="/mypage/myPage.do">
 		
-		<p align="center" style="font-style: oblique;"> 정보수정 </p>
+		<h2 align="center"> 정보수정 </h2>
 			<div id="infoform" align="center">
 				<div id="img">
 				<label class="control-label" style="margin:30px;">이미지 :  </label>
@@ -198,26 +198,26 @@
 			
 				</div>
 				<br>
-				<div id="nick">
+				<div id="nick" style="margin:30px;">
 				<label class="col-sm-5 control-label">별명 : </label>
 				<input type="text" class="col-sm-1 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
 				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
 				</div>
 				<br>
-				<div id="hp">
+				<div id="hp" style="margin:30px;">
 				<label class="col-sm-5 control-label">휴대전화 : </label>
 					<input type="text" class="col-sm-1 form-control" id="mhp" name="mhp" style="width:300px" value="${memberVO.mhp}"/>
 				</div>
 				<br>
-				<div id="pw">
+				<div id="pw" style="margin:30px;">
 				<label class="col-sm-5 control-label">변경할 비밀번호 : </label>
 					<input type="password" class="col-sm-1 form-control" id="mpw" name="mpw" style="width:300px" value="${memberVO.mpw}"/>
 				</div>
-				<div id="cpw">
+				<div id="cpw" style="margin:30px;">
 				<label class="col-sm-5 control-label">비밀번호 확인 : </label>
 					<input type="password" class="col-sm-1 form-control" id="checkmpw" name="checkmpw" style="width:300px" value=""/> <br>
 				</div>
-				<div>
+				<div style="margin:30px;">
 					<input type="button" class="btn btn-info btn-sm" style="width: 60px; height: 30px" id="mupdate" name="mupdate" onclick="updateInfo()" value="수정"/>
 				</div>
 			</div>	
