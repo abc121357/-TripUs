@@ -24,7 +24,7 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 	//매핑
-	@RequestMapping("/restaurant")
+	@RequestMapping("/restaurantMain")
 	public ModelAndView listrestaurant(@ModelAttribute TurtcommVO param){
 		
 		System.out.println("listrestaurant 진입");
@@ -45,7 +45,7 @@ public class RestaurantController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("restaurantlist",aList);
 		mav.addObject("hitlist",hList);
-		mav.setViewName(CONTEXT_PATH+"/restaurant");
+		mav.setViewName(CONTEXT_PATH+"/restaurantMain");
 		
 		System.out.println("listrestaurant 끝");
 		

@@ -78,7 +78,7 @@ public class MyPageController {
 	//닉네임 중복확인
 	@RequestMapping("/infoNickCheck")
 	@ResponseBody
-	public ModelAndView InfoNickCheck(@ModelAttribute MemberVO param){
+	public String InfoNickCheck(@ModelAttribute MemberVO param){
 		
 		ModelAndView mav=new ModelAndView();
 		
@@ -94,7 +94,7 @@ public class MyPageController {
 		
 		System.out.println("resultStr : "+resultStr);
 		
-		return mav;
+		return resultStr;
 		
 	}
 	

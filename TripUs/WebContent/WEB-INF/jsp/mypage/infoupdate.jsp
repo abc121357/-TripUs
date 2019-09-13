@@ -39,22 +39,22 @@
 			type:"GET",
 			data:{mnick:mnick},
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			dataType : "text",
-			success:function(data){
-				console.log("data : " + data);
-				if(data=="별명중복아님"){
+			dataType : "json",
+			success:function(resultStr){
+				console.log("resultStr : " + resultStr);
+				if(resultStr=="별명중복아님"){
 					alert("별명을 사용가능합니다.");
 				}
-				else if(data=="별명중복"){
+				else if(resultStr=="별명중복"){
 					alert("해당 별명을 사용할 수 없습니다.");
 				}
 				else{
-					console.log("data : " + data);
+					console.log("data : " + resultStr);
 					alert("data에 잘못된 값 들어감");
 				}
 			},
-			error:function(data){
-				console.log("data : " + data);
+			error:function(resultStr){
+				console.log("data : " + resultStr);
 				alert("예기치못한 오류발생");
 			}
 		});
@@ -190,30 +190,36 @@
 		<p align="center" style="font-style: oblique;"> 정보수정 </p>
 			<div id="infoform" align="center">
 				<div id="img">
-				<div><label class="control-label">이미지 : </label>
+				<label class="control-label" style="margin:30px;">이미지 :  </label>
 				 
 				<img class="img-fluid rounded mb-4 mb-lg-0" src="${mprofile}" width="200px" height="200px" alt="">
-				 </div>
-				 <br>
-				 <input class="btn btn-info btn-sm" style="width: 80px; height: 30px" type="button" id="mprofile" name="mprofile"  value="사진 변경"/>
+				
+				 <input class="btn btn-info btn-sm" style="width: 80px; height: 30px; margin:30px" type="button" id="mprofile" name="mprofile"  value="사진 변경"/>
+			
 				</div>
 				<br>
+				<div id="nick">
 				<label class="col-sm-5 control-label">별명 : </label>
 				<input type="text" class="col-sm-1 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
 				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
+				</div>
 				<br>
+				<div id="hp">
 				<label class="col-sm-5 control-label">휴대전화 : </label>
 					<input type="text" class="col-sm-1 form-control" id="mhp" name="mhp" style="width:300px" value="${memberVO.mhp}"/>
+				</div>
 				<br>
+				<div id="pw">
 				<label class="col-sm-5 control-label">변경할 비밀번호 : </label>
-				<input type="password" class="col-sm-1 form-control" id="mpw" name="mpw" style="width:300px" value="${memberVO.mpw}"/>
-			
-				<div>
+					<input type="password" class="col-sm-1 form-control" id="mpw" name="mpw" style="width:300px" value="${memberVO.mpw}"/>
+				</div>
+				<div id="cpw">
 				<label class="col-sm-5 control-label">비밀번호 확인 : </label>
 					<input type="password" class="col-sm-1 form-control" id="checkmpw" name="checkmpw" style="width:300px" value=""/> <br>
+				</div>
+				<div>
 					<input type="button" class="btn btn-info btn-sm" style="width: 60px; height: 30px" id="mupdate" name="mupdate" onclick="updateInfo()" value="수정"/>
 				</div>
-			
 			</div>	
 			</form>
 		</div>

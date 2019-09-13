@@ -29,7 +29,7 @@ import com.tu.resboard.vo.ResBoardVO;
 @RequestMapping(value="/restaurant")
 public class ResBoardController {
 	private static final String CONTEXT_PATH="restaurant";
-		
+	
 	@Autowired
 	private ResBoardService resBoardService;		
 	@RequestMapping("/selectContentID")
