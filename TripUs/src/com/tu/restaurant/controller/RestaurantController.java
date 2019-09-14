@@ -41,10 +41,8 @@ public class RestaurantController {
 			
 		}
 		
-		List<TurbboardVO> hList=restaurantService.selectSeasonBestHit();
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("restaurantlist",aList);
-		mav.addObject("hitlist",hList);
 		mav.setViewName(CONTEXT_PATH+"/restaurantMain");
 		
 		System.out.println("listrestaurant 끝");

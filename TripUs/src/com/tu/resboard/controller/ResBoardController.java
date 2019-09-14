@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,29 +51,43 @@ public class ResBoardController {
 	}
 	
 	
-	//1.정보 리스트 화면으로 이동
-	@RequestMapping(value="/resSub")
-	public ModelAndView goTourMainPage(@ModelAttribute ResBoardVO tvo){
+	//1.지역별 정보 리스트 화면으로 이동
+	@RequestMapping(value="/resAreaSub", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public ModelAndView goAreaSelectPage(int areaCode){
 		System.out.println("controller의 resSubPage진입");
-		List<ResBoardVO> list = resBoardService.resBoardList(tvo);
 		
+		System.out.print("areaCode : "+areaCode);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(CONTEXT_PATH+"/resSub");
-		mav.addObject("resBoardList",list);
+		mav.setViewName(CONTEXT_PATH+"/resAreaSub");
+		mav.addObject("areaCode",areaCode);
+		return mav;
+	}
+	
+	//2.세계별 정보 리스트 화면으로 이동
+	@RequestMapping(value="/resCatSub", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public ModelAndView goCatSelectPage(String foodCat){
+		System.out.println("controller의 resSubPage진입");
 		
+		System.out.print("foodCat : "+foodCat);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(CONTEXT_PATH+"/resCatSub");
+		mav.addObject("foodCat",foodCat);
 		return mav;
 	}
 	
 	//2.정보 상세보기로 이동
 	@RequestMapping(value="/goBoard", produces = "application/json; charset=utf8")
-	public ModelAndView goBoardPage(@ModelAttribute ResBoardVO tvo){
+	@ResponseBody
+	public ModelAndView goBoardPage(int contentid){
 		System.out.println("controller의 goBoardPage진입");
 		
 		ModelAndView mav = new ModelAndView();
 		
-		System.out.println("tvo.setViewno에 저장된 값 : "+tvo.getViewno());
+		System.out.println("contentid : "+contentid);
 		mav.setViewName(CONTEXT_PATH+"/board");
-		mav.addObject("viewno",tvo.getViewno());
+		mav.addObject("contentid",contentid);
 		return mav;
 	}
 	

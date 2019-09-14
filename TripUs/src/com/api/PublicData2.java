@@ -44,7 +44,7 @@ public class PublicData2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 	
-		String contentID=request.getParameter("contentID");
+		String contentId=request.getParameter("contentId");
 		
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
 		String serviceKey = "XcYnvXiczkLLceGeiZC%2FS25vRTz20RORZFfahcwPXWDAwCCkf9aPPDxbShnDX6apwNOjl4gBEw7hdF9A1g8XcA%3D%3D";
@@ -54,7 +54,7 @@ public class PublicData2 extends HttpServlet {
 		System.out.println("PublicData2.do 진입");
 		
 		parameter = parameter + "&" + "contentTypeId=39";
-		parameter = parameter + "&" + "contentId="+contentID;
+		parameter = parameter + "&" + "contentId="+contentId;
 		parameter = parameter + "&" + "MobileOS=ETC";
 		parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
 		parameter = parameter + "&" + "defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y";

@@ -46,8 +46,9 @@ public class PublicData extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-	
+		
 		String areaCode=request.getParameter("areaCode");
+		String foodCat=request.getParameter("foodCat");
 		int pageNo=1;
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=";
 		String serviceKey = "XcYnvXiczkLLceGeiZC%2FS25vRTz20RORZFfahcwPXWDAwCCkf9aPPDxbShnDX6apwNOjl4gBEw7hdF9A1g8XcA%3D%3D";
@@ -55,6 +56,7 @@ public class PublicData extends HttpServlet {
 		//serviceKey = URLEncoder.encode(serviceKey,"utf-8");
 		PrintWriter out = response.getWriter();
 		System.out.println("PublicData.do 진입");
+		if(areaCode!=null){
 		
 		parameter = parameter + "&" + "contentTypeId=39";
 		parameter = parameter + "&" + "areaCode="+areaCode;
@@ -64,7 +66,17 @@ public class PublicData extends HttpServlet {
 		parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
 		parameter = parameter + "&" + "arrange=A&numOfRows=12&pageNo="+pageNo;
 		parameter = parameter + "&" + "_type=json";
-		
+		}
+		else if(foodCat!=null){
+			parameter = parameter + "&" + "contentTypeId=39";
+			parameter = parameter + "&" + "areaCode=";
+			parameter = parameter + "&" + "sigunguCode=";
+			parameter = parameter + "&" + "cat1=A05&cat2=A0502&cat3="+foodCat;
+			parameter = parameter + "&" + "listYN=Y&MobileOS=ETC";
+			parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
+			parameter = parameter + "&" + "arrange=A&numOfRows=12&pageNo="+pageNo;
+			parameter = parameter + "&" + "_type=json";
+		}
 		
 		addr = addr + serviceKey + parameter;
 		System.out.println("addr : "+addr);

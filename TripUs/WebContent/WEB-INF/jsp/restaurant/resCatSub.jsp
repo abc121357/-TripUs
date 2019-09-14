@@ -132,12 +132,12 @@
 		<script type="text/javascript">
 			
 		$(document).ready(function(){
-			var areaCode=document.getElementById("areaCode").value;
-			alert("areaCode : "+areaCode);
+			var foodCat="${foodCat}";
+			//alert("foodCat : "+foodCat);
 				$.ajax({
 						url : '../PublicData.do',
 						type : 'get',
-						data : {areaCode:areaCode},
+						data : {foodCat:foodCat},
 						dataType : 'json',
 						success : function(data) {
 							console.log("DATA : "+data);
@@ -145,16 +145,19 @@
 							console.log(data.response.body.items.item);
 							myItem = data.response.body.items.item;
 							var areaCodeStr='';
-							console.log(myItem[0].areacode);
-							switch(myItem[0].areacode){
-							case 1:
-								areaCodeStr="서울";
+							console.log(myItem[0].cat3);
+							switch(myItem[0].cat3){
+							case 'A05020100':
+								CatStr="한식";
 								break;
-							case 2:
-								areaCodeStr="인천";
+							case 'A05020300':
+								CatStr="일식";
 								break;
-							case 31:
-								areaCodeStr="경기도";
+							case 'A05020200':
+								CatStr="서양식";
+								break;
+							case 'A05020400':
+								CatStr="중식";
 								break;
 							default:
 							areaCodeStr="지역분류없음";
@@ -162,21 +165,21 @@
 							}
 							
 							var output = '';
-							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + areaCodeStr + '</h2>';
+							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + CatStr + '</h2>';
 							for (var i = 0; i<myItem.length; i++) {
 							
 								console.log(myItem.length);
 								
 								output += '<hr>';
-								output += '<h4>' + myItem[i].title + '</h4>';
-								
+								output += '<h3 onclick="detail('+myItem[i].contentid+')">' + myItem[i].title + '</h3>';
+								output += '<br>';
 								output += '<p>' + myItem[i].addr1 + '</p>';
 								output += '<div class="row" id="resInfo">';
 								output += '<div class="col-md-7">';
 								output += '<p class=""> 조회수 : ' + myItem[i].readcount + '</p>';
 								output += '</div>';
 								output += '<div class="col-md-5">';
-								output += '<img class="img-rounded" width="400px" height="400px" src="' + myItem[i].firstimage  + '"alt="이미지가 없습니다.">';
+								output += '<img class="img-rounded" onclick="detail('+myItem[i].contentid+')" width="400px" height="400px" src="' + myItem[i].firstimage  + '"alt="이미지가 없습니다.">';
 								output += '</div>';
 								output += '</div>';
 								
@@ -196,9 +199,9 @@
 					});
 			});
 		
-			function detail(viewno) {
-				alert("클릭");
-	  			location.href = "../restaurant/goBoard.do?viewno="+viewno;
+			function detail(contentid) {
+				//alert(contentid);
+	  			location.href = "../restaurant/goBoard.do?contentid="+contentid;
 			}
 		</script>
 	</head>
@@ -208,9 +211,7 @@
 		      <br>
 		      <br>
 		      <br>
-	     		 <form action="#" method="get">
-		      	<input type="hidden" id="areaCode" name="areaCode" value="2"/>
-		     	</form>
+	     		
 		     	<div class="List">
 		      	
 		      	</div>
@@ -236,6 +237,8 @@
 		        </c:forEach>
 		      	</tbody>   
 		      </table>
-	   		</div>	
+	   		</div>
+	   		
+	   		
 	</body>
 </html>

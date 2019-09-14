@@ -166,9 +166,8 @@
     <div class="carousel-inner">
 	
       <div class="item active" >
-      <a href="/restaurant/resSub.do?areaCode=1">
+      <a href="/restaurant/resAreaSub.do?areaCode=31">
         <img src="/resources/img/경기도맛집.jpg"  alt="이미지 1" style=" height:420px; width:100%;">
-        <input type="hidden" id="areaCode" name="areaCode" value="1"/>
         </a>
         <div class="carousel-caption">
           <h3 style="text-decoration-color: skyblue;">경기도</h3>
@@ -177,7 +176,7 @@
       </div>
 
       <div class="item">
-          <a href="#">
+          <a href="/restaurant/resAreaSub.do?areaCode=1">
             <img src="/resources/img/서울맛집.jpg" alt="이미지 2" style="height:420px; width:100%;">
           </a>
           <div class="carousel-caption">
@@ -187,7 +186,7 @@
       </div>
     
       <div class="item">
-        <a href="#">
+        <a href="/restaurant/resAreaSub.do?areaCode=2">
           <img src="/resources/img/인천맛집.jpg" alt="이미지 3" style="height:420px; width:100%;">
         </a>
             <div class="carousel-caption">
@@ -227,7 +226,9 @@
     <div class="carousel-inner">
 	
       <div class="item active" >
+      	<a href="/restaurant/resCatSub.do?foodCat=A05020100">
         <img src="/resources/img/한식.gif"  alt="한식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>한식</h3>
           <p>한국의 전통적인 음식들~!</p>
@@ -235,7 +236,9 @@
       </div>
 
       <div class="item">
+       <a href="/restaurant/resCatSub.do?foodCat=A05020300">
         <img src="/resources/img/일식.jpg" alt="일식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>일식</h3>
           <p>싱싱한 스시와 깊이있는 전통음식들 </p>
@@ -243,7 +246,9 @@
       </div>
     
       <div class="item">
+      <a href="/restaurant/resCatSub.do?foodCat=A05020200">
         <img src="/resources/img/서양식.jpg" alt="서양식" style="height:420px; width:100%;">
+       </a>
         <div class="carousel-caption">
           <h3>서양식</h3>
           <p>서양의 고급스러운 맛</p>
@@ -251,7 +256,9 @@
       </div>
       
       <div class="item">
+        <a href="/restaurant/resCatSub.do?foodCat=A05020400">
         <img src="/resources/img/중식.jpg" alt="중식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>중식</h3>
           <p>중국의 풍미를 느낄 수 있는 음식들</p>

@@ -90,33 +90,21 @@ h3 {
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		var view=document.contentForm.viewno.value;
-		alert("view : "+view);
-		$.ajax({
-			url : '/restaurant/selectContentID.do',
-			type : 'get',
-			data : {viewno:view},
-			dataType : 'text',
-			success : function(data) {
-				console.log("DATA : "+data);
-				alert("data : "+data);
-				document.contentForm.contentID.value=data;
-				var myItem=null;
-				var contentID =data;
-				var output = '';
+		var contentid=${contentid};
+		//alert("contentid : "+contentid);
 				$.ajax({
 					url : '../PublicData2.do',
 					type : 'get',
-					data : {contentID:contentID},
+					data : {contentId:contentid},
 					dataType : 'json',
 					success : function(data) {
 						console.log("DATA : "+data);
 						console.log(data);
 						console.log(data.response.body.items.item);
 						myItem = data.response.body.items.item;
-
+						var output='';
 						//for (var i = 0; myItem.length; i++) {
-						
+							
 							console.log(myItem.length);
 							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + '맛집' + '</h2>';
 							output += '<hr>';
@@ -145,13 +133,7 @@ h3 {
 						alert("Error: " + errorThrown);
 					}
 				});
-			},
-			error : function(message) {
-				alert("Error message: " + message);
-			}
 		});
-	});
-	
 	function goback(){
 
 		history.go(-1);
