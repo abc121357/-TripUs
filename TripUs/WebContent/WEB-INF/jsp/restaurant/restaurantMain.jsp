@@ -166,8 +166,9 @@
     <div class="carousel-inner">
 	
       <div class="item active" >
-      <a href="#">
+      <a href="/restaurant/resSub.do?areaCode=1">
         <img src="/resources/img/경기도맛집.jpg"  alt="이미지 1" style=" height:420px; width:100%;">
+        <input type="hidden" id="areaCode" name="areaCode" value="1"/>
         </a>
         <div class="carousel-caption">
           <h3 style="text-decoration-color: skyblue;">경기도</h3>

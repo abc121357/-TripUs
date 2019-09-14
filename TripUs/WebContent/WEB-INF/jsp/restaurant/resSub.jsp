@@ -59,49 +59,124 @@
 			
 			
 		</style>
+		
+		<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<!-- bootstrap 3.4.0 -->	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!--Scroll to top-->
+	<!--End of Scroll to top-->
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>-->
+	<script src="/resources/js/jquery-1.12.3.min.js"></script>
+
+	<!--Counter UP Waypoint-->
+	<script src="/resources/js/waypoints.min.js"></script>
+	<!--Counter UP-->
+	<script src="/resources/js/jquery.counterup.min.js"></script>
+	<!--Google Maps API-->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjxvF9oTfcziZWw--3phPVx1ztAsyhXL4"></script>
+
+
+	<!--Isotope-->
+	<script src="/resources/js/isotope/min/scripts-min.js"></script>
+	<script src="/resources/js/isotope/cells-by-row.js"></script>
+	<script src="/resources/js/isotope/isotope.pkgd.min.js"></script>
+	<script src="/resources/js/isotope/packery-mode.pkgd.min.js"></script>
+	<script src="/resources/js/isotope/scripts.js"></script>
+
+
+	<!--Back To Top-->
+	<script src="/resources/js/backtotop.js"></script>
+
+
+	<!--JQuery Click to Scroll down with Menu-->
+	<script src="/resources/js/jquery.localScroll.min.js"></script>
+	<script src="/resources/js/jquery.scrollTo.min.js"></script>
+	<!--WOW With Animation-->
+	<script src="/resources/js/wow.min.js"></script>
+	<!--WOW Activated-->
+	<script>
+		new WOW().init();
+	</script>
+
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<!-- Custom JavaScript-->
+	<script src="/resources/js/main.js"></script>
+
+ <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="/resources/css/animate.min.css">
+
+        <!-- Bootstrap -->
+        <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="/resources/css/carousel.css" />
+
+        <link rel="stylesheet" href="/resources/css/isotope/style.css">
+
+        <!--Main Stylesheet-->
+        <link href="/resources/css/style.css" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="/resources/css/responsive.css" rel="stylesheet">
+
+		
 		<script type="text/javascript">
 			
 		$(document).ready(function(){
-			var view=document.contentForm.viewno.value;
-			alert("view : "+view);
-			$.ajax({
-				url : '/restaurant/selectContentID.do',
-				type : 'get',
-				data : {viewno:view},
-				dataType : 'text',
-				success : function(data) {
-					console.log("DATA : "+data);
-					alert("data : "+data);
-					document.contentForm.contentID.value=data;
-					var myItem=null;
-					var contentID =data;
-					var output = '';
-					$.ajax({
+			var areaCode=document.getElementById("areaCode").value;
+			alert("areaCode : "+areaCode);
+				$.ajax({
 						url : '../PublicData.do',
 						type : 'get',
-						data : {contentID:contentID},
+						data : {areaCode:areaCode},
 						dataType : 'json',
 						success : function(data) {
 							console.log("DATA : "+data);
 							console.log(data);
 							console.log(data.response.body.items.item);
 							myItem = data.response.body.items.item;
-
-							//for (var i = 0; myItem.length; i++) {
+							var areaCodeStr='';
+							console.log(myItem[0].areacode);
+							switch(myItem[0].areacode){
+							case 1:
+								areaCodeStr="서울";
+								break;
+							case 2:
+								areaCodeStr="인천";
+								break;
+							case 31:
+								areaCodeStr="경기도";
+								break;
+							default:
+							areaCodeStr="지역분류없음";
+							
+							}
+							
+							var output = '';
+							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + areaCodeStr + '</h2>';
+							for (var i = 0; i<myItem.length; i++) {
 							
 								console.log(myItem.length);
-								output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + '맛집' + '</h2>';
-								output += '<hr>';
-								output += '<h4>' + myItem.title + '</h4>';
 								
-								output += '<p>' + myItem.addr1 + '</p>';
 								output += '<hr>';
+								output += '<h4>' + myItem[i].title + '</h4>';
+								
+								output += '<p>' + myItem[i].addr1 + '</p>';
 								output += '<div class="row" id="resInfo">';
 								output += '<div class="col-md-7">';
-								output += '<p class="">' + myItem.overview + '</p>';
+								output += '<p class=""> 조회수 : ' + myItem[i].readcount + '</p>';
 								output += '</div>';
 								output += '<div class="col-md-5">';
-								output += '<img class="img-rounded" width="400px" height="400px" src="' + myItem.firstimage  + '"alt="대표이미지">';
+								output += '<img class="img-rounded" width="400px" height="400px" src="' + myItem[i].firstimage  + '"alt="이미지가 없습니다.">';
 								output += '</div>';
 								output += '</div>';
 								
@@ -109,7 +184,9 @@
 								//output += '<h4>' + myItem.firstimage + '</h4>';
 								
 								console.log(output);
+							}
 								$(".List").html(output);
+							
 								//document.body.innerHTML += output;
 						},
 						error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -117,12 +194,7 @@
 							alert("Error: " + errorThrown);
 						}
 					});
-				},
-				error : function(message) {
-					alert("Error message: " + message);
-				}
 			});
-		});
 		
 			function detail(viewno) {
 				alert("클릭");
@@ -136,7 +208,12 @@
 		      <br>
 		      <br>
 		      <br>
-	      
+	     		 <form action="#" method="get">
+		      	<input type="hidden" id="areaCode" name="areaCode" value="2"/>
+		     	</form>
+		     	<div class="List">
+		      	
+		      	</div>
 		      <table id="resList">
 		      	<thead>
 		        	<tr>
@@ -145,7 +222,10 @@
 
 		         	</tr>
 		      	</thead>
-		      	<tbody> 
+		      	<tbody>
+		      	
+		      	
+		      	
 		     	<c:forEach var="resList" items="${resBoardList}">
 		      		
 	               		<tr>

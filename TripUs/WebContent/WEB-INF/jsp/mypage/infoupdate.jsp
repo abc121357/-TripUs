@@ -199,9 +199,9 @@
 				</div>
 				<br>
 				<div id="nick" style="margin:30px;">
-				<label class="col-sm-5 control-label">별명 : </label>
-				<input type="text" class="col-sm-1 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
-				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
+				<label class="col-sm-2 control-label">별명 : </label>
+				<input type="text" class="col-sm-6 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
+				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px; margin:10px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
 				</div>
 				<br>
 				<div id="hp" style="margin:30px;">
