@@ -10,6 +10,7 @@
 		<result property="mytitle" column="MYTITLE"/>
 		<result property="mylink" column="MYLINK"/>
 		<result property="myid" column="MYID"/>
+		<result property="mycno" column="MYCNO"/>
 		<result property="myinsertdate" column="MYINSERTDATE"/>
 		
 	</resultMap>
@@ -58,8 +59,9 @@
 						'1',
 						#{mylocation},
 						#{mylink},
-						SYSDATE,
+						#{mycno},
 						#{mno},
+						SYSDATE,
 						SYSDATE,
 						SYSDATE
 						)
@@ -72,8 +74,10 @@
 	DELETE 
 	      TUMYFAV
 	WHERE
-	      MYNO=#{myno}
-
-	
+			1=1
+	AND
+	      MNO=#{mno}
+	AND
+		  MYCNO=#{mycno}
 	</delete>
 </mapper>

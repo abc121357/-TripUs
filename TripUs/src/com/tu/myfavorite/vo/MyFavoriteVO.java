@@ -15,6 +15,7 @@ public class MyFavoriteVO {
 	private String mygrade; // size : 1
 	private String mylocation; // size : 100
 	private String mylink; // size : 300
+	private int mycno; // size : 8
 	private String myinsertdate; // size: date
 	private String mno; // size : 13
 	private String myrecordinsertdate; // size : date
@@ -83,7 +84,15 @@ public class MyFavoriteVO {
 	public void setMylink(String mylink) {
 		this.mylink = mylink;
 	}
+	
+	public int getMycno() {
+		return mycno;
+	}
 
+	public void setMycno(int mycno) {
+		this.mycno = mycno;
+	}
+	
 	public String getMyinsertdate() {
 		return myinsertdate;
 	}

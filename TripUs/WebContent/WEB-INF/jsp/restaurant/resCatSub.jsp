@@ -171,9 +171,9 @@
 								console.log(myItem.length);
 								
 								output += '<hr>';
-								output += '<h3 onclick="detail('+myItem[i].contentid+')">' + myItem[i].title + '</h3>';
+								output += '<h3 onclick="detail('+myItem[i].contentid+')"> 이름 : ' + myItem[i].title + '</h3>';
 								output += '<br>';
-								output += '<p>' + myItem[i].addr1 + '</p>';
+								output += '<p> 주소 : ' + myItem[i].addr1 + '</p>';
 								output += '<div class="row" id="resInfo">';
 								output += '<div class="col-md-7">';
 								output += '<p class=""> 조회수 : ' + myItem[i].readcount + '</p>';

@@ -13,7 +13,6 @@
 테스트 index입니다.
 <form id="favform" name="favform" action="myfavorite/myfavorite.do">
 <input type="hidden" id="myno" name="myno" value="MY201908270001">
-<button type="button" id="fav" name="fav" onclick="favtest()">눌러</button>
 </form>
 <br><a href="restaurant/restaurantMain.do"> 맛집메인으로 이동</a>
 <br><a href="mypage/myPage.do">마이페이지로 이동</a>

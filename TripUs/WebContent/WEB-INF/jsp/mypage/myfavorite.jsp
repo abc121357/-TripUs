@@ -47,7 +47,7 @@
 
 		<div class="btn-group">
 		<form>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="all" name="all" >전체</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >전체</a>
 			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">여행지</a>
 			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">맛집</a>
 			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">축제</a>
@@ -55,19 +55,17 @@
 		</div>
 	</div>
 	<p>즐겨찾기는 최대 10개까지 등록가능합니다.</p>
-	<table>
 		<c:if test="${empty myFavorite}">
-		</c:if>
 		<td colspan="5" align="center">저장한 즐겨찾기가 없습니다.</td>
+		</c:if>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
-			<tr>
-				<td>제목 : </td><td class="data"align="center">${fav.mytitle}</td>
-				<td>위치 : </td><td class="data" align="center">${fav.mylocation}</td>
-				<td>링크 : </td><td class="data" align="center">${fav.mylink}</td>
-				<td><a href="/mypage/deleteMyFavorite.do">삭제</a></td>
-		</tr>
+				<hr>		
+				<h3>제목 : ${fav.mytitle}</h3>
+				<p>위치 : ${fav.mylocation}</p>
+				<p>링크 : ${fav.mylink}</p>
+				<a href="/mypage/deleteMyFavorite.do?=${fav.myno}">삭제</a></td>
+		
 		</c:forEach>
-		</table>
 	
 	
 	

@@ -108,9 +108,9 @@ h3 {
 							console.log(myItem.length);
 							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + '맛집' + '</h2>';
 							output += '<hr>';
-							output += '<h4>' + myItem.title + '</h4>';
-							
-							output += '<p>' + myItem.addr1 + '</p>';
+							output += '<h3> 이름 : ' + myItem.title + '</h3>';
+							output += '<br>';
+							output += '<p> 주소 : ' + myItem.addr1 + '</p>';
 							output += '<hr>';
 							output += '<div class="row" id="resInfo">';
 							output += '<div class="col-md-7">';
