@@ -10,6 +10,7 @@
 		<result property="mytitle" column="MYTITLE"/>
 		<result property="mylink" column="MYLINK"/>
 		<result property="myid" column="MYID"/>
+		<result property="mno" column="MNO"/>
 		<result property="mycno" column="MYCNO"/>
 		<result property="myinsertdate" column="MYINSERTDATE"/>
 		
@@ -22,6 +23,8 @@
 					 MYLOCATION
 					,MYTITLE
 					,MYLINK
+					,MNO
+					,MYCNO
 					,MYINSERTDATE
 			FROM
 					TUMYFAV
@@ -38,6 +41,8 @@
 					 MYLOCATION
 					,MYTITLE
 					,MYLINK
+					,MNO
+					,MYCNO
 					,MYINSERTDATE
 			FROM
 					TUMYFAV

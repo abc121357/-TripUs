@@ -84,9 +84,9 @@ public class MyPageController {
 		
 		int result=myPageService.infoNickCheck(param);
 		System.out.println("result : "+result);
-		String resultStr="별명중복";
+		String resultStr="nickfail";
 		if(result==0){
-			resultStr="별명중복아님";
+			resultStr="nicktrue";
 		}
 		
 		mav.addObject("resultStr",resultStr);
@@ -120,9 +120,9 @@ public class MyPageController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String resultStr="정보수정완료";
+		String resultStr="infocomple";
 		if(result==0)
-			resultStr="내정보수정실패";
+			resultStr="infofail";
 		System.out.println("resultStr : " + resultStr);
 		mav.addObject("result",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/infoupdate");

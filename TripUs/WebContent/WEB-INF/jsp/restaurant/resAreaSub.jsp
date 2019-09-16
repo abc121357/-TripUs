@@ -9,6 +9,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>    
+<%@ page import="com.tu.myfavorite.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -164,7 +165,8 @@
 							var output = '';
 							output += '<h2 style="font-size:40px; font-family: 나눔고딕">'  + areaCodeStr + '</h2>';
 							for (var i = 0; i<myItem.length; i++) {
-							
+								
+								var contentid=myItem[i].contentid;
 								console.log(myItem.length);
 								
 								output += '<hr>';
@@ -174,12 +176,12 @@
 								output += '<div class="row" id="resInfo">';
 								output += '<div class="col-md-7">';
 								output += '<p> 조회수 : ' + myItem[i].readcount + '</p>';
-								if(){
+								//if(){
 									output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';
-								}
-								else{
-									output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';	
-								}
+								//}
+								//else{
+								//	output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';	
+								//}
 								output += '</div>';
 								output += '<div class="col-md-5">';
 								output += '<img class="img-rounded" onclick="detail('+myItem[i].contentid+')" width="400px" height="400px" src="' + myItem[i].firstimage  + '"alt="이미지가 없습니다.">';
@@ -189,8 +191,9 @@
 						
 								//output += '<h4>' + myItem.firstimage + '</h4>';
 								
-								console.log(output);
 							}
+
+								console.log(output);
 								$(".List").html(output);
 							
 								//document.body.innerHTML += output;
@@ -209,9 +212,28 @@
 			
 			function onstar(contentid,title,addr1){
 				//alert(contentid);
-				document.getElementById("offstar").src="resources/img/검은별.jpg";
-				document.getElementById("offstar").onclick="offstar(contentid)";
-				location.href = "../mypage/insertMyFavorite.do?contentId="+contentid+"&title="+title+"&addr1="+addr1;
+				//document.getElementById("offstar").src="/resources/img/검은별.jpg";
+				//document.getElementById("offstar").onclick="offstar(contentid)";
+				//location.href = "../mypage/insertMyFavorite.do?contentId="+contentid+"&title="+title+"&addr1="+addr1;
+			
+				$.ajax({
+					url : '../mypage/insertMyFavorite.do',
+					type : 'get',
+					data : {contentId:contentid,title:title,addr1:addr1},
+					dataType : 'text',
+					success : function(data) {
+						document.getElementById("offstar").src="/resources/img/검은별.jpg";
+						document.getElementById("offstar").onclick="offstar(contentid)";
+						
+						//alert("success!!");
+							//document.body.innerHTML += output;
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						alert("Status: " + textStatus);
+						alert("Error: " + errorThrown);
+					}
+				});
+			
 			}
 			function offstar(contentid){
 				location.href = "../mypage/deleteMyFavorite.do?contentId="+contentid;

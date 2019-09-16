@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tu.chaebun.TuChaeBun;
 import com.tu.myfavorite.service.MyFavoriteService;
 import com.tu.myfavorite.vo.MyFavoriteVO;
 
@@ -69,7 +70,7 @@ public class MyFavoriteController {
 		System.out.println("insertmyFavorite 진입");
 		
 		int result=0;
-		param.setMyno("MY201909150002"); //이건 채번으로 만든다.
+		param.setMyno(TuChaeBun.commYearNo()); //이건 채번으로 만든다.
 		param.setMno("M201909150001"); // 유저 고유번호
 		param.setMyid("test01"); // 유저 아이디
 		param.setMylocation(addr1); // api 주소
@@ -84,18 +85,22 @@ public class MyFavoriteController {
 		resultStr="즐겨찾기 등록 실패..";
 		mav.addObject("result",resultStr);
 		mav.setViewName(CONTEXT_PATH+"/result");
-		
+
+		System.out.println("insertMyFavorite끝");
 		return mav;
 	}
 	
 	@RequestMapping("/deleteMyFavorite")
 	@ResponseBody
-	public ModelAndView deletemyfavorite(@ModelAttribute MyFavoriteVO param,String myno){
+	public ModelAndView deletemyfavorite(@ModelAttribute MyFavoriteVO param,String mno,int mycno){
 		
 		System.out.println("deleteMyFavorite시작");
-		System.out.println("myno : "+ myno);
+		System.out.println("mno : "+ mno);
 		int result=0;
-		param.setMyno(myno);
+		param.setMyno(mno);
+		param.setMycno(mycno);
+		System.out.println("mno : "+mno);
+		System.out.println("mycno : "+mycno);
 		result=myfavoriteService.deleteMyFavorite(param);
 		
 		
@@ -107,7 +112,6 @@ public class MyFavoriteController {
 		}
 		
 		mav.addObject("result",resultStr);
-		mav.addObject("myno",myno);
 		mav.setViewName(CONTEXT_PATH+"/result");
 		
 

@@ -53,7 +53,7 @@
 	FROM
 			TUMEM
 	WHERE
-			MNAME=#{mnick}
+			MNICK=#{mnick}
 
 
 	</select>

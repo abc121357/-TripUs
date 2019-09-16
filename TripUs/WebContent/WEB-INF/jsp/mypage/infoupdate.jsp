@@ -39,13 +39,13 @@
 			type:"GET",
 			data:{mnick:mnick},
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			dataType : "json",
+			dataType : "text",
 			success:function(resultStr){
 				console.log("resultStr : " + resultStr);
-				if(resultStr=="별명중복아님"){
-					alert("별명을 사용가능합니다.");
+				if(resultStr=="nicktrue"){
+					alert("별명을 사용할수 있습니다.");
 				}
-				else if(resultStr=="별명중복"){
+				else if(resultStr=="nickfail"){
 					alert("해당 별명을 사용할 수 없습니다.");
 				}
 				else{
@@ -151,12 +151,12 @@
 			dataType : "text",
 			success:function(data){
 				console.log("data : " + data);
-				if(data=="정보수정완료"){
+				if(data=="infocomple"){
 					alert("수정 성공. 메인페이지로 이동");
 					document.updateinfo.action="/mypage/myPage.do";
 					document.updateinfo.submit();
 				}
-				else if(data=="내정보수정실패"){
+				else if(data=="infofail"){
 				alert("잘못 입력했습니다. 다시입력하세요.");
 				}
 				else{

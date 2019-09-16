@@ -1,8 +1,8 @@
 <%--
-ÆÄÀÏ¸í : myfavorite.jsp
-¼³¸í : Áñ°ÜÃ£±â ¸ñ·Ïº¸±â
-ÀÛ¼ºÀÏ : 2019.9.1
-ÀÛ¼ºÀÚ : LHJ
+íŒŒì¼ëª… : myfavorite.jsp
+ì„¤ëª… : ì¦ê²¨ì°¾ê¸° ëª©ë¡ë³´ê¸°
+ì‘ì„±ì¼ : 2019.9.1
+ì‘ì„±ì : LHJ
  --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,31 +40,57 @@
 	
 	</style>
 	
+	<script type="text/javascript">
+	
+	function deletefav(mno,mycno){
+		
+		$.ajax({
+			url:'../mypage/deleteMyFavorite.do',
+			type:'get',
+			data:{mno:mno,mycno:mycno},
+			dataType:'text',
+			sucess:function(data){
+			alert("data : "+data);
+			console.log("ì¦ê²¨ì°¾ê¸°ì—ì„œ ì‚­ì œë«ì—‰");
+			alert("ì¦ê²¨ì°¾ê¸°ì—ì„œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert("Status: " + textStatus);
+				alert("Error: " + errorThrown);
+				alert("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
+			}
+		});
+		
+	}
+	
+	</script>
+	
 	</head>
 	<body>
-	¸¶ÀÌÆäÀÌÁö - Áñ°ÜÃ£±â ÀÔ´Ï´Ù.
+	ë§ˆì´í˜ì´ì§€ - ì¦ê²¨ì°¾ê¸° ì…ë‹ˆë‹¤.
 	<div class="container">
 
 		<div class="btn-group">
 		<form>
-			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >ÀüÃ¼</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">¿©ÇàÁö</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">¸ÀÁı</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">ÃàÁ¦</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >ï¿½ï¿½Ã¼</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">ï¿½ï¿½ï¿½ï¿½</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">ï¿½ï¿½ï¿½ï¿½</a>
 		</form>
 		</div>
 	</div>
-	<p>Áñ°ÜÃ£±â´Â ÃÖ´ë 10°³±îÁö µî·Ï°¡´ÉÇÕ´Ï´Ù.</p>
+	<p>ì¦ê²¨ì°¾ê¸°ëŠ” ìµœëŒ€ 10ê°œê¹Œì§€ ë“±ë¡ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>
 		<c:if test="${empty myFavorite}">
-		<td colspan="5" align="center">ÀúÀåÇÑ Áñ°ÜÃ£±â°¡ ¾ø½À´Ï´Ù.</td>
+		<td colspan="5" align="center">ì €ì¥í•œ ì¦ê²¨ì°¾ê¸°ê°€ ì—†ìŠµë‹ˆë‹¤.</td>
 		</c:if>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
 				<hr>		
-				<h3>Á¦¸ñ : ${fav.mytitle}</h3>
-				<p>À§Ä¡ : ${fav.mylocation}</p>
-				<p>¸µÅ© : ${fav.mylink}</p>
-				<a href="/mypage/deleteMyFavorite.do?=${fav.myno}">»èÁ¦</a></td>
-		
+				<h3>ì œëª© : ${fav.mytitle}</h3>
+				<p>ìœ„ì¹˜ : ${fav.mylocation}</p>
+				<p>ë§í¬ : ${fav.mylink}</p>
+				<div onclick="deletefav('${fav.mno}',${fav.mycno})">
+				<a>ì‚­ì œ</a>
+				</div>
 		</c:forEach>
 	
 	

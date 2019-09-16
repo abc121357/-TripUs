@@ -1,3 +1,12 @@
+/*
+¿Œµ¶Ω∫ »Æ¿Œ
+*/
+SELECT * FROM ALL_IND_COLUMNS WHERE TABLE_NAME='TUMYFAV';
+/*
+
+
+
+*/
 UPDATE
       TUMEM
 SET
@@ -19,7 +28,19 @@ WHERE
       
 SELECT *
 FROM TUMYFAV;
-
+CREATE TABLE
+            TUMYFAV(MYNO VARCHAR2(14) PRIMARY KEY,
+                    MYTITLE VARCHAR2(60) NOT NULL,
+                    MYID VARCHAR2(500) NOT NULL,
+                    MYGRADE VARCHAR2(1) NOT NULL,
+                    MYLOCATION VARCHAR2(100) NOT NULL,
+                    MYLINK VARCHAR2(300),
+                    MYCNO NUMBER(8) NOT NULL,
+                    MNO VARCHAR2(13),
+                    MYINSERTDATE DATE,
+                    MYRECORDINSERTDATE DATE,
+                    MYRECORDUPDATEDATE DATE
+                      );
 INSERT
 INTO      TUMYFAV
 VALUES
@@ -37,4 +58,4 @@ AND
         MYCNO=795034
 ;
         
-        
+DROP TABLE TUMYFAV;
