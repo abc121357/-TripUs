@@ -1,25 +1,25 @@
 # -TripUs
-팀프로젝트 TripUs를 만드는 과정을 작성하는 레포지토리입니다.
+팀프로젝트 TripUs를 만드는 과정을 작성하는 레포지토리입니다.<br>
 코드에 문제가 있어도 팀프로젝트가 진행되는 동안 매일 저녁에 새로운 버전으로 업로드합니다.
+<br>
 
-
-
+<br>
 # -사용 기술
 ajax, html4, css3, jsp, javascript, bootstrap3, jquery 11.0.1, java, 한국관광공사api
-
-
+<br>
+<br>
 
 # -개발도구
 
 eclipe neon3, apache tomcat 8.0,jdk 1.8.192, oracle11g
-
-
+<br>
+<br>
 
 # -사용툴
 
 Spring Tool Suite 3.7.3, sqldeveloper4.1.5
-
-
+<br>
+<br>
 
 # -진행상황
 
