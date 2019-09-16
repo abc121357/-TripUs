@@ -6,7 +6,7 @@
  --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -72,10 +72,10 @@
 
 		<div class="btn-group">
 		<form>
-			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >��ü</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">������</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">����</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">����</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >전체</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">여행지</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">맛집</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">축제</a>
 		</form>
 		</div>
 	</div>
