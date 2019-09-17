@@ -152,7 +152,7 @@
 			success:function(data){
 				console.log("data : " + data);
 				if(data=="infocomple"){
-					alert("수정 성공. 메인페이지로 이동");
+					alert("정보 수정을 완료하였습니다.");
 					document.updateinfo.action="/mypage/myPage.do";
 					document.updateinfo.submit();
 				}

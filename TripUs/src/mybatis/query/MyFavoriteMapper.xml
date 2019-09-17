@@ -61,7 +61,7 @@
 						#{myno},
 						#{mytitle},
 						#{myid},
-						'1',
+						#{mygrade},
 						#{mylocation},
 						#{mylink},
 						#{mycno},

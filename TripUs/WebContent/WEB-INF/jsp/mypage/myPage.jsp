@@ -221,7 +221,7 @@
            
           </div>
           <div class="card-footer" align="right">
-            <a href="/mypage/myfavorite.do" class="btn btn-primary">이동</a>
+            <a href="/mypage/myfavorite.do?mygrade=0" class="btn btn-primary">이동</a>
           </div>
         </div>
       </div>

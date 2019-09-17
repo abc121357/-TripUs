@@ -152,7 +152,7 @@
   <a href="#">#마라탕</a>
 
 
-<h2 style="color: aqua;">- 지역별 맛집들</h2>
+<h2 style="color: brown;">- 지역별 맛집들</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -210,8 +210,11 @@
 
 <br>
 <br>
+<br>
+<br>
 
-<h2 style="color: aqua;"> - 맛집 요리 분류</h2>
+
+<h2 style="color: brown;"> - 맛집 요리 분류</h2>
   <div id="myCarousel2" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -278,8 +281,6 @@
 
 <br>
 <br>
-	
-<h2 style="font-family: aqua;"> - TripUs추천 제철 맛집들</h2>
 
 
 </div>

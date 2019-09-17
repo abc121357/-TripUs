@@ -102,7 +102,7 @@ public class MyPageController {
 	
 	@RequestMapping("/memberInfoUpdate")
 	@ResponseBody
-	public ModelAndView memberInfoUpdate(@ModelAttribute MemberVO param,HttpServletRequest request){
+	public String memberInfoUpdate(@ModelAttribute MemberVO param,HttpServletRequest request){
 		
 		int result=0;
 		
@@ -133,7 +133,7 @@ public class MyPageController {
 		session.setAttribute("mpw",param.getMpw());
 		
 						
-		return mav;
+		return resultStr;
 		
 	}
 }

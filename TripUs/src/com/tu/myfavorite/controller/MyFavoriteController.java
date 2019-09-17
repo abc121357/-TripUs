@@ -31,19 +31,20 @@ public class MyFavoriteController {
 	
 	
 	@RequestMapping("/myfavorite")
-	public ModelAndView selectmyfavorite(@ModelAttribute MyFavoriteVO param,HttpServletRequest request){
+	@ResponseBody
+	public ModelAndView selectmyfavorite(@ModelAttribute MyFavoriteVO param,String mygrade,HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String mid = (String)session.getAttribute("mid");
 		
 		System.out.println("selectmyFavorite 진입");
 		ModelAndView mav= new ModelAndView();
-		String mygrade="1";
+		
 		if(Integer.parseInt(mygrade)==0){
 		param.setMno("M201909150001");
 		System.out.println("listmyFavorite 실행");
 		mav.addObject("myFavorite",myfavoriteService.listMyFavorite(param));
 		mav.setViewName(CONTEXT_PATH+"/myfavorite");		
-			
+		
 		}
 		else{
 		param.setMno("M201909150001");
@@ -66,7 +67,7 @@ public class MyFavoriteController {
 	
 	@RequestMapping("/insertMyFavorite")
 	@ResponseBody
-	public ModelAndView insertmyfavorite(@ModelAttribute MyFavoriteVO param,int contentId,String title,String addr1){
+	public ModelAndView insertmyfavorite(@ModelAttribute MyFavoriteVO param,int contentTypeId, int contentId,String title,String addr1){
 		System.out.println("insertmyFavorite 진입");
 		
 		int result=0;
@@ -77,6 +78,16 @@ public class MyFavoriteController {
 		param.setMycno(contentId); // api 컨텐츠 번호
 		param.setMytitle(title); // api 컨텐츠 제목
 		param.setMylink("/restaurant/goboard.do?"+contentId);
+		if(contentTypeId==12){
+			param.setMygrade("1");
+		}else if(contentTypeId==39){
+			param.setMygrade("2");
+		}else if(contentTypeId==15){
+			param.setMygrade("3");
+		}else{
+			param.setMygrade("0");
+		}
+		
 		result=myfavoriteService.insertMyFavorite(param);
 	
 		ModelAndView mav = new ModelAndView();
@@ -112,7 +123,7 @@ public class MyFavoriteController {
 		}
 		
 		mav.addObject("result",resultStr);
-		mav.setViewName(CONTEXT_PATH+"/result");
+		mav.setViewName(CONTEXT_PATH+"/myfavorite");
 		
 
 		System.out.println("deleteMyFavorite끝");

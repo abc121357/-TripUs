@@ -178,11 +178,11 @@
 								output += '<div class="col-md-7">';
 								output += '<p class=""> 조회수 : ' + myItem[i].readcount + '</p>';
 								//if(){
-								output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';
-							//}
+								output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contenttypeid+', '+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';
+								//}
 							//else{
-							//	output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';	
-							//}
+							//	output += '<img id="offstar" align="right" onclick="onstar('+myItem[i].contentTypeId+', '+myItem[i].contentid+', &#39;'+myItem[i].title+'&#39;, &#39;'+myItem[i].addr1+'&#39;)" width="50px" height="50px" src="/resources/img/흰별.jpg" alt="이미지가 없습니다.">';
+								//}
 								output += '</div>';
 								output += '<div class="col-md-5">';
 								output += '<img class="img-rounded" onclick="detail('+myItem[i].contentid+')" width="400px" height="400px" src="' + myItem[i].firstimage  + '"alt="이미지가 없습니다.">';
@@ -210,7 +210,7 @@
 	  			location.href = "../restaurant/goBoard.do?contentid="+contentid;
 			}
 			
-			function onstar(contentid,title,addr1){
+			function onstar(contentTypeId,contentid,title,addr1){
 				//alert(contentid);
 				//document.getElementById("offstar").src="/resources/img/검은별.jpg";
 				//document.getElementById("offstar").onclick="offstar(contentid)";
@@ -219,13 +219,13 @@
 				$.ajax({
 					url : '../mypage/insertMyFavorite.do',
 					type : 'get',
-					data : {contentId:contentid,title:title,addr1:addr1},
+					data : {contentTypeId:contentTypeId,contentId:contentid,title:title,addr1:addr1},
 					dataType : 'text',
 					success : function(data) {
 						document.getElementById("offstar").src="/resources/img/검은별.jpg";
 						document.getElementById("offstar").onclick="offstar(contentid)";
 						
-						//alert("success!!");
+						alert("즐겨찾기에 추가되었습니다.");
 							//document.body.innerHTML += output;
 					},
 					error : function(XMLHttpRequest, textStatus, errorThrown) {

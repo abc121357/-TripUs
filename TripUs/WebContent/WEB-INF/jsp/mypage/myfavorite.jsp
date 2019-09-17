@@ -42,58 +42,73 @@
 	
 	<script type="text/javascript">
 	
-	function deletefav(mno,mycno){
+	function deletefav(title,mno,mycno){
 		
 		$.ajax({
 			url:'../mypage/deleteMyFavorite.do',
 			type:'get',
 			data:{mno:mno,mycno:mycno},
 			dataType:'text',
-			sucess:function(data){
-			alert("data : "+data);
-			console.log("즐겨찾기에서 삭제됫엉");
-			alert("즐겨찾기에서 삭제되었습니다.");
+			success : function(data){
+				console.log("즐겨찾기에서 삭제됫엉");
+				alert(title + "이(가) 즐겨찾기에서 삭제되었습니다.");
+				location.reload();
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("Status: " + textStatus);
 				alert("Error: " + errorThrown);
 				alert("오류가 발생했습니다.");
 			}
+			
 		});
 		
+	}
+	
+	function backspace(){
+		location.href="/mypage/myPage.do";
 	}
 	
 	</script>
 	
 	</head>
 	<body>
-	마이페이지 - 즐겨찾기 입니다.
-	<div class="container">
+	
+	<h1 align="center">즐겨찾기</h1>
 
-		<div class="btn-group">
+	<div class="container" align="center">
+
+		<div class="btn-group" align="center">
 		<form>
-			<a class="btn btn-info" href="/mypage/myfavorite.do?" id="all" name="all" >전체</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="trip" name="trip">여행지</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="res" name="res">맛집</a>
-			<a class="btn btn-info" href="/mypage/myfavorite.do" id="fes" name="fes">축제</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?mygrade=0" id="all" name="all" >전체</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?mygrade=1" id="trip" name="trip">여행지</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?mygrade=2" id="res" name="res">맛집</a>
+			<a class="btn btn-info" href="/mypage/myfavorite.do?mygrade=3" id="fes" name="fes">축제</a>
+			<br>
+			<p>즐겨찾기는 최대 100개까지 등록가능합니다.</p>
 		</form>
 		</div>
 	</div>
-	<p>즐겨찾기는 최대 10개까지 등록가능합니다.</p>
+		<div class="viewfav" id="viewfav" align="center" style="height:800px; padding: 0px, 20%, 0px, 20%">
 		<c:if test="${empty myFavorite}">
-		<td colspan="5" align="center">저장한 즐겨찾기가 없습니다.</td>
+		<p>저장한 즐겨찾기가 없습니다.</p>
 		</c:if>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
 				<hr>		
 				<h3>제목 : ${fav.mytitle}</h3>
 				<p>위치 : ${fav.mylocation}</p>
 				<p>링크 : ${fav.mylink}</p>
-				<div onclick="deletefav('${fav.mno}',${fav.mycno})">
-				<a>삭제</a>
+				<div id="delfav">
+				<a class="btn btn-primary" onclick="deletefav('${fav.mytitle}','${fav.mno}',${fav.mycno})">삭제</a>
 				</div>
 		</c:forEach>
-	
-	
+		</div>
+		<div id="footer" align="center">
+		
+		<div class="btn btn-primary btm-sm" onclick="backspace();">
+		<h6>마이페이지</h6>
+		</div>
+		
+		</div>
 	
 	</body>
 </html>
