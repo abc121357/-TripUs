@@ -1,5 +1,9 @@
 # -TripUs 2.6a 패치내역
 
+1. 정보수정 화면 수정
+
+# -TripUs 2.6a 패치내역
+
 1. myfavorite쿼리를 고정값에서 mygrade를 넣어 값을 지정할 수 있게 변경
 2. 즐겨찾기 컨트롤러에서 modelandView에서 String으로 변경해서 값을 text로 받게 변경
 3. mygrade변수 고정값 제거 후 contentTypeId값에 따라 가져오게 변경
