@@ -225,7 +225,7 @@
 						document.getElementById("offstar").src="/resources/img/검은별.jpg";
 						document.getElementById("offstar").onclick="offstar(contentid)";
 						
-						alert("즐겨찾기에 추가되었습니다.");
+						alert(title+ "이(가) 즐겨찾기에 추가되었습니다.");
 							//document.body.innerHTML += output;
 					},
 					error : function(XMLHttpRequest, textStatus, errorThrown) {

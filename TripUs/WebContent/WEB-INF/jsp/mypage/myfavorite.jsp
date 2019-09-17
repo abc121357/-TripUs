@@ -90,7 +90,7 @@
 	</div>
 		<div class="viewfav" id="viewfav" align="center" style="height:800px; padding: 0px, 20%, 0px, 20%">
 		<c:if test="${empty myFavorite}">
-		<p>저장한 즐겨찾기가 없습니다.</p>
+		<p style="font: bold;">저장한 즐겨찾기가 없습니다.</p>
 		</c:if>
 		<c:forEach items="${myFavorite}" var="fav" varStatus="i">
 				<hr>		

@@ -184,11 +184,14 @@
 	<body>
 	
 		<div class="container">	
-
-		<form name="updateinfo" method="POST" action="/mypage/myPage.do">
+		<div style="margn-left:130px">
 		
 		<h2 align="center"> 정보수정 </h2>
-			<div id="infoform" align="center">
+		
+		<form name="updateinfo" method="POST" action="/mypage/myPage.do">
+		
+			<div class="signup-form" id="infoform" align="center">
+				<!--
 				<div id="img">
 				<label class="control-label" style="margin:30px;">이미지 :  </label>
 				 
@@ -197,31 +200,36 @@
 				 <input class="btn btn-info btn-sm" style="width: 80px; height: 30px; margin:30px" type="button" id="mprofile" name="mprofile"  value="사진 변경"/>
 			
 				</div>
+				 -->
 				<br>
-				<div id="nick" style="margin:30px;">
-				<label class="col-sm-2 control-label">별명 : </label>
-				<input type="text" class="col-sm-6 form-control" id="mnick" name="mnick" style="width:300px" value="${memberVO.mnick}"/>
-				<input type="button" class="col-sm-2 btn btn-info btn-sm" style="width: 80px; height: 30px; margin:10px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
+				<br>
+				<br>
+				<br>
+				<div class="signup-form" id="nick">
+				<label class="control-label">별명 : </label>
+				<input type="text" class="form-control" id="mnick" name="mnick" style="width:300px" placeholder="* 한글 10자" value="${memberVO.mnick}"/>
+				<input type="button" class="btn btn-info btn-sm" style="width: 80px; height: 30px; margin:10px" id="checknick" name="checknick" value="중복확인" onclick="nickCheck()"/>
 				</div>
 				<br>
-				<div id="hp" style="margin:30px;">
-				<label class="col-sm-5 control-label">휴대전화 : </label>
-					<input type="text" class="col-sm-1 form-control" id="mhp" name="mhp" style="width:300px" value="${memberVO.mhp}"/>
-				</div>
 				<br>
-				<div id="pw" style="margin:30px;">
-				<label class="col-sm-5 control-label">변경할 비밀번호 : </label>
-					<input type="password" class="col-sm-1 form-control" id="mpw" name="mpw" style="width:300px" value="${memberVO.mpw}"/>
+				<div class="signup-form" id="hp">
+				<label class="control-label">전화번호 : </label>
+					<input type="text" class="form-control" id="mhp" name="mhp"  style="width:300px" placeholder="* 예) 01077771111" value="${memberVO.mhp}"/>
 				</div>
-				<div id="cpw" style="margin:30px;">
-				<label class="col-sm-5 control-label">비밀번호 확인 : </label>
-					<input type="password" class="col-sm-1 form-control" id="checkmpw" name="checkmpw" style="width:300px" value=""/> <br>
+				<div class="signup-form" id="pw" style="margin:30px;">
+				<label class="control-label">변경할 비밀번호 : </label>
+					<input type="password" class="form-control" id="mpw" name="mpw" style="width:300px" placeholder="* 소문자 + 특수문자 + 숫자 / 8 ~15자" value="${memberVO.mpw}"/>
 				</div>
-				<div style="margin:30px;">
+				<div class="signup-form" id="cpw" style="margin:30px;">
+				<label class="control-label">비밀번호 확인 : </label>
+					<input type="password" class="form-control" id="checkmpw" name="checkmpw" placeholder="비밀번호와 동일하게 작성하세요." style="width:300px" value=""/> <br>
+				</div>
+				<div class="signup-form" style="margin:30px;">
 					<input type="button" class="btn btn-info btn-sm" style="width: 60px; height: 30px" id="mupdate" name="mupdate" onclick="updateInfo()" value="수정"/>
 				</div>
 			</div>	
 			</form>
+			</div>
 		</div>
 	</body>
 </html>

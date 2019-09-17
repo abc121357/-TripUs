@@ -28,6 +28,9 @@ public class RestaurantController {
 	public ModelAndView listrestaurant(@ModelAttribute TurtcommVO param){
 		
 		System.out.println("listrestaurant 진입");
+		
+		//기능 구현 보류
+		/*
 		System.out.println("param : "+equals(param));
 		List<TurtcommVO> aList=restaurantService.listResComm(param);
 		System.out.println("list내용 콘솔출력 /");
@@ -40,9 +43,9 @@ public class RestaurantController {
 			System.out.println("rtinsertdate : " + tVo.getRtinsertdate());
 			
 		}
-		
+		*/
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("restaurantlist",aList);
+		//mav.addObject("restaurantlist",aList);
 		mav.setViewName(CONTEXT_PATH+"/restaurantMain");
 		
 		System.out.println("listrestaurant 끝");
