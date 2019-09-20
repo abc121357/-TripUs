@@ -34,7 +34,7 @@ public class ResBoardServiceImpl implements ResBoardService {
 	}
 	@Override
 	public List<ResBoardVO> resBoardList(ResBoardVO tvo){
-		System.out.println("ServiceImpl의 toBoardList함수 진입");
+		System.out.println("ServiceImpl의 resBoardList함수 진입");
 		List<ResBoardVO> list = new ArrayList<ResBoardVO>();
 		list = resBoardMapper.resBoardList(tvo);
 		

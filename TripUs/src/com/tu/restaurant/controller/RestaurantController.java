@@ -24,10 +24,13 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 	//매핑
-	@RequestMapping("/restaurant")
+	@RequestMapping("/restaurantMain")
 	public ModelAndView listrestaurant(@ModelAttribute TurtcommVO param){
 		
 		System.out.println("listrestaurant 진입");
+		
+		//기능 구현 보류
+		/*
 		System.out.println("param : "+equals(param));
 		List<TurtcommVO> aList=restaurantService.listResComm(param);
 		System.out.println("list내용 콘솔출력 /");
@@ -40,12 +43,10 @@ public class RestaurantController {
 			System.out.println("rtinsertdate : " + tVo.getRtinsertdate());
 			
 		}
-		
-		List<TurbboardVO> hList=restaurantService.selectSeasonBestHit();
+		*/
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("restaurantlist",aList);
-		mav.addObject("hitlist",hList);
-		mav.setViewName(CONTEXT_PATH+"/restaurant");
+		//mav.addObject("restaurantlist",aList);
+		mav.setViewName(CONTEXT_PATH+"/restaurantMain");
 		
 		System.out.println("listrestaurant 끝");
 		

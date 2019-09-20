@@ -45,7 +45,19 @@
 		
 		
 	</select>
-	
+
+	<select id="infoNickCheck" parameterType="com.tu.mem.vo.MemberVO" resultType="int">
+
+	SELECT
+			COUNT(MNAME) AS MNAME
+	FROM
+			TUMEM
+	WHERE
+			MNICK=#{mnick}
+
+
+	</select>
+
 	<update id="memberInfoUpdate" parameterType="com.tu.mem.vo.MemberVO">
 	/*Mapper memberInfoUpdate*/
 

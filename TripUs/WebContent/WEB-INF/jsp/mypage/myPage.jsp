@@ -1,3 +1,10 @@
+<%--
+파일명 : myPage.jsp
+설명 : 자신의 정보등을 관리할 수 있는 페이지
+작성일 : 2019.9.1
+작성자 : LHJ
+ --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -135,9 +142,9 @@
         <img class="img-fluid rounded mb-4 mb-lg-0" src="${mprofile}" width="200px" height="200px" alt="">
       </div>
       <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
+      <div class="col-lg-5" style="padding: 0px 30px">
        
-        <h3>유저 정보</h3>
+        <b style="font-size: 20px">유저 정보</b>
         
         <br>
         <br>
@@ -147,7 +154,7 @@
 
 
             <div class="panel-group">
-	            <div class="panel panel-primary" style="padding : 10px 0px 0px 10px">
+	            <div class="panel panel-primary" style="width:320px; padding : 10px 0px 0px 10px">
 				 <h3 class="member text-primary">닉네임 : </h3>
 	            	<p class="data" align="center">${mem.mnick}</p>	           
 	            
@@ -155,7 +162,7 @@
 			</div>
 			
 			<div class="panel-group">
-	            <div class="panel panel-primary" style="padding : 10px 0px 0px 10px">
+	            <div class="panel panel-primary" style="width:320px; padding : 10px 0px 0px 10px">
 		          <h3 class="member text-primary">전화번호 : </h3>
 		          <p class="data"align="center">${mem.mhp}</p>
              
@@ -164,7 +171,7 @@
 			</div>
 			
 			<div class="panel-group">
-	            <div class="panel panel-primary" style="padding : 10px 0px 0px 10px">
+	            <div class="panel panel-primary" style="width:320px; padding : 10px 0px 0px 10px">
 	        		<h3 class="member text-primary">가입일 : </h3>
 	        		<p class="data" align="center">${mem.minsertdate}</p>
 			   
@@ -214,7 +221,7 @@
            
           </div>
           <div class="card-footer" align="right">
-            <a href="/mypage/myfavorite.do" class="btn btn-primary">이동</a>
+            <a href="/mypage/myfavorite.do?mygrade=0" class="btn btn-primary">이동</a>
           </div>
         </div>
       </div>
@@ -269,8 +276,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	
 	

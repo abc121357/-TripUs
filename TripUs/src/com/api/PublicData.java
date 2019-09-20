@@ -23,8 +23,11 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class test
- */
+클래스명 : PublicData
+설명 : 메인에서 지역별 음식점들을 가져오기 위한  파일
+날 짜 : 2019-09-05
+작성자명 : LHJ
+*/
 @WebServlet("/PublicData.do")
 public class PublicData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,23 +46,37 @@ public class PublicData extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-	
-		String contentID=request.getParameter("contentID");
 		
-		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?ServiceKey=";
-		String serviceKey = "My6b1IelbnyXdTYDdv2cbquuqSw%2F1naI%2BWZWg1VKRF%2FmcKhW0akQ7SF1Rm4gDdbPYb1Td5O5FUYIpNOALhF%2Bvw%3D%3D";
+		String areaCode=request.getParameter("areaCode");
+		String foodCat=request.getParameter("foodCat");
+		int pageNo=1;
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=";
+		String serviceKey = "XcYnvXiczkLLceGeiZC%2FS25vRTz20RORZFfahcwPXWDAwCCkf9aPPDxbShnDX6apwNOjl4gBEw7hdF9A1g8XcA%3D%3D";
 		String parameter = "";
 		//serviceKey = URLEncoder.encode(serviceKey,"utf-8");
 		PrintWriter out = response.getWriter();
 		System.out.println("PublicData.do 진입");
+		if(areaCode!=null){
 		
-		parameter = parameter + "&" + "contentTypeId=25";
-		parameter = parameter + "&" + "contentId="+contentID;
-		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "contentTypeId=39";
+		parameter = parameter + "&" + "areaCode="+areaCode;
+		parameter = parameter + "&" + "sigunguCode=";
+		parameter = parameter + "&" + "cat1=A05&cat2=A0502&cat3=";
+		parameter = parameter + "&" + "listYN=Y&MobileOS=ETC";
 		parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
-		parameter = parameter + "&" + "listYN=Y";
+		parameter = parameter + "&" + "arrange=A&numOfRows=12&pageNo="+pageNo;
 		parameter = parameter + "&" + "_type=json";
-		
+		}
+		else if(foodCat!=null){
+			parameter = parameter + "&" + "contentTypeId=39";
+			parameter = parameter + "&" + "areaCode=";
+			parameter = parameter + "&" + "sigunguCode=";
+			parameter = parameter + "&" + "cat1=A05&cat2=A0502&cat3="+foodCat;
+			parameter = parameter + "&" + "listYN=Y&MobileOS=ETC";
+			parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
+			parameter = parameter + "&" + "arrange=A&numOfRows=12&pageNo="+pageNo;
+			parameter = parameter + "&" + "_type=json";
+		}
 		
 		addr = addr + serviceKey + parameter;
 		System.out.println("addr : "+addr);

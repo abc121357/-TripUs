@@ -9,4 +9,5 @@ public interface MyPageDAO {
 
     public List<MemberVO> memberInfo(MemberVO param);
     public int memberInfoUpdate(MemberVO param);
+    public int infoNickCheck(MemberVO param);
 }

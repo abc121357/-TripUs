@@ -1,3 +1,10 @@
+<%--
+파일명 : restaurant.jsp
+설명 : 맛집 메인페이지
+작성일 : 2019.9.1
+작성자 : LHJ
+ --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -145,7 +152,7 @@
   <a href="#">#마라탕</a>
 
 
-<h2 style="font-family: aqua;">지역별 맛집</h2>
+<h2 style="color: brown;">- 지역별 맛집들</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -159,26 +166,30 @@
     <div class="carousel-inner">
 	
       <div class="item active" >
-      <a href="#">
-        <img src="/resources/img/img1.jpg"  alt="이미지 1" style="width:100%;">
+      <a href="/restaurant/resAreaSub.do?areaCode=31">
+        <img src="/resources/img/경기도맛집.jpg"  alt="이미지 1" style=" height:420px; width:100%;">
         </a>
         <div class="carousel-caption">
-          <h3>경기도</h3>
+          <h3 style="text-decoration-color: skyblue;">경기도</h3>
           <p>경기도의 다양한 음식점들~!</p>
         </div>
       </div>
 
       <div class="item">
-        <img src="/resources/img/img2.jpg" alt="이미지 2" style="width:100%;">
-        <div class="carousel-caption">
+          <a href="/restaurant/resAreaSub.do?areaCode=1">
+            <img src="/resources/img/서울맛집.jpg" alt="이미지 2" style="height:420px; width:100%;">
+          </a>
+          <div class="carousel-caption">
           <h3>서울</h3>
           <p>서울의 전통적인 음식점들</p>
         </div>
       </div>
     
       <div class="item">
-        <img src="/resources/img/img3.jpg" alt="이미지 3" style="width:100%;">
-        <div class="carousel-caption">
+        <a href="/restaurant/resAreaSub.do?areaCode=2">
+          <img src="/resources/img/인천맛집.jpg" alt="이미지 3" style="height:420px; width:100%;">
+        </a>
+            <div class="carousel-caption">
           <h3>인천</h3>
           <p>해안도시 인천의 수산물 음식점들</p>
         </div>
@@ -199,8 +210,11 @@
 
 <br>
 <br>
+<br>
+<br>
 
-<h2 style="font-family: aqua;">국가별 맛집</h2>
+
+<h2 style="color: brown;"> - 맛집 요리 분류</h2>
   <div id="myCarousel2" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -215,51 +229,61 @@
     <div class="carousel-inner">
 	
       <div class="item active" >
-        <img src="/resources/img/img1.jpg"  alt="이미지 1" style="width:100%;">
+      	<a href="/restaurant/resCatSub.do?foodCat=A05020100">
+        <img src="/resources/img/한식.gif"  alt="한식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>한식</h3>
-          <p>경기도의 다양한 음식점들~!</p>
+          <p>한국의 전통적인 음식들~!</p>
         </div>
       </div>
 
       <div class="item">
-        <img src="/resources/img/img2.jpg" alt="이미지 2" style="width:100%;">
+       <a href="/restaurant/resCatSub.do?foodCat=A05020300">
+        <img src="/resources/img/일식.jpg" alt="일식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>일식</h3>
-          <p>서울의 전통적인 음식점들</p>
+          <p>싱싱한 스시와 깊이있는 전통음식들 </p>
         </div>
       </div>
     
       <div class="item">
-        <img src="/resources/img/img3.jpg" alt="이미지 3" style="width:100%;">
+      <a href="/restaurant/resCatSub.do?foodCat=A05020200">
+        <img src="/resources/img/서양식.jpg" alt="서양식" style="height:420px; width:100%;">
+       </a>
         <div class="carousel-caption">
           <h3>서양식</h3>
-          <p>해안도시 인천의 수산물 음식점들</p>
+          <p>서양의 고급스러운 맛</p>
         </div>
       </div>
       
       <div class="item">
-        <img src="/resources/img/img3.jpg" alt="이미지 3" style="width:100%;">
+        <a href="/restaurant/resCatSub.do?foodCat=A05020400">
+        <img src="/resources/img/중식.jpg" alt="중식" style="height:420px; width:100%;">
+        </a>
         <div class="carousel-caption">
           <h3>중식</h3>
-          <p>해안도시 인천의 수산물 음식점들</p>
+          <p>중국의 풍미를 느낄 수 있는 음식들</p>
         </div>
       </div>
-  
+	    <!-- Left and right controls -->
+	    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+	      <span class="glyphicon glyphicon-chevron-left"></span>
+	      <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+	      <span class="glyphicon glyphicon-chevron-right"></span>
+	      <span class="sr-only">Next</span>
+	    </a>
+	  </div>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel2" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
+<br>
+<br>
 
+
+</div>
 	
 	
 

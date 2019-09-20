@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.restaurant.dao.RestaurantDAO">
+	<resultMap type="com.tu.restaurant.vo.TurtcommVO" id="turtcommVO">
+		<result property="rtnick" column ="RTNICK"/>
+		<result property="rtprofile" column = "RTPROFILE"/>
+		<result property="rtcontent" column="RTCONTENT"/>
+		<result property="rtinsertdate" column="RTINSERTDATE"/>
+	</resultMap>
+	
+	<resultMap type="com.tu.restaurantboard.vo.TurbboardVO" id="turbboardVO">
+		
+		<result property="rbnick" column ="RBNICK"/>
+		<result property="rbtitle" column = "RBTITLE"/>
+		<result property="rbcontent" column="RBCONTENT"/>
+		<result property="rbinsertdate" column="RBID"/>
+		<result property="rbhit" column="RBHIT"/>
+		<result property="rbimage" column="RBIMAGE"/>
+	</resultMap>
+	
+	<select id="listResComm" parameterType="com.tu.restaurant.vo.TurtcommVO" resultMap="turtcommVO">
+	/* Mapper - listRestaurant */
+		SELECT
+				RTNICK,
+				RTPROFILE,
+				RTCONTENT,
+				RTINSERTDATE
+		FROM
+				TURTCOMM
+		
+		
+	</select>
+
+	<!-- 봄,여름,가을,겨울 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
+
+	<select id="selectSeasonBestHit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
+	SELECT
+		  RBTITLE,
+	      RBHIT,
+	      RBIMAGE,
+	      RBTAG
+	FROM
+	      TURBBOARD
+	WHERE
+	      1=1
+	AND
+	      REGEXP_LIKE(RBTAG,'봄|여름|가을|겨울')
+	AND
+	    <![CDATA[  (RBINSERTDATE-SYSDATE)<30 ]]>
+	ORDER BY RBHIT DESC
+	</select>
+	<!-- 서울시,경기도,강원도,충청북도,충청남도 ,전라북도 ,전라남도 ,경상북도,경상남도 태그에 속하는 게시물들의 조회수를 1달이내의 게시글로만 검색해서 리턴 -->
+	<!--
+	<select id="selectseasonbesthit" parameterType="com.tu.restaurantboard.vo.TurbboardVO" resultMap="turbboardVO">
+	SELECT
+	      RBHIT,
+	      RBIMAGE,
+	      RBTAG
+	FROM
+	      TURBBOARD
+	WHERE
+	      1=1
+	AND
+	      REGEXP_LIKE(RBTAG,'서울|경기|강원|충북|충남|전북|전남|경북|경남')
+	AND
+	      (RBINSERTDATE-SYSDATE)<30;
+    ORDER BY RBHIT DESC
+
+	</select>
+	 -->
+
+	<insert id="insertResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	INSERT INTO
+				TURTCOMM
+	VALUES(
+			#{rtno},
+			#{rtid},
+			#{rtnick},
+			#{rtprofile},
+			#{rtcontent},
+			SYSDATE,
+			SYSDATE,
+			'Y',
+			SYSDATE,
+			SYSDATE
+			)
+
+
+	</insert>
+
+	<update id="updateResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	UPDATE
+			TURTCOMM
+	SET
+			TURTCOMMENT
+
+	</update>
+
+	<delete id="deleteResComm" parameterType="com.tu.restaurant.vo.TurtcommVO">
+
+	UPDATE
+			TURTCOMM
+	SET
+			RTDELETEYN='N'
+	WHERE
+			RTNO=#{rtno}
+
+	</delete>
+
+</mapper>
