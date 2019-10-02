@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.mem.dao.MemberDAO">
+	<resultMap type="com.tu.mem.vo.MemberVO" id="memberVO">
+		<result property="mno" column="MNO"/>
+		<result property="mid" column="MID"/>
+		<result property="mpw" column="MPW"/>
+		<result property="mname" column="MNAME"/>
+		<result property="mnick" column="MNICK"/>
+		<result property="mgender" column="MGENDER"/>
+		<result property="mhp" column="MHP"/>
+		<result property="memail" column="MEMAIL"/>
+		<result property="mbirth" column="MBIRTH"/>
+		<result property="mdeleteyn" column="MDELETEYN"/>
+		<result property="minsertdate" column="MINSERTDATE"/>
+		<result property="mupdatedate" column="MUPDATEDATE"/>
+		<result property="mdeletedate" column="MDELETEDATE"/>
+		<result property="mprofile" column="MPROFILE"/>
+		<result property="mgrade" column="MGRADE"/>
+		<result property="snsid" column="SNSID"/>
+		<result property="snsage" column="SNSAGE"/>
+		<result property="snsbirth" column="SNSBIRTH"/>
+		<result property="snsconnectdate" column="SNSCONNECTDATE"/>
+		<result property="mrecordinsertdate" column="MRECORDINSERTDATE"/>
+		<result property="mrecordupdatedate" column="MRECORDUPDATEDATE"/>
+	</resultMap>
+		
+	<select id="listMember" parameterType="com.tu.mem.vo.MemberVO" resultMap="memberVO">
+		SELECT MNO
+			   ,MID
+			   ,MPW
+			   ,MNAME
+			   ,MNICK
+			   ,MGENDER
+			   ,MHP
+			   ,MEMAIL
+			   ,MBIRTH
+			   ,MDELETEYN
+			   ,MINSERTDATE
+			   ,MPROFILE
+			   ,MGRADE
+			   ,MRECORDINSERTDATE
+			   ,MRECORDUPDATEDATE
+		FROM   TUMEM
+		WHERE  MDELETEYN = 'Y'
+		<where>
+			<if test="mno != null and mno != ''">
+			MNO LIKE '%' || #{mno} || '%'
+			</if>
+		</where>
+		ORDER BY MNO DESC
+	</select>
+	
+	<insert id="insertMember" parameterType="com.tu.mem.vo.MemberVO" >
+		
+		INSERT INTO TUMEM
+		VALUES((SELECT NVL2(MAX(MNO),'MY'||LPAD(REPLACE(MAX(MNO),'MY')+1,4,'0'),'MY0001') 
+				FROM   TUMEM)
+		        ,#{mid}
+		        ,#{mpw}
+		        ,#{mname}
+		        ,#{mnick}
+		        ,#{mgender}
+		        ,#{mhp}
+		        ,#{memail}
+		        ,#{mbirth}
+		        ,'Y'
+		        ,SYSDATE
+		        ,NULL
+		        ,NULL
+		        ,'WWW.PROFILE.URL'
+		        ,2
+		        ,NULL
+		        ,NULL
+		        ,NULL
+		        ,NULL
+		        ,SYSDATE
+		        ,NULL)
+	</insert>
+	
+	<select id="emailCheck" parameterType="com.tu.mem.vo.MemberVO" resultType="Integer">
+		
+		SELECT NVL(COUNT(MEMAIL),0)
+		FROM TUMEM
+		WHERE MEMAIL = #{memail}
+		AND MDELETEYN = 'Y' 
+	</select>
+
+	<select id="idCheck" parameterType="com.tu.mem.vo.MemberVO" resultType="Integer">
+		
+		SELECT NVL(COUNT(MID),0)
+		FROM TUMEM
+		WHERE MID = #{mid}
+		AND MDELETEYN = 'Y' 
+	</select>
+
+	<select id="nickCheck" parameterType="com.tu.mem.vo.MemberVO" resultType="Integer">
+		
+		SELECT NVL(COUNT(MID),0)
+		FROM TUMEM
+		WHERE MNICK = #{mnick}
+		AND MDELETEYN = 'Y' 
+	</select>
+	
+
+
+</mapper>						

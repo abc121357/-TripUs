@@ -1,0 +1,295 @@
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+<title>Accordion Menu - Bootsnipp.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+body {
+	margin-top: 50px;
+}
+
+.glyphicon {
+	margin-right: 10px;
+}
+
+.panel-body {
+	padding: 0px;
+}
+
+.panel-body table tr td {
+	padding-left: 15px
+}
+
+.panel-body .table {
+	margin-bottom: 0px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<!--지역 카테고리  -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3 col-md-3">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseOne">서울</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">#강남구</a></td>
+										<td><a href="">#도봉구</a></td>
+										<td><a href="">#동대문구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#푸</a></td>
+										<td><a href="">#름이</a></td>
+										<td><a href="">#짱이야</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#푸름이</a></td>
+										<td><a href="">#최고</a></td>
+										<td><a href="">#야</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#안녕</a></td>
+										<td><a href="">#누구세요</a></td>
+										<td><a href="">#하하</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseTwo"> 경기</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">#가평군</a></td>
+										<td><a href="">#동두천시</a></td>
+										<td><a href="">#부천시</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동두천시</a></td>
+										<td><a href="">#부천시</a></td>
+										<td><a href="">#성남시</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동두천시</a></td>
+										<td><a href="">#부천시</a></td>
+										<td><a href="">#성남시</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동두천시</a></td>
+										<td><a href="">#부천시</a></td>
+										<td><a href="">#성남시</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseThree"> 부산</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">#강서구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseFour"> 대구</a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">#남구</a></td>
+										<td><a href="">#달서구</a></td>
+										<td><a href="">#달성구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동구</a></td>
+										<td><a href="">#달서구</a></td>
+										<td><a href="">#달성구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동구</a></td>
+										<td><a href="">#달서구</a></td>
+										<td><a href="">#달성구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#동구</a></td>
+										<td><a href="">#달서구</a></td>
+										<td><a href="">#달성구</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseFive">대전</a>
+							</h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">#강서구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">#수영구</a></td>
+										<td><a href="">#사하구</a></td>
+										<td><a href="">#서구</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseSix">광주</a>
+							</h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseSeven">강원</a>
+							</h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+									<tr>
+										<td><a href="">수영구</a></td>
+										<td><a href="">사하구</a></td>
+										<td><a href="">서구</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--end of 지역 카테고리  -->
+</body>
+</html>

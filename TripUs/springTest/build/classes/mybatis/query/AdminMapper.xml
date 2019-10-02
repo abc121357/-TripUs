@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.admin.dao.AdminDao">
+	<resultMap type="com.tu.admin.vo.AdminVo" id="adminVo">
+		<result property="mno" column="MNO"/>
+		<result property="mid" column="MID"/>
+		<result property="mpw" column="MPW"/>
+		<result property="mname" column="MNAME"/>
+		<result property="mnick" column="MNICK"/>
+		<result property="mgender" column="MGENDER"/>
+		<result property="mhp" column="MHP"/>
+		<result property="memail" column="MEMAIL"/>
+		<result property="mbirth" column="MBIRTH"/>
+		<result property="mdeleteyn" column="MDELETEYN"/>
+		<result property="minsertdate" column="MINSERTDATE"/>
+		<result property="mupdatedate" column="MUPDATEDATE"/>
+		<result property="mdeletedate" column="MDELETEDATE"/>
+		<result property="mprofile" column="MPROFILE"/>
+		<result property="mgrade" column="MGRADE"/>
+		<result property="snsid" column="SNSID"/>
+		<result property="snsage" column="SNSAGE"/>
+		<result property="snsbirth" column="SNSBIRTH"/>
+		<result property="snsconnectdate" column="SNSCONNECTDATE"/>
+		<result property="mrecordinsertdate" column="MRECORDINSERTDATE"/>
+		<result property="mrecordupdatedate" column="MRECORDUPDATEDATE"/>
+	</resultMap>
+
+		
+	<select id="adlistMember" parameterType="com.tu.admin.vo.AdminVo" resultType="com.tu.admin.vo.AdminVo" resultMap="adminVo">
+		<!-- Mapper - adlistMember --> 
+	   SELECT 	MNO
+			   ,MID
+			   ,MPW
+			   ,MNAME
+			   ,MNICK
+			   ,MGENDER
+			   ,MHP
+			   ,MEMAIL
+			   ,MBIRTH
+			   ,MDELETEYN
+			   ,MINSERTDATE
+			   ,MPROFILE
+			   ,MGRADE
+			   ,MRECORDINSERTDATE
+			   ,MRECORDUPDATEDATE
+		FROM   TUMEM
+		<if test="mdeleteyn != null">
+			WHERE  MDELETEYN = #{mdeleteyn}
+		</if>
+		
+		<if test="adsearchcondition != null and adsearchkeyword != null ">
+			<choose>
+				<when test="adsearchcondition == 'mid'">
+					AND MID LIKE '%'|| #{adsearchkeyword} ||'%'
+				</when>
+			
+				<when test="adsearchcondition == 'mnick'">
+					AND MNICK LIKE '%'|| #{adsearchkeyword} ||'%'
+				</when>
+
+				<when test="adsearchcondition == 'mname'">
+					AND MNAME LIKE '%'|| #{adsearchkeyword} ||'%'
+				</when>
+				<when test="adsearchcondition == 'mhp'">
+					AND MHP LIKE '%'|| #{adsearchkeyword} ||'%'
+				</when>
+
+				<otherwise>
+				AND(	MID LIKE '%'|| #{adsearchkeyword} ||'%' OR
+					    MNICK LIKE '%'|| #{adsearchkeyword} ||'%' OR
+					    MNAME LIKE '%'|| #{adsearchkeyword} ||'%' OR
+					    MHP LIKE '%'|| #{adsearchkeyword} ||'%' 
+				   )
+				</otherwise>
+			</choose>
+		</if>
+		
+		ORDER BY MNO DESC
+	</select>
+	
+
+
+</mapper>						

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns:c="http://www.springframework.org/schema/c"
+	  xmlns:lang="http://www.springframework.org/schema/lang"
+	  xmlns:mvc="http://www.springframework.org/schema/mvc"
+	  xmlns:p="http://www.springframework.org/schema/p"
+	  xmlns:context="http://www.springframework.org/schema/context"
+	  xmlns:tx="http://www.springframework.org/schema/tx"
+	  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						  http://www.springframework.org/schema/beans/spring-beans.xsd
+						  http://www.springframework.org/schema/context
+						  http://www.springframework.org/schema/context/spring-context.xsd
+						  http://www.springframework.org/schema/lang 
+						  http://www.springframework.org/schema/lang/spring-lang.xsd
+						  http://www.springframework.org/schema/mvc
+						  http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						  http://www.springframework.org/schema/tx
+						  http://www.springframework.org/schema/tx/spring-tx.xsd">
+			
+	<!--  DB Connection -->
+	
+	<!--  DataSource -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g" />	
+	</bean>
+	
+	<!-- Mybatis Setting -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:mybatis/query/*.xml"/>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache"> 
+			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- a PlatformTransactionManager is still required -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>	
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"><value>com.tu.**.dao</value></property>
+	</bean>
+	
+	<!-- image file upload set -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <property name="maxUploadSize" value="5242880" /> <!-- 5MB -->
+        <!-- max size of file in memory (in bytes) -->
+        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+    </bean>
+</beans>

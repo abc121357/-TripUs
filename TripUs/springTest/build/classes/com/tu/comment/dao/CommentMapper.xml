@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tu.comment.dao.CommentMapper">
+
+	<select id="commentCount" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM TUTOCOMM
+	</select>
+
+	<select id="commentList" resultType="com.tu.comment.vo.CommentVO">
+		SELECT
+		*
+		FROM TUTOCOMM
+	</select>
+
+
+	<insert id="commentInsert" parameterType="com.tu.comment.vo.CommentVO">
+		INSERT INTO
+		TUTOCOMM (TONO,TOID,TONICK,TOPROFILE,TOCONTENT,TOINSERTDATE,TOUPDATEDATE,TODELETEYN,TORECORDINSERTDATE,TORECORDUPDATEDATE)
+		VALUES(#{tono},#{toid},#{tonick},#{toprofile},#{tocontent},sysdate,sysdate,#{todeleteyn},sysdate,sysdate)
+	</insert>
+
+	<update id="commentUpdate" parameterType="com.tu.comment.vo.CommentVO">
+		UPDATE COMM
+		SET
+		CONTENT = #{content}
+		WHERE CNO = #{cno}
+	</update>
+
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM COMM WHERE CNO = #{cno}
+	</delete>
+</mapper>
+

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.tu.ntboard.dao.NtBoardDao"> 
+	<resultMap type="com.tu.ntboard.vo.NtBoardVo" id="ntvo"> 
+		<result property="ntno" column="NTNO" />
+		<result property="ntid" column="NTID" />
+		<result property="nttitle" column="NTTITLE" />
+		<result property="ntcontent" column="NTCONTENT" />
+		<result property="nthit" column="NTHIT" />
+		<result property="ntinsertdate" column="NTINSERTDATE" />
+		<result property="ntupdatedate" column="NTUPDATEDATE" />
+		<result property="ntdeleteyn" column="NTDELETEYN" />
+		<result property="ntrecordinsertdate" column="NTRECORDINSERTDATE" />
+		<result property="ntrecordupdatedate" column="FARECORDUPDATEDATE" />
+	</resultMap>	
+
+	<!--전체 게시글 목록 --> 
+    <select id="ntBoardList"  parameterType="com.tu.ntboard.vo.NtBoardVo" resultMap="ntvo">
+    /* Mapper - ntBoardList */ 
+		SELECT NTNO,
+			   NTID,
+			   NTTITLE,
+			   NTCONTENT,
+			   NTHIT,
+			   TO_CHAR(NTINSERTDATE, 'YYYY-MM-DD HH:MM') AS NTINSERTDATE,
+			   TO_CHAR(NTUPDATEDATE, 'YYYY-MM-DD HH:MM') AS NTUPDATEDATE,
+			   NTDELETEYN,
+			   TO_CHAR(NTRECORDINSERTDATE, 'YYYY-MM-DD HH:MM') AS NTRECORDINSERTDATE,
+			   TO_CHAR(NTRECORDUPDATEDATE, 'YYYY-MM-DD HH:MM') AS NTRECORDUPDATEDATE
+		FROM   TUNTBOARD
+		<where>
+			NTDELETEYN = 'Y' 
+			<if test="ntsearchcondition != null and ntsearchcondition !='' and ntsearchkeyword !=null and ntsearchkeyword !=''">
+			AND
+       			<choose>
+          			<when test="ntsearchcondition == 'ntTitle'">
+          				ntTitle LIKE '%'|| #{ntsearchkeyword} ||'%'
+          			</when>
+          			
+          			<when test="ntsearchcondition == 'ntContent'">
+          				ntContent LIKE '%'|| #{ntsearchkeyword} ||'%'
+          			</when>
+      
+      				<otherwise>
+         				ntTitle LIKE '%'|| #{ntsearchkeyword} ||'%' OR
+         				ntContent LIKE '%'|| #{ntsearchkeyword} ||'%'
+      				</otherwise>
+       			</choose>
+       		</if>
+       		AND  NTDELETEYN = 'Y'
+    		ORDER BY NTNO DESC
+    	</where>
+    </select>
+    
+    
+    <!-- 게시글 입력페이지 -->
+    <select id="ntBoardDetail" parameterType="com.tu.ntboard.vo.NtBoardVo" resultMap="ntvo">
+    /* Mapper - ntBoardDetail */ 
+		SELECT   NTNO,
+				 NTID,
+			     NTTITLE,
+			     NTCONTENT,
+			     NTHIT,
+			     TO_CHAR(NTINSERTDATE, 'YYYY-MM-DD HH:MM') AS NTINSERTDATE,
+			     TO_CHAR(NTUPDATEDATE, 'YYYY-MM-DD HH:MM') AS NTUPDATEDATE,
+			     NTDELETEYN,
+			     TO_CHAR(NTRECORDINSERTDATE, 'YYYY-MM-DD HH:MM') AS NTRECORDINSERTDATE,
+			     TO_CHAR(NTRECORDUPDATEDATE, 'YYYY-MM-DD HH:MM') AS NTRECORDUPDATEDATE
+		FROM     TUNTBOARD
+       	WHERE    NTNO = #{ntno} 
+       	AND      NTDELETEYN = 'Y'
+    </select>
+    
+    
+    <!-- 게시글추가 -->
+    <insert id="ntBoardInsert" parameterType="com.tu.ntboard.vo.NtBoardVo">
+    /* Mapper - ntBoardInsert */ 
+    INSERT INTO TUNTBOARD (
+								NTNO,
+								NTID,
+								NTTITLE,
+								NTCONTENT,
+								NTHIT,
+								NTINSERTDATE,
+								NTUPDATEDATE,
+								NTDELETEYN,
+								NTRECORDINSERTDATE,
+								NTRECORDUPDATEDATE
+						   )
+					VALUES(
+							(SELECT NVL2(MAX(NTNO),'NT'||LPAD(REPLACE(MAX(NTNO),'NT')+1,4,'0'),'NT0001') 
+						    FROM   TUNTBOARD),
+						   #{ntid},
+						   #{nttitle},
+						   #{ntcontent},
+						   #{nthit},
+						   SYSDATE,
+						   SYSDATE,
+						   'Y',
+						   SYSDATE,
+						   SYSDATE
+						  )
+	</insert> 
+     
+  
+   	<!-- 게시물 수정 -->
+    <update id="ntBoardUpdate" parameterType="com.tu.ntboard.vo.NtBoardVo" >
+    /* Mapper - ntBoardUpdate */
+	    UPDATE  TUNTBOARD
+	    SET     NTID = #{ntid},
+				NTTITLE  = #{nttitle},
+				NTCONTENT = #{ntcontent},
+				NTUPDATEDATE = SYSDATE,
+				NTRECORDUPDATEDATE = SYSDATE
+		WHERE   NTNO = #{ntno}
+		AND     NTDELETEYN = 'Y'	
+    </update>
+    
+    
+    <!-- 게시글 삭제  -->
+    <delete id="ntBoardDelete" parameterType="com.tu.ntboard.vo.NtBoardVo">
+    /* Mapper - ntBoardDelete */
+	    UPDATE  TUNTBOARD 
+	    SET     NTUPDATEDATE = SYSDATE,
+	    	    NTDELETEYN ='N',
+	            NTRECORDUPDATEDATE = SYSDATE
+	    WHERE   NTNO = #{ntno}
+	    AND     NTDELETEYN = 'Y'
+	</delete>
+	
+	<!-- 게시글 조회수 증가 -->
+    <update id="ntUpdateViewCnt" >
+        UPDATE   TUNTBOARD
+        SET      NTHIT = NTHIT + 1
+        WHERE    NTNO = #{ntno}
+    </update>
+   
+</mapper>

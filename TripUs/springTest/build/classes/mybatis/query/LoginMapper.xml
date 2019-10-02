@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.lp.dao.LoginDAO">
+	<resultMap type="com.tu.mem.vo.MemberVO" id="memberVO">
+		<result property="mno" column="MNO"/>
+		<result property="mid" column="MID"/>
+		<result property="mpw" column="MPW"/>
+		<result property="mname" column="MNAME"/>
+		<result property="mnick" column="MNICK"/>
+		<result property="mgender" column="MGENDER"/>
+		<result property="mhp" column="MHP"/>
+		<result property="memail" column="MEMAIL"/>
+		<result property="mbirth" column="MBIRTH"/>
+		<result property="mdeleteyn" column="MDELETEYN"/>
+		<result property="minsertdate" column="MINSERTDATE"/>
+		<result property="mupdatedate" column="MUPDATEDATE"/>
+		<result property="mdeletedate" column="MDELETEDATE"/>
+	</resultMap>
+	 
+	
+	
+	<select id="login" parameterType="com.tu.mem.vo.MemberVO" resultMap="memberVO">
+		/* Mapper - login */
+			SELECT MID
+				,MPW
+				,MNAME
+				,MGRADE
+				,MEMAIL
+			FROM TUMEM
+			WHERE MID=#{mid} AND
+				MPW=#{mpw} AND
+				MDELETEYN='Y'
+	</select>
+	<select id="emailCheck" parameterType="com.tu.mem.vo.MemberVO" resultMap="memberVO">
+		/* Mapper - emailCheck */
+			SELECT MEMAIL
+			FROM TUMEM
+			WHERE MEMAIL=#{memail} AND
+				MDELETEYN='Y'
+				
+	</select>
+	<select id="searchID" parameterType="com.tu.mem.vo.MemberVO" resultMap="memberVO">
+		/* Mapper - searchID */
+			SELECT MID
+			FROM TUMEM
+			WHERE MEMAIL=#{memail} AND
+				MDELETEYN='Y'
+				
+	</select>
+	<select id="searchPW" parameterType="com.tu.mem.vo.MemberVO" resultMap="memberVO">
+		/* Mapper - searchPW */
+			SELECT MPW
+			FROM TUMEM
+			WHERE MEMAIL=#{memail}
+				AND MID=#{mid} AND
+				MDELETEYN='Y'
+				
+	</select>
+	<update id="memberDelete" parameterType="com.tu.mem.vo.MemberVO" >
+		/* Mapper - memberDelete */
+		UPDATE TUMEM
+		SET MDELETEYN='N',
+		MDELETEDATE = SYSDATE
+		WHERE MID=#{mid} AND
+		MDELETEYN='Y'
+		
+		
+				
+	</update>
+	<update id="changePW" parameterType="com.tu.mem.vo.MemberVO">
+		/* Mapper - changePW */
+		UPDATE TUMEM
+		SET MPW=#{number} ,
+		MUPDATEDATE=SYSDATE
+		WHERE MID=#{mid} AND
+		MDELETEYN='Y'
+	</update>
+	
+	
+</mapper>			

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					      "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+					
+		
+<mapper namespace="com.tu.faboard.dao.FaBoardDao"> 
+	<resultMap type="com.tu.faboard.vo.FaVo" id="faVo"> 
+		<result property="fano" column="FANO" />
+		<result property="faid" column="FAID" /> 
+		<result property="fatitle" column="FATITLE" /> 
+		<result property="facontent" column="FACONTENT" />
+		<result property="fatype" column="FATYPE" />
+		<result property="fainsertdate" column="FAINSERTDATE" />
+		<result property="faupdatedate" column="FAUPDATEDATE" />
+		<result property="fadeleteyn" column="FADELETEYN" />
+		<result property="farecordinsertdate" column="FARECORDINSERTDATE" /> 
+		<result property="farecordupdatedate" column="FARECORDUPDATEDATE" />
+		<result property="faaddsite" column="FAADDSITE" />      
+	</resultMap>		
+					
+	<!--전체 게시글 목록 --> 
+	<select id="faBoardList" parameterType="com.tu.faboard.vo.FaVo" resultMap="faVo"> 
+	/* Mapper - faBoardList */ 
+		<!-- 
+		SELECT 	 *
+		FROM 	 (
+        			SELECT   ROWNUM AS RNUM,
+                 			 A.*
+        			FROM  (SELECT 		A.FANO, 
+				    					A.FATITLE,
+					  				    A.FACONTENT, 
+					  				    A.FATYPE,
+					  				    A.FAADDSITE
+							FROM 		TUFAQBOARD A		
+		
+							<where>
+								FADELETEYN = 'Y'
+								<if test="fasearchcondition != null and fasearchcondition != '' and fasearchkeyword != null and fasearchkeyword != ''">
+								AND
+								<choose>
+									<when test="fasearchcondition == 'faType'">
+									 	faType LIKE '%' || #{fasearchkeyword} || '%' 
+									</when>
+									
+									<when test="fasearchcondition == 'faTitle'">
+										faTitle LIKE '%' || #{fasearchkeyword} || '%' 
+									</when>
+									
+									<when test="fasearchcondition == 'faContent'">
+										faContent LIKE '%' || #{fasearchkeyword} || '%' 
+									</when>
+									
+									<otherwise>
+										faType LIKE '%' || #{fasearchkeyword} || '%' OR
+										faTitle LIKE '%' || #{fasearchkeyword} || '%' OR
+										faContent LIKE '%' || #{fasearchkeyword} || '%' 
+									</otherwise>
+								</choose>
+								</if>
+								AND  FADELETEYN = 'Y'
+						</where>
+             	 ) A
+    <![CDATA[
+       		WHERE ROWNUM <= 10 ) D
+	WHERE D.RNUM > 1
+	]]> -->
+	
+	SELECT 		FANO, 
+				    FATITLE,
+  				    FACONTENT, 
+  				    FATYPE,
+  				    FAADDSITE
+		FROM 		TUFABOARD		
+		
+		<where>
+			FADELETEYN = 'Y'
+			<if test="fasearchcondition != null and fasearchcondition != '' and fasearchkeyword != null and fasearchkeyword != ''">
+			AND
+			<choose>
+				<when test="fasearchcondition == 'faType'">
+				 	faType LIKE '%' || #{fasearchkeyword} || '%' 
+				</when>
+				
+				<when test="fasearchcondition == 'faTitle'">
+					faTitle LIKE '%' || #{fasearchkeyword} || '%' 
+				</when>
+				
+				<when test="fasearchcondition == 'faContent'">
+					faContent LIKE '%' || #{fasearchkeyword} || '%' 
+				</when>
+				
+				<otherwise>
+					faType LIKE '%' || #{fasearchkeyword} || '%' OR
+					faTitle LIKE '%' || #{fasearchkeyword} || '%' OR
+					faContent LIKE '%' || #{fasearchkeyword} || '%' 
+				</otherwise>
+			</choose>
+			</if>
+			AND  FADELETEYN = 'Y'
+			ORDER BY FANO DESC
+	</where>
+
+	</select>
+	
+	
+	<!--상세버튼클릭 --> 
+	<select id="faBoardSelect" parameterType="com.tu.faboard.vo.FaVo" resultMap="faVo"> 
+	/* Mapper - faBoardSelect */ 
+		SELECT 		FANO,
+		            FAID, 
+				    FATITLE,
+  				    FACONTENT, 
+  				    FATYPE,
+  				    FAADDSITE,
+  				    FAUPDATEDATE,
+  				    FADELETEYN,
+					FARECORDUPDATEDATE
+		FROM 		TUFABOARD
+		WHERE   FANO = #{fano}
+	    AND     FADELETEYN = 'Y'
+		ORDER BY    FANO DESC
+	</select>
+	
+	
+	<!-- 게시물 추가 -->
+	<insert id="faBoardInsert" parameterType="com.tu.faboard.vo.FaVo"> 
+	/* Mapper - faBoardInsert */ 
+		INSERT INTO TUFABOARD(
+								FANO,
+								FAID,
+								FATITLE,
+								FACONTENT,
+								FATYPE,
+								FAADDSITE,
+								FAINSERTDATE,
+								FAUPDATEDATE,
+								FADELETEYN,
+								FARECORDINSERTDATE,
+								FARECORDUPDATEDATE
+							  )
+					VALUES(
+						   (SELECT NVL2(MAX(FANO),'FA'||LPAD(REPLACE(MAX(FANO),'FA')+1,4,'0'),'FA0001') 
+						    FROM   TUFABOARD),
+						   #{faid},
+						   #{fatitle},
+						   #{facontent},
+						   #{fatype},
+						   #{faaddsite},
+						   SYSDATE,
+						   SYSDATE,
+						   'Y',
+						   SYSDATE,
+						   SYSDATE
+						  )
+	</insert>
+	
+	
+	<!-- 게시물 수정 -->
+	<update id="faBoardUpdate" parameterType="com.tu.faboard.vo.FaVo">
+	/* Mapper - faBoardUpdate */
+			UPDATE  TUFABOARD
+			SET     FAID = #{faid},
+					FATITLE  = #{fatitle},
+					FACONTENT = #{facontent},
+					FATYPE  = #{fatype},
+					FAADDSITE  = #{faaddsite},
+					FAUPDATEDATE = SYSDATE,
+					FARECORDUPDATEDATE = SYSDATE					
+			WHERE   FANO = #{fano}
+			AND     FADELETEYN = 'Y'
+	</update>
+	
+	<!-- 게시글 삭제  -->
+	<delete id="faBoardDelete" parameterType="com.tu.faboard.vo.FaVo">
+		/* Mapper - faBoardDelete */
+			UPDATE  TUFABOARD
+			SET     FAUPDATEDATE = SYSDATE,
+			        FADELETEYN = 'N',
+					FARECORDUPDATEDATE = SYSDATE					
+			WHERE   FANO = #{fano}
+			AND     FADELETEYN = 'Y'
+	</delete>
+	
+	<!-- 게시글 총 수 구하기 -->
+	<select id = "faBoardListCount" resultType="int">
+	/* Mapper - faBoardListCount */
+		SELECT    COUNT(FANO) 
+	    FROM 	  TUFABOARD
+	    WHERE 	  FANO = #{fano}
+	    AND       FADELETEYN='Y'
+	</select>
+	
+</mapper>

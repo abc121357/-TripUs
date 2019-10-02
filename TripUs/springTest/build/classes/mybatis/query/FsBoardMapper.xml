@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tu.fsboard.dao.FsBoardDAO">
+	<resultMap type="com.tu.fsboard.vo.FsBoardVO" id="fsBoardVO">
+		<result property="viewname" column="VIEWNAME"/>
+		<result property="viewno" column="VIEWNO"/>
+		<result property="contentid" column="CONTENTID"/>
+	</resultMap>
+	 
+	
+	
+	<select id="selectContentID" parameterType="com.tu.fsboard.vo.FsBoardVO" resultMap="fsBoardVO">
+		/* Mapper - selectContentID */
+			SELECT CONTENTID
+			FROM FESTIVALLIST
+			WHERE VIEWNO=#{viewno} 
+	</select>
+	<select id="fsBoardList" parameterType="com.tu.fsboard.vo.FsBoardVO" resultMap="fsBoardVO">
+		/* Mapper - fsBoardList */
+			SELECT CONTENTID,VIEWNAME,VIEWNO
+			FROM FESTIVALLIST
+			
+	</select>
+	
+</mapper>
